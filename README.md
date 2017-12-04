@@ -1,2 +1,2 @@
-# sorga
+# Sorga
 Simple organizer app
