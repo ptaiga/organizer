@@ -25,7 +25,7 @@ SECRET_KEY = 'x_em*=s2c7a+rsi!nqz^91fwnr59(0+17n2tmb_p(i1d#^^#5s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ptaiga.pythonanywhere.com']
+ALLOWED_HOSTS = ['ptaiga.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
