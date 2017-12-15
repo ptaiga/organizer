@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 
+app_name = 'organizer'
 urlpatterns = [
     path('', views.index, name='index'),
     path('projects/<int:project_id>/', views.project, name='project'),
