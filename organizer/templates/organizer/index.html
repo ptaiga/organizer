@@ -1,9 +1,9 @@
-{% if latest_task_list %}
+{% if project_list %}
 	<ul>
-	{% for task in latest_task_list %}
-		<li><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></li>
+	{% for project in project_list %}
+		<li><a href="{% url 'organizer:project' project.id %}">{{ project.project_name }}</a></li>
 	{% endfor %}
 	</ul>
 {% else %}
-	<p>No tasks are available.</p>
+	<p>No projects are available.</p>
 {% endif %}

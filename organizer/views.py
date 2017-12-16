@@ -4,9 +4,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Project, Task
 
 def index(request):
-    latest_task_list = Task.objects.order_by('-pub_date')[:5]
+    project_list = Project.objects.all()
     context = {
-        'latest_task_list': latest_task_list,    
+        'project_list': project_list,    
 	}
     return render(request, 'organizer/index.html', context)
 

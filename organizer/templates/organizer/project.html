@@ -1,1 +1,7 @@
-{{ project }}
+<h2>{{ project.project_name }}</h2>
+
+<ul>
+{% for task in project.task_set.all %}
+    <li><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></li>    
+{% endfor %}
+</ul>
