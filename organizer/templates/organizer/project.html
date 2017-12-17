@@ -1,7 +1,12 @@
 <h2>{{ project.project_name }}</h2>
 
-<ul>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'organizer:choice' project.id %}" method="post">
+{% csrf_token %}
 {% for task in project.task_set.all %}
-    <li><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></li>    
+    <input type="radio" name="task" id="task{{ forloop.counter }}" value="{{ task.id }}">
+    <label for="task{{ forloop.counter }}"><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></label><br>
 {% endfor %}
-</ul>
+<input type="submit" value="Choice">
+</form>
