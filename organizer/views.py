@@ -1,27 +1,23 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views import generic
 
 from .models import Project, Task
 
-def index(request):
-    project_list = Project.objects.all()
-    context = {
-        'project_list': project_list,    
-    }
-    return render(request, 'organizer/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'organizer/index.html'
+    context_object_name = 'project_list'
+    def get_queryset(self):
+        return Project.objects.all()
 
-def project(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    return render(request, 'organizer/project.html', {'project': project})
+class ProjectView(generic.DetailView):
+    model = Project
+    template_name = 'organizer/project.html'
 
-def task(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
-    return render(request, 'organizer/task.html', {'task': task})
-    # return HttpResponse("You're looking at task %s." % task_id)
+class TaskView(generic.DetailView):
+    model = Task
+    template_name = 'organizer/task.html'
 
 def choice(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
