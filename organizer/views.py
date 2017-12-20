@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
+from django.utils import timezone
 
 from .models import Project, Task
 
@@ -9,7 +10,7 @@ class IndexView(generic.ListView):
     template_name = 'organizer/index.html'
     context_object_name = 'project_list'
     def get_queryset(self):
-        return Project.objects.all()
+        return Project.objects.filter(pub_date__lte=timezone.now())
 
 class ProjectView(generic.DetailView):
     model = Project
