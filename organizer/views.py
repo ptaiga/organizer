@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     template_name = 'organizer/index.html'
     context_object_name = 'project_list'
     def get_queryset(self):
-        return Project.objects.filter(pub_date__lte=timezone.now())
+        return Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
 class ProjectView(generic.DetailView):
     model = Project
