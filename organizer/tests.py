@@ -93,3 +93,21 @@ class ProjectIndexViewTests(TestCase):
             # ordered=False
         )
 
+class ProjectDetailViewTests(TestCase):
+    def test_future_project(self):
+        """
+        The datail view of a project with a pub_date in the future returns a 404 not found.
+        """
+        future_project = create_project(project_name="Future project", days=5)
+        url = reverse('organizer:project', args=(future_project.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_past_project(self):
+        """
+        The datail view of a project with a pub_date in the past displays the project's detail.
+        """
+        past_project = create_project(project_name="Past project", days=-5)
+        url = reverse('organizer:project', args=(past_project.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_project.project_name)

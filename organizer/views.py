@@ -15,6 +15,11 @@ class IndexView(generic.ListView):
 class ProjectView(generic.DetailView):
     model = Project
     template_name = 'organizer/project.html'
+    def get_queryset(self):
+        """
+        Excludes any projects that aren't published yet.
+        """
+        return Project.objects.filter(pub_date__lte=timezone.now())
 
 class TaskView(generic.DetailView):
     model = Task
