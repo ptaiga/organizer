@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'organizer/style.css' %}">
+
 {% if project_list %}
 	<ul>
 	{% for project in project_list %}
