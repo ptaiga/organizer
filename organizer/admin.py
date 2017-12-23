@@ -29,3 +29,6 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Task, TaskAdmin)
+
+admin.AdminSite.site_header = 'Sorga administration'
+admin.AdminSite.site_title = 'Sorga site admin'
