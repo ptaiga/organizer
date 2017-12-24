@@ -37,3 +37,9 @@ def choice(request, project_id):
     else:
         return HttpResponseRedirect(reverse('organizer:task', 
             args=(selected_task.id,)))
+
+def projects_add(request):
+    project_name = request.POST['project_name']
+    p = Project(project_name=project_name, pub_date=timezone.now())
+    p.save()
+    return HttpResponseRedirect(reverse('organizer:index', args=()))
