@@ -2,13 +2,13 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'organizer:choice' project.id %}" method="post">
+<form action="{% url 'organizer:tasks_del' project.id %}" method="post">
 {% csrf_token %}
 {% for task in project.task_set.all %}
     <input type="radio" name="task" id="task{{ forloop.counter }}" value="{{ task.id }}">
     <label for="task{{ forloop.counter }}"><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></label><br>
 {% endfor %}
-<input type="submit" value="Choice">
+<input type="submit" value="Delete">
 </form>
 
 <form action="{% url 'organizer:tasks_add' %}" method="post">

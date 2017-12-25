@@ -25,19 +25,6 @@ class TaskView(generic.DetailView):
     model = Task
     template_name = 'organizer/task.html'
 
-def choice(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    try:
-        selected_task = project.task_set.get(pk=request.POST['task'])
-    except (KeyError, Task.DoesNotExist):
-        return render(request, 'organizer/project.html', {
-            'project': project,
-            'error_message': "You didn't select a task."
-        })
-    else:
-        return HttpResponseRedirect(reverse('organizer:task', 
-            args=(selected_task.id,)))
-
 def projects_add(request):
     project_name = request.POST['project_name']
     p = Project(project_name=project_name, pub_date=timezone.now())
@@ -51,3 +38,17 @@ def tasks_add(request):
     t = Task(project=project, task_name=task_name, pub_date=timezone.now())
     t.save()
     return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
+
+def tasks_del(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    try:
+        selected_task = project.task_set.get(pk=request.POST['task'])
+    except (KeyError, Task.DoesNotExist):
+        return render(request, 'organizer/project.html', {
+            'project': project,
+            'error_message': "You didn't select a task."
+        })
+    else:
+        selected_task.delete()
+        return HttpResponseRedirect(reverse('organizer:project', \
+            args=(project_id,)))
