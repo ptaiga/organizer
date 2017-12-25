@@ -43,3 +43,11 @@ def projects_add(request):
     p = Project(project_name=project_name, pub_date=timezone.now())
     p.save()
     return HttpResponseRedirect(reverse('organizer:index', args=()))
+
+def tasks_add(request):
+    project_id = request.POST['project_id']
+    task_name = request.POST['task_name']
+    project = get_object_or_404(Project, pk=project_id)
+    t = Task(project=project, task_name=task_name, pub_date=timezone.now())
+    t.save()
+    return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
