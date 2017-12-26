@@ -52,3 +52,6 @@ def tasks_del(request, project_id):
         selected_task.delete()
         return HttpResponseRedirect(reverse('organizer:project', \
             args=(project_id,)))
+
+def template(request):
+    return render(request, 'organizer/template/index.html')
