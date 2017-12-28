@@ -1,0 +1,18 @@
+/* According to https://medium.com/flexbox-and-grids/css-flexbox-grid-layout-how-to-approach-css-layouts-in-2017-and-beyond-685deef03e6c */
+
+
+html, body {
+    height: 98%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 25% 74%;
+    grid-template-rows: 10% 80% 10%;
+    grid-column-gap: 1%;
+}
+
+aside, main {
+    background-color: lightgray;
+    border-radius: 5px;
+}

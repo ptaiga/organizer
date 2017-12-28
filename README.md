@@ -27,3 +27,15 @@ Frontend:
     - [ ] Responsive design
 
   - JS
+
+## List of used sources
+
+**Backend**
+https://djangoproject.com - Django documentation
+
+**Layout**
+https://medium.com/flexbox-and-grids/css-flexbox-grid-layout-how-to-approach-css-layouts-in-2017-and-beyond-685deef03e6c
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element - HTML5 tags description
+
+
+

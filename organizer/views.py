@@ -54,4 +54,4 @@ def tasks_del(request, project_id):
             args=(project_id,)))
 
 def template(request):
-    return render(request, 'organizer/template/index.html')
+    return render(request, 'firststagedesign/index.html')
