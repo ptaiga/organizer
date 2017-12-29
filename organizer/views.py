@@ -39,6 +39,11 @@ def tasks_add(request):
     t.save()
     return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
 
+def projects_del(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    project.delete()
+    return HttpResponseRedirect(reverse('organizer:index'))
+
 def tasks_del(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     try:
