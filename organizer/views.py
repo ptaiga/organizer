@@ -12,14 +12,23 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
-class ProjectView(generic.DetailView):
-    model = Project
-    template_name = 'organizer/project.html'
-    def get_queryset(self):
-        """
-        Excludes any projects that aren't published yet.
-        """
-        return Project.objects.filter(pub_date__lte=timezone.now())
+# class ProjectView(generic.DetailView):
+#     model = Project
+#     template_name = 'organizer/project.html'
+#     def get_queryset(self):
+#         """
+#         Excludes any projects that aren't published yet.
+#         """
+#         return Project.objects.filter(pub_date__lte=timezone.now())
+
+def project(request, project_id):
+    project_list = \
+        Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    project = get_object_or_404(Project, pk=project_id)
+    return render(request, 'organizer/project.html', {
+        'project_list': project_list,
+        'project': project,
+    })
 
 class TaskView(generic.DetailView):
     model = Task
@@ -49,7 +58,10 @@ def tasks_del(request, project_id):
     try:
         selected_task = project.task_set.get(pk=request.POST['task'])
     except (KeyError, Task.DoesNotExist):
+        project_list = \
+            Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
         return render(request, 'organizer/project.html', {
+            'project_list': project_list,
             'project': project,
             'error_message': "You didn't select a task."
         })
@@ -58,5 +70,5 @@ def tasks_del(request, project_id):
         return HttpResponseRedirect(reverse('organizer:project', \
             args=(project_id,)))
 
-def template(request):
-    return render(request, 'firststagedesign/index.html')
+def about(request):
+    return HttpResponse("Sorga - simple organizer app. Version 0.1.0")

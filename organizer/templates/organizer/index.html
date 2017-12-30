@@ -1,18 +1,58 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorga</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'organizer/style.css' %}">
+</head>
+<body>
 
-<link rel="stylesheet" type="text/css" href="{% static 'organizer/style.css' %}">
+{% block header %} 
+<header>
+    <p>Hi, User!</p>
+</header>
+{% endblock %}
 
-{% if project_list %}
-	<ul>
-	{% for project in project_list %}
-		<li><a href="{% url 'organizer:project' project.id %}">{{ project.project_name }}</a></li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No projects are available.</p>
-{% endif %}
-<form action="{% url 'organizer:projects_add' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="project_name">
-    <input type="submit" value="Add">
-</form>
+{% block nav %}
+<nav>
+    <ul class="menu">
+        <li><a href="{% url 'organizer:about' %}">About</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block aside %}
+<aside>
+    <h2>Projects</h2>
+    {% if project_list %}
+        <ul>
+        {% for project in project_list %}
+            <li><a href="{% url 'organizer:project' project.id %}">{{ project.project_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No projects are available.</p>
+    {% endif %}
+    <br>
+    <form action="{% url 'organizer:projects_add' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="project_name">
+        <input type="submit" value="Add">
+    </form>
+</aside>
+{% endblock %}
+
+{% block main %}
+<main>
+    <h2>Tasks</h2>
+    <p>Select the project to see available tasks.</p>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer>2017 &copy; Sorga</footer>
+{% endblock %}
+
+</body>
+</html>

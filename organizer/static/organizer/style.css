@@ -1,8 +1,30 @@
+/* According to https://medium.com/flexbox-and-grids/css-flexbox-grid-layout-how-to-approach-css-layouts-in-2017-and-beyond-685deef03e6c */
+
+html, body {
+    height: 99%;
+}
+
 body {
+    display: grid;
+    grid-template-columns: 25% 74%;
+    grid-template-rows: 5% 90% 5%;
+    grid-column-gap: 1%;
+    margin: 3px;
     background: white url("images/background.jpg") no-repeat;
     background-size: cover;
 }
 
-li a {
-    color: white;
+aside, main {
+    border-radius: 5px;
+    border: 1px dotted white;
+    padding: 15px;
+}
+
+p, ul {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: right;
 }
