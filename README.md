@@ -29,7 +29,7 @@ Frontend:
     - [ ] Responsive design
 
   - JS:
-   - [ ]
+    - [ ]
 
 ## List of used sources
 
