@@ -8,10 +8,13 @@
 
 Backend:
   - [ ] User authorization
-  - [ ] Subtask
-  - [ ] Comment
+  - [ ] Subprojects
+  - [ ] Subtasks
+  - [ ] Comments
   - [ ] Inbox
   - [ ] Rename projects/tasks
+  - [ ] History
+  - [ ] Tasks deadline time
 
 Frontend:
   - Layout:
