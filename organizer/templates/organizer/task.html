@@ -1,1 +1,7 @@
-{{ task }}
+<h2>{{ task }}</h2>
+
+<form action="{% url 'organizer:tasks_rename' task.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="task_name">
+    <input type="submit" value="Rename">
+</form>
