@@ -1,5 +1,13 @@
 {% extends "organizer/index.html" %}
 
+{% block project_form%}
+<form action="{% url 'organizer:projects_rename' project.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="project_name">
+    <input type="submit" value="Rename">
+</form>
+{% endblock %}
+
 {% block main %}
 <main>
 <h2>{{ project.project_name }}</h2>

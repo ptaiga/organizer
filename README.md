@@ -12,7 +12,7 @@ Backend:
   - [ ] Subtasks
   - [ ] Comments
   - [ ] Inbox
-  - [ ] Rename projects/tasks
+  - [x] Rename projects/tasks
   - [ ] History
   - [ ] Tasks deadline time
 

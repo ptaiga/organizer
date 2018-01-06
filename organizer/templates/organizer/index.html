@@ -35,11 +35,13 @@
         <p>No projects are available.</p>
     {% endif %}
     <br>
+    {% block project_form %}
     <form action="{% url 'organizer:projects_add' %}" method="post">
         {% csrf_token %}
         <input type="text" name="project_name">
         <input type="submit" value="Add">
     </form>
+    {% endblock %}
 </aside>
 {% endblock %}
 

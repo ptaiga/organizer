@@ -73,6 +73,13 @@ def tasks_del(request, project_id):
 def about(request):
     return HttpResponse("Sorga - simple organizer app. Version 0.1.0")
 
+def projects_rename(request, project_id):
+    p = get_object_or_404(Project, pk=project_id)
+    project_name = request.POST['project_name']
+    p.project_name = project_name
+    p.save()
+    return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
+
 def tasks_rename(request, task_id):
     task_name = request.POST['task_name']
     task = get_object_or_404(Task, pk=task_id)
