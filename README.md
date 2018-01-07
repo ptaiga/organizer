@@ -15,6 +15,8 @@ Backend:
   - [x] Rename projects/tasks
   - [ ] History
   - [ ] Tasks deadline time
+  - [ ] Completeness flag for tasks/projects
+  - [ ] Ajax for base operations
 
 Frontend:
   - Layout:

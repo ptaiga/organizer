@@ -27,8 +27,8 @@
     <h2>Projects</h2>
     {% if project_list %}
         <ul>
-        {% for project in project_list %}
-            <li><a href="{% url 'organizer:project' project.id %}">{{ project.project_name }}</a></li>
+        {% for p in project_list %}
+            <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}">{{ p.project_name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
