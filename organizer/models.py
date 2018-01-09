@@ -10,9 +10,10 @@ class Project(models.Model):
 	    return self.project_name
 
 class Task(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE,
+        default=None, null=True)
     task_name = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published', default=timezone.now)
     def __str__(self):
 	    return self.task_name
     def was_published_recently(self):

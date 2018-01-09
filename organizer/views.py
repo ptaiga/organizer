@@ -6,11 +6,11 @@ from django.utils import timezone
 
 from .models import Project, Task
 
-class IndexView(generic.ListView):
-    template_name = 'organizer/index.html'
-    context_object_name = 'project_list'
-    def get_queryset(self):
-        return Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+# class IndexView(generic.ListView):
+#     template_name = 'organizer/index.html'
+#     context_object_name = 'project_list'
+#     def get_queryset(self):
+#         return Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 
 # class ProjectView(generic.DetailView):
 #     model = Project
@@ -20,6 +20,15 @@ class IndexView(generic.ListView):
 #         Excludes any projects that aren't published yet.
 #         """
 #         return Project.objects.filter(pub_date__lte=timezone.now())
+
+def index(request):
+    project_list = \
+        Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+    task_list = Task.objects.filter(project=None)
+    return render(request, 'organizer/index.html', {
+        'project_list': project_list,
+        'task_list': task_list,
+    })
 
 def project(request, project_id):
     project_list = \
@@ -43,10 +52,15 @@ def projects_add(request):
 def tasks_add(request):
     project_id = request.POST['project_id']
     task_name = request.POST['task_name']
-    project = get_object_or_404(Project, pk=project_id)
-    t = Task(project=project, task_name=task_name, pub_date=timezone.now())
-    t.save()
-    return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
+    if project_id:
+        project = get_object_or_404(Project, pk=project_id)
+        t = Task(project=project, task_name=task_name)
+        t.save()
+        return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
+    else:
+        t = Task(task_name=task_name)
+        t.save()
+        return HttpResponseRedirect(reverse('organizer:index', args=()))
 
 def projects_del(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
@@ -54,21 +68,38 @@ def projects_del(request, project_id):
     return HttpResponseRedirect(reverse('organizer:index'))
 
 def tasks_del(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    try:
-        selected_task = project.task_set.get(pk=request.POST['task'])
-    except (KeyError, Task.DoesNotExist):
-        project_list = \
-            Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
-        return render(request, 'organizer/project.html', {
-            'project_list': project_list,
-            'project': project,
-            'error_message': "You didn't select a task."
-        })
+    if project_id:
+        project = get_object_or_404(Project, pk=project_id)
+        try:
+            selected_task = project.task_set.get(pk=request.POST['task'])
+        except (KeyError, Task.DoesNotExist):
+            project_list = \
+                Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+            return render(request, 'organizer/project.html', {
+                'project_list': project_list,
+                'project': project,
+                'error_message': "You didn't select a task."
+            })
+        else:
+            selected_task.delete()
+            return HttpResponseRedirect(reverse('organizer:project', \
+                args=(project_id,)))
     else:
-        selected_task.delete()
-        return HttpResponseRedirect(reverse('organizer:project', \
-            args=(project_id,)))
+        try:
+            selected_task = Task.objects.get(pk=request.POST['task'])
+        except (KeyError, Task.DoesNotExist):
+            project_list = \
+                Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+            task_list = Task.objects.filter(project=None)
+            return render(request, 'organizer/index.html', {
+                'project_list': project_list,
+                'task_list': task_list,
+                'error_message': "You didn't select a task."
+            })
+        else:
+            selected_task.delete()
+            return HttpResponseRedirect(reverse('organizer:index', \
+                args=()))
 
 def about(request):
     return HttpResponse("Sorga - simple organizer app. Version 0.1.0")
