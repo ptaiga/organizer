@@ -17,6 +17,7 @@ Backend:
   - [ ] Tasks deadline time
   - [ ] Completeness flag for tasks/projects
   - [ ] Ajax for base operations
+  - [ ] Common project for several users
 
 Frontend:
   - Layout:
@@ -26,6 +27,9 @@ Frontend:
 
   - JS:
     - [ ] Choose framework
+    - [ ] Drag'n'drop for task and project location
+    
+---
 
 ### First stage ###
 **Working prototype** (_ver. 0.1.0_: provides minimal, but sufficient opportunities for work):
