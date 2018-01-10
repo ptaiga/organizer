@@ -11,13 +11,13 @@ Backend:
   - [ ] Subprojects
   - [ ] Subtasks
   - [ ] Comments
-  - [ ] Inbox
-  - [x] Rename projects/tasks
   - [ ] History
   - [ ] Tasks deadline time
-  - [ ] Completeness flag for tasks/projects
   - [ ] Ajax for base operations
   - [ ] Common project for several users
+  - [x] Completeness flag for tasks/projects
+  - [x] Inbox
+  - [x] Rename projects/tasks
 
 Frontend:
   - Layout:

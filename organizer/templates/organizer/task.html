@@ -1,5 +1,11 @@
 <h2>{{ task }}</h2>
 
+<ul>
+    <li>{{ task.project }}</li>
+    <li>{{ task.pub_date }}</li>
+    <li>{{ task.done_flag }}</li>
+</ul>
+
 <form action="{% url 'organizer:tasks_rename' task.id %}" method="post">
     {% csrf_token %}
     <input type="text" name="task_name">

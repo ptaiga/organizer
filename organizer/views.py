@@ -23,8 +23,9 @@ from .models import Project, Task
 
 def index(request):
     project_list = \
-        Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
-    task_list = Task.objects.filter(project=None)
+        Project.objects.filter(pub_date__lte=timezone.now(), done_flag=False)\
+            .order_by('-pub_date')
+    task_list = Task.objects.filter(project=None, done_flag=False)
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
@@ -32,11 +33,14 @@ def index(request):
 
 def project(request, project_id):
     project_list = \
-        Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+        Project.objects.filter(pub_date__lte=timezone.now(), done_flag=False)\
+            .order_by('-pub_date')
     project = get_object_or_404(Project, pk=project_id)
+    task_list = Task.objects.filter(project=project, done_flag=False)
     return render(request, 'organizer/project.html', {
         'project_list': project_list,
         'project': project,
+        'task_list': task_list,
     })
 
 class TaskView(generic.DetailView):
@@ -64,7 +68,9 @@ def tasks_add(request):
 
 def projects_del(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
-    project.delete()
+    # project.delete()
+    project.done_flag = True
+    project.save()
     return HttpResponseRedirect(reverse('organizer:index'))
 
 def tasks_del(request, project_id):
@@ -74,14 +80,17 @@ def tasks_del(request, project_id):
             selected_task = project.task_set.get(pk=request.POST['task'])
         except (KeyError, Task.DoesNotExist):
             project_list = \
-                Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
+                Project.objects.filter(pub_date__lte=timezone.now(), done_flag=False)\
+                    .order_by('-pub_date')
             return render(request, 'organizer/project.html', {
                 'project_list': project_list,
                 'project': project,
                 'error_message': "You didn't select a task."
             })
         else:
-            selected_task.delete()
+            # selected_task.delete()
+            selected_task.done_flag = True
+            selected_task.save()
             return HttpResponseRedirect(reverse('organizer:project', \
                 args=(project_id,)))
     else:
@@ -89,15 +98,18 @@ def tasks_del(request, project_id):
             selected_task = Task.objects.get(pk=request.POST['task'])
         except (KeyError, Task.DoesNotExist):
             project_list = \
-                Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
-            task_list = Task.objects.filter(project=None)
+                Project.objects.filter(pub_date__lte=timezone.now(), done_flag=False)\
+                    .order_by('-pub_date')
+            task_list = Task.objects.filter(project=None, done_flag=False)
             return render(request, 'organizer/index.html', {
                 'project_list': project_list,
                 'task_list': task_list,
                 'error_message': "You didn't select a task."
             })
         else:
-            selected_task.delete()
+            # selected_task.delete()
+            selected_task.done_flag = True
+            selected_task.save()
             return HttpResponseRedirect(reverse('organizer:index', \
                 args=()))
 
