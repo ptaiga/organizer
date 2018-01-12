@@ -16,6 +16,7 @@ class Task(models.Model):
     task_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published', default=timezone.now)
     done_flag = models.BooleanField(default=False)
+    due_date = models.DateTimeField('date completed', default=None, null=True)
     def __str__(self):
 	    return self.task_name
     def was_published_recently(self):

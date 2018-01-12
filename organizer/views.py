@@ -123,10 +123,19 @@ def projects_rename(request, project_id):
     p.save()
     return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
 
-def tasks_rename(request, task_id):
+def tasks_change(request, task_id):
     task_name = request.POST['task_name']
+    due_date_d = request.POST['due_date_d']
+    due_date_t = request.POST['due_date_t']
     task = get_object_or_404(Task, pk=task_id)
     task.task_name = task_name
+    if due_date_d:
+        if due_date_t:
+            task.due_date = f'{due_date_d} {due_date_t}'
+        else:
+            task.due_date = due_date_d
+    else:
+        task.due_date = None
     task.save()
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(task.project.id,)))

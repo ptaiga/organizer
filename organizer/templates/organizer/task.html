@@ -1,13 +1,16 @@
 <h2>{{ task }}</h2>
 
 <ul>
-    <li>{{ task.project }}</li>
-    <li>{{ task.pub_date }}</li>
-    <li>{{ task.done_flag }}</li>
+    <li>Project: {{ task.project }}</li>
+    <li>Date published: {{ task.pub_date }}</li>
+    <li>Done flag: {{ task.done_flag }}</li>
+    <li>Deadline: {{ task.due_date }}</li>
 </ul>
 
-<form action="{% url 'organizer:tasks_rename' task.id %}" method="post">
+<form action="{% url 'organizer:tasks_change' task.id %}" method="post">
     {% csrf_token %}
-    <input type="text" name="task_name">
-    <input type="submit" value="Rename">
+    <input type="text" name="task_name" value="{{ task.task_name }}">
+    <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
+    <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
+    <input type="submit" value="Change">
 </form>
