@@ -139,3 +139,20 @@ def tasks_change(request, task_id):
     task.save()
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(task.project.id,)))
+
+def deleted_projects(request):
+    project_list = \
+        Project.objects.filter(done_flag=True).order_by('-pub_date')
+    return render(request, 'organizer/deleted.html', {
+        'project_list': project_list,
+    })
+
+def deleted_tasks(request, project_id):
+    if project_id:
+        project = get_object_or_404(Project, pk=project_id)
+    else:
+        project = None
+    task_list = Task.objects.filter(project=project, done_flag=True)
+    return render(request, 'organizer/deleted.html', {
+        'task_list': task_list,
+    })

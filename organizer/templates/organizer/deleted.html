@@ -1,0 +1,20 @@
+
+{% if project_list %}
+    <ul>
+    {% for project in project_list %}
+        <li><a href="{% url 'organizer:project' project.id %}">{{ project.project_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% elif not task_list %}
+    <p>No deleted projects are available.</p>
+{% endif%}
+
+{% if task_list %}
+    <ul>
+    {% for task in task_list %}
+        <li><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% elif not project_list %}
+    <p>No deleted tasks are available.</p>
+{% endif%}
