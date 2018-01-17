@@ -8,16 +8,14 @@
 
 Backend:
   - [ ] User authorization
-  - [ ] Comments
-  - [ ] Ajax for base operations
-  - [ ] Common project for several users
+  - [x] Comments
   - [x] History
   - [x] Tasks deadline time
   - [x] Completeness flag for tasks/projects
   - [x] Inbox
   - [x] Rename projects/tasks
 
-Optional: Subprojects, Subtasks. 
+Optional: Subprojects, Subtasks, Ajax for base operations, Common project for several users
 
 Frontend:
   - Layout:

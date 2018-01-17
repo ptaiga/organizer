@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Project, Task
+from .models import Project, Task, Comment
 
 # class IndexView(generic.ListView):
 #     template_name = 'organizer/index.html'
@@ -20,6 +20,10 @@ from .models import Project, Task
 #         Excludes any projects that aren't published yet.
 #         """
 #         return Project.objects.filter(pub_date__lte=timezone.now())
+
+# class TaskView(generic.DetailView):
+#     model = Task
+#     template_name = 'organizer/task.html'
 
 def index(request):
     project_list = \
@@ -43,9 +47,13 @@ def project(request, project_id):
         'task_list': task_list,
     })
 
-class TaskView(generic.DetailView):
-    model = Task
-    template_name = 'organizer/task.html'
+def task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    comment_list = Comment.objects.filter(task=task)
+    return render(request, 'organizer/task.html', {
+        'task': task,
+        'comment_list': comment_list,
+    })
 
 def projects_add(request):
     project_name = request.POST['project_name']
@@ -65,6 +73,13 @@ def tasks_add(request):
         t = Task(task_name=task_name)
         t.save()
         return HttpResponseRedirect(reverse('organizer:index', args=()))
+
+def comments_add(request, task_id):
+    comment_text = request.POST['comment_text']
+    task = get_object_or_404(Task, pk=task_id)
+    c = Comment(task=task, comment_text=comment_text)
+    c.save()
+    return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def projects_del(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
@@ -112,6 +127,12 @@ def tasks_del(request, project_id):
             selected_task.save()
             return HttpResponseRedirect(reverse('organizer:index', \
                 args=()))
+
+def comments_del(request, task_id):
+    comment_id = request.POST['comment_id']
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def about(request):
     return HttpResponse("Sorga - simple organizer app. Version 0.1.0")

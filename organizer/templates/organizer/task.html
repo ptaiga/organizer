@@ -14,3 +14,29 @@
     <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
     <input type="submit" value="Change">
 </form>
+
+<hr>
+
+<h3>Comments:</h3>
+
+<form action="{% url 'organizer:comments_add' task.id %}" method="post">
+    {% csrf_token %}
+    <textarea name="comment_text" rows="5" cols="50"></textarea>
+    <input type="submit" value="Add">
+</form>
+
+{% if comment_list %}
+    <ul>
+    {% for comment in comment_list %}
+        <li>
+            <p><u>{{ comment.pub_date }}</u>:</p>
+            <p>{{ comment.comment_text }}</p>
+            <form action="{% url 'organizer:comments_del' task.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
