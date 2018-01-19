@@ -7,7 +7,8 @@
 **Progressive development** (_ver. 0.1.1 -> 0.2.0_).
 
 Backend:
-  - [ ] User authorization
+  - [ ] Refactoring
+  - [x] User authorization
   - [x] Comments
   - [x] History
   - [x] Tasks deadline time

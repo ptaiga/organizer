@@ -10,7 +10,7 @@
 
 {% block header %} 
 <header>
-    <p>Hi, User!</p>
+    <p>Hi, {{ user }}!</p>
 </header>
 {% endblock %}
 
@@ -79,7 +79,7 @@
     <br>
     <form action="{% url 'organizer:tasks_add' %}" method="post">
         {% csrf_token %}
-        <input type="hidden" name="project_id" value="{{ project_id }}">
+        <input type="hidden" name="project_id" value="{{ project.id }}">
         <input type="text" name="task_name">
         <input type="submit" value="Add">
     </form>

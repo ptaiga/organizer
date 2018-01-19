@@ -2,8 +2,11 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Project(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        default=None, null=True)
     project_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     done_flag = models.BooleanField(default=False)
@@ -11,6 +14,8 @@ class Project(models.Model):
         return self.project_name
 
 class Task(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        default=None, null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE,
         default=None, null=True)
     task_name = models.CharField(max_length=200)
