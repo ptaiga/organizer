@@ -25,18 +25,26 @@ from .models import Project, Task, Comment
 #     model = Task
 #     template_name = 'organizer/task.html'
 
-def index(request):
-    user = request.user if request.user.is_authenticated else None
-    project_list = Project.objects.filter(
+def get_project_list(user, done_flag):
+    return \
+        Project.objects.filter(
             user=user,
             pub_date__lte=timezone.now(),
             done_flag=False
-    ).order_by('-pub_date')
-    task_list = Task.objects.filter(
-        user=user,
-        project=None,
-        done_flag=False
-    )
+        ).order_by('-pub_date')
+
+def get_task_list(user, project, done_flag):
+    return \
+        Task.objects.filter(
+            user=user,
+            project=project,
+            done_flag=False
+        )
+
+def index(request):
+    user = request.user if request.user.is_authenticated else None
+    project_list = get_project_list(user, False)
+    task_list = get_task_list(user, None, False)
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
@@ -44,17 +52,9 @@ def index(request):
 
 def project(request, project_id):
     user = request.user if request.user.is_authenticated else None
-    project_list = Project.objects.filter(
-            user=user,
-            pub_date__lte=timezone.now(),
-            done_flag=False
-    ).order_by('-pub_date')
+    project_list = get_project_list(user, False)
     project = get_object_or_404(Project, pk=project_id, user=user)
-    task_list = Task.objects.filter(
-        user=user,
-        project=project,
-        done_flag=False
-    )
+    task_list = get_task_list(user, project, False)
     return render(request, 'organizer/project.html', {
         'project_list': project_list,
         'project': project,
@@ -85,84 +85,51 @@ def tasks_add(request):
     user = request.user if request.user.is_authenticated else None
     project_id = request.POST['project_id']
     task_name = request.POST['task_name']
-    if project_id:
-        project = get_object_or_404(Project, pk=project_id, user=user)
-        t = Task(project=project, task_name=task_name, user=user)
-        t.save()
-        return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
-    else:
-        t = Task(task_name=task_name, user=user)
-        t.save()
-        return HttpResponseRedirect(reverse('organizer:index', args=()))
+    project = \
+        get_object_or_404(Project, pk=project_id, user=user) \
+            if project_id else None
+    Task(project=project, task_name=task_name, user=user).save()
+    return HttpResponseRedirect(reverse('organizer:project',
+        args=(project_id,)))
 
 def comments_add(request, task_id):
     user = request.user if request.user.is_authenticated else None
     comment_text = request.POST['comment_text']
     task = get_object_or_404(Task, pk=task_id, user=user)
-    c = Comment(task=task, comment_text=comment_text)
-    c.save()
+    Comment(task=task, comment_text=comment_text).save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def projects_del(request, project_id):
     user = request.user if request.user.is_authenticated else None
     project = get_object_or_404(Project, pk=project_id, user=user)
-    # project.delete()
     project.done_flag = True
     project.save()
     return HttpResponseRedirect(reverse('organizer:index'))
 
 def tasks_del(request, project_id):
     user = request.user if request.user.is_authenticated else None
-    if project_id:
-        project = get_object_or_404(Project, pk=project_id, user=user)
-        try:
-            selected_task = project.task_set.get(pk=request.POST['task'])
-        except (KeyError, Task.DoesNotExist):
-            project_list = Project.objects.filter(
-                user=user,
-                pub_date__lte=timezone.now(),
-                done_flag=False
-            ).order_by('-pub_date')
-            return render(request, 'organizer/project.html', {
-                'project_list': project_list,
-                'project': project,
-                'error_message': "You didn't select a task."
-            })
-        else:
-            # selected_task.delete()
-            selected_task.done_flag = True
-            selected_task.save()
-            return HttpResponseRedirect(reverse('organizer:project', \
-                args=(project_id,)))
+    project = get_object_or_404(Project, pk=project_id, user=user) \
+        if project_id else None
+    try:
+        selected_task = Task.objects.get(project=project, pk=request.POST['task'])
+    except (KeyError, Task.DoesNotExist):
+        project_list = get_project_list(user, False)
+        task_list = get_task_list(user, project, False)
+        return render(request, 'organizer/project.html', {
+            'project_list': project_list,
+            'task_list': task_list,
+            'project': project,
+            'error_message': "You didn't select a task."
+        })
     else:
-        try:
-            selected_task = Task.objects.get(pk=request.POST['task'])
-        except (KeyError, Task.DoesNotExist):
-            project_list = Project.objects.filter(
-                user=user,
-                pub_date__lte=timezone.now(),
-                done_flag=False
-            ).order_by('-pub_date')
-            task_list = Task.objects.filter(
-                user=user,
-                project=None,
-                done_flag=False,
-            )
-            return render(request, 'organizer/index.html', {
-                'project_list': project_list,
-                'task_list': task_list,
-                'error_message': "You didn't select a task."
-            })
-        else:
-            # selected_task.delete()
-            selected_task.done_flag = True
-            selected_task.save()
-            return HttpResponseRedirect(reverse('organizer:index', \
-                args=()))
+        selected_task.done_flag = True
+        selected_task.save()
+        return HttpResponseRedirect(reverse('organizer:project', \
+            args=(project_id,)))
 
 def comments_del(request, task_id):
-    # Потенциально опасная операция, так user не определен
-    # Можно поставить декоратор, н-р
+    user = request.user if request.user.is_authenticated else None
+    get_object_or_404(Task, pk=task_id, user=user) # verify task and user
     comment_id = request.POST['comment_id']
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
@@ -186,17 +153,13 @@ def tasks_change(request, task_id):
     due_date_d = request.POST['due_date_d']
     due_date_t = request.POST['due_date_t']
     task = get_object_or_404(Task, pk=task_id, user=user)
+    project_id = task.project.id if task.project else 0
     task.task_name = task_name
-    if due_date_d:
-        if due_date_t:
-            task.due_date = f'{due_date_d} {due_date_t}'
-        else:
-            task.due_date = due_date_d
-    else:
-        task.due_date = None
+    task.due_date = (due_date_d + (' '+due_date_t if due_date_t else '')) \
+        if due_date_d else None
     task.save()
     return HttpResponseRedirect(reverse('organizer:project', \
-        args=(task.project.id,)))
+        args=(project_id,)))
 
 def deleted_projects(request):
     user = request.user if request.user.is_authenticated else None
@@ -210,15 +173,9 @@ def deleted_projects(request):
 
 def deleted_tasks(request, project_id):
     user = request.user if request.user.is_authenticated else None
-    if project_id:
-        project = get_object_or_404(Project, pk=project_id, user=user)
-    else:
-        project = None
-    task_list = Task.objects.filter(
-        user=user,
-        project=project,
-        done_flag=True
-    )
+    project = get_object_or_404(Project, pk=project_id, user=user) \
+        if project_id else None
+    task_list = get_task_list(user, project, True)
     return render(request, 'organizer/deleted.html', {
         'task_list': task_list,
     })
