@@ -6,8 +6,18 @@
 ### Second stage ###
 **Progressive development** (_ver. 0.1.1 -> 0.2.0_).
 
-Backend:
-  - [ ] Refactoring
+Frontend:
+  - Layout:
+    - [ ] Base html-structure of the page
+    - [ ] Mobile first
+    - [ ] Responsive design
+
+  - JS:
+    - [ ] Choose framework
+    - [ ] Drag'n'drop for task and project location
+
+Backend (Done, v0.1.1):
+  - [x] Refactoring
   - [x] User authorization
   - [x] Comments
   - [x] History
@@ -18,16 +28,6 @@ Backend:
 
 Optional: Subprojects, Subtasks, Ajax for base operations, Common project for several users
 
-Frontend:
-  - Layout:
-    - [ ] Base html-structure of the page
-    - [ ] Mobile first
-    - [ ] Responsive design
-
-  - JS:
-    - [ ] Choose framework
-    - [ ] Drag'n'drop for task and project location
-    
 ---
 
 ### First stage ###
