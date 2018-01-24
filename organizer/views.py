@@ -38,7 +38,7 @@ def get_task_list(user, project, done_flag):
         Task.objects.filter(
             user=user,
             project=project,
-            done_flag=False
+            done_flag=done_flag
         )
 
 def index(request):
