@@ -5,41 +5,7 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Project, Task, Comment
-
-# class IndexView(generic.ListView):
-#     template_name = 'organizer/index.html'
-#     context_object_name = 'project_list'
-#     def get_queryset(self):
-#         return Project.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
-
-# class ProjectView(generic.DetailView):
-#     model = Project
-#     template_name = 'organizer/project.html'
-#     def get_queryset(self):
-#         """
-#         Excludes any projects that aren't published yet.
-#         """
-#         return Project.objects.filter(pub_date__lte=timezone.now())
-
-# class TaskView(generic.DetailView):
-#     model = Task
-#     template_name = 'organizer/task.html'
-
-def get_project_list(user, done_flag):
-    return \
-        Project.objects.filter(
-            user=user,
-            pub_date__lte=timezone.now(),
-            done_flag=False
-        ).order_by('-pub_date')
-
-def get_task_list(user, project, done_flag):
-    return \
-        Task.objects.filter(
-            user=user,
-            project=project,
-            done_flag=done_flag
-        )
+from .functions import get_project_list, get_task_list
 
 def index(request):
     user = request.user if request.user.is_authenticated else None
