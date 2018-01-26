@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: lightgray;
+    font-family: Calibri;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-gap: 0%;
+    grid-template-rows: 10% 80%;
+}
+
+aside, main, header, footer, nav {
+    border: 1px dotted gray;
+    margin: 0;
+}
+
+nav ul {
+    margin: 0;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline;
+}

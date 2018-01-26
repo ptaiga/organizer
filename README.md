@@ -8,13 +8,15 @@
 
 Frontend:
   - Layout:
-    - [ ] Base html-structure of the page
+    - [x] Base html-structure of the page
     - [ ] Mobile first
     - [ ] Responsive design
 
   - JS:
     - [ ] Choose framework
     - [ ] Drag'n'drop for task and project location
+
+ + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
 
 Backend (Done, v0.1.1):
   - [x] Refactoring
@@ -25,8 +27,6 @@ Backend (Done, v0.1.1):
   - [x] Completeness flag for tasks/projects
   - [x] Inbox
   - [x] Rename projects/tasks
-
-Optional: Subprojects, Subtasks, Ajax for base operations, Common project for several users
 
 ---
 
