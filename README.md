@@ -9,14 +9,20 @@
 Frontend:
   - Layout:
     - [x] Base html-structure of the page
-    - [ ] Mobile first
+    - [x] Mobile first
     - [ ] Responsive design
+    - [ ] Collapse navbar
+    - [ ] Turn on/off sidebar
+    - [ ] Area for comments
+    - [ ] ...
 
   - JS:
     - [ ] Choose framework
     - [ ] Drag'n'drop for task and project location
 
+
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
+ + Screencast about base of CSS Grid (from WebDesign Master) - https://www.youtube.com/watch?v=-fDqBEjfzGo
 
 Backend (Done, v0.1.1):
   - [x] Refactoring
