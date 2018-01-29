@@ -11,7 +11,7 @@ Frontend:
     - [x] Base html-structure of the page
     - [x] Mobile first
     - [ ] Responsive design
-    - [ ] Collapse navbar
+    - [x] Collapse navbar
     - [ ] Turn on/off sidebar
     - [ ] Area for comments
     - [ ] ...
@@ -23,6 +23,7 @@ Frontend:
 
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
  + Screencast about base of CSS Grid (from WebDesign Master) - https://www.youtube.com/watch?v=-fDqBEjfzGo
+ + https://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/
 
 Backend (Done, v0.1.1):
   - [x] Refactoring
