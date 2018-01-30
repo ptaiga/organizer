@@ -11,7 +11,7 @@ body {
 
 aside, article, header, footer, nav {
     border: 1px dotted gray;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 0;
     background: lightgray;
 }
@@ -22,8 +22,7 @@ body {
     grid-template-areas:
         "nav"
         "article"
-        "aside"
-        "header";
+        "aside";
 }
 
 header {
@@ -63,10 +62,29 @@ input[type=checkbox] {
         list-style-type: none;
         margin: 0;
         display: none;
+        padding: 0;
+        width: 100%;
+        text-align: center;
     }
 
-    nav ul li {
-        border: 1px dashed white;
+    #menu li {
+        display: inline-block;
+        width: 100%;
+        margin-top: 1px;
+    }
+
+    #menu a {
+        border: 1px solid white;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        background-color: darkgray;
+        color: white;
+        border-radius: 5px;
+    }
+
+    #menu a:hover {
+        background-color: gray;
     }
 
     /*Style 'show menu' label button and hide it by default*/
@@ -74,6 +92,7 @@ input[type=checkbox] {
         display: block;
         text-align: right;
         margin-right: 10px;
+        cursor: pointer;
     }
 
     /*Show menu when invisible checkbox is checked*/
@@ -81,6 +100,9 @@ input[type=checkbox] {
         display: block;
     }
 
+    header {
+        display: none;
+    }
 }
 
 
