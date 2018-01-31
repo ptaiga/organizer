@@ -10,15 +10,11 @@ Frontend:
   - Layout:
     - [x] Base html-structure of the page
     - [x] Mobile first
-    - [ ] Responsive design
+    - [x] Responsive design
     - [x] Collapse navbar
     - [ ] Turn on/off sidebar
     - [ ] Area for comments
     - [ ] ...
-
-  - JS:
-    - [ ] Choose framework
-    - [ ] Drag'n'drop for task and project location
 
 
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564

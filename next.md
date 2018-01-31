@@ -6,3 +6,7 @@
  - [ ] Subtasks
  - [ ] Ajax for base operations 
  - [ ] Common project for several users
+
+  - JS:
+    - [ ] Choose framework
+    - [ ] Drag'n'drop for task and project location
