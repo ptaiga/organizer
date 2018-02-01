@@ -16,7 +16,7 @@ Frontend:
     - [ ] Area for comments
     - [ ] ...
 
-
+####Useful resources:
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
  + Screencast about base of CSS Grid (from WebDesign Master) - https://www.youtube.com/watch?v=-fDqBEjfzGo
  + https://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/
