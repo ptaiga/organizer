@@ -10,23 +10,14 @@ body {
 }
 
 aside, article, header, footer, nav {
-    border: 1px dotted gray;
     border-radius: 5px;
     margin: 0;
     background: lightgray;
 }
 
-body {
-    display: grid;
-    grid-gap: 1px;
-    grid-template-areas:
-        "nav"
-        "article"
-        "aside";
-}
-
 header {
     grid-area: header;
+    display: none;
 }
 
 aside {
@@ -39,20 +30,24 @@ article {
 
 footer {
     grid-area: footer;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
 }
 
 .logo {
     text-align: center;
 }
 
+article ul, aside ul {
+    margin: 0 25px;
+    padding: 25px;
+}
+
 /*Hide checkbox*/
-input[type=checkbox] {
+nav #show-menu, nav .show-menu {
+    display: none;
+}
+
+aside #show-projects, nav .show-projects {
     display: none;
 }
 
@@ -63,8 +58,7 @@ input[type=checkbox] {
         margin: 0;
         display: none;
         padding: 0;
-        width: 100%;
-        text-align: center;
+        width: 99%;
     }
 
     #menu li {
@@ -81,6 +75,7 @@ input[type=checkbox] {
         background-color: darkgray;
         color: white;
         border-radius: 5px;
+        text-align: center;
     }
 
     #menu a:hover {
@@ -89,20 +84,31 @@ input[type=checkbox] {
 
     /*Style 'show menu' label button and hide it by default*/
     nav .show-menu {
-        display: block;
-        text-align: right;
+        display: inline;
+        float: right;
         margin-right: 10px;
         cursor: pointer;
     }
 
     /*Show menu when invisible checkbox is checked*/
-    input[type=checkbox]:checked ~ #menu {
+    input#show-menu[type=checkbox]:checked ~ #menu {
         display: block;
     }
 
-    header {
+    aside #projects {
         display: none;
     }
+
+    nav .show-projects {
+        display: inline;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    input#show-projects[type=checkbox]:checked ~ #projects {
+        display: block;
+    }
+
 }
 
 
@@ -117,6 +123,16 @@ input[type=checkbox] {
             "aside article";
     }
 
+    aside {
+        display: block;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     nav {
         display: flex;
         justify-content: flex-end;
@@ -129,10 +145,6 @@ input[type=checkbox] {
 
     nav li {
         display: inline;
-    }
-
-    nav .show-menu {
-        display: none;
     }
 
 }
