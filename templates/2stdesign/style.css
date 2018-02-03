@@ -12,12 +12,21 @@ body {
 aside, article, header, footer, nav {
     border-radius: 5px;
     margin: 0;
-    background: lightgray;
+    background: #eee;
 }
 
 header {
     grid-area: header;
-    display: none;
+    display: none; /*flex*/
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 aside {
@@ -28,123 +37,67 @@ article {
     grid-area: article;
 }
 
-footer {
-    grid-area: footer;
-    display: none;
-}
-
-.logo {
-    text-align: center;
-}
-
 article ul, aside ul {
     margin: 0 25px;
     padding: 25px;
 }
 
+#show-projects, #projects {
+    display: none;
+}
+
+nav .show-projects {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+input#show-projects[type=checkbox]:checked ~ #projects {
+    display: block;
+}
+
 /*Hide checkbox*/
-nav #show-menu, nav .show-menu {
+nav #show-menu {
     display: none;
 }
 
-aside #show-projects, nav .show-projects {
+#menu {
+    list-style-type: none;
     display: none;
+    position: absolute;
+    right: 10px;
+    margin: 0;
+    padding: 0;
 }
 
-@media (max-width: 640px) {
-
-    #menu {
-        list-style-type: none;
-        margin: 0;
-        display: none;
-        padding: 0;
-        width: 99%;
-    }
-
-    #menu li {
-        display: inline-block;
-        width: 100%;
-        margin-top: 1px;
-    }
-
-    #menu a {
-        border: 1px solid white;
-        text-decoration: none;
-        display: inline-block;
-        width: 100%;
-        background-color: darkgray;
-        color: white;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    #menu a:hover {
-        background-color: gray;
-    }
-
-    /*Style 'show menu' label button and hide it by default*/
-    nav .show-menu {
-        display: inline;
-        float: right;
-        margin-right: 10px;
-        cursor: pointer;
-    }
-
-    /*Show menu when invisible checkbox is checked*/
-    input#show-menu[type=checkbox]:checked ~ #menu {
-        display: block;
-    }
-
-    aside #projects {
-        display: none;
-    }
-
-    nav .show-projects {
-        display: inline;
-        margin-left: 10px;
-        cursor: pointer;
-    }
-
-    input#show-projects[type=checkbox]:checked ~ #projects {
-        display: block;
-    }
-
+/*Style 'show menu' label button and hide it by default*/
+nav .show-menu {
+    margin-right: 60px;
+    cursor: pointer;
 }
 
-
-@media (min-width: 640px) {
-
-    body {
-        display: grid;
-        grid-template: 1fr 9fr / 1fr 3fr;
-        grid-gap: 1px;
-        grid-template-areas:
-            "header nav"
-            "aside article";
-    }
-
-    aside {
-        display: block;
-    }
-
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    nav ul {
-        margin: 0;
-    }
-
-    nav li {
-        display: inline;
-    }
-
+/*Show menu when invisible checkbox is checked*/
+input#show-menu[type=checkbox]:checked ~ #menu {
+    display: block;
 }
+
+#menu li {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1px;
+}
+
+#menu a {
+    border: 1px solid white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    background-color: darkgray;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#menu a:hover {
+    background-color: gray;
+}
+

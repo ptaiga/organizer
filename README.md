@@ -14,7 +14,7 @@ Frontend:
     - [x] Collapse navbar
     - [ ] Turn on/off sidebar
     - [ ] Area for comments
-    - [ ] ...
+    - [ ] Refactoring
 
 ####Useful resources:
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
