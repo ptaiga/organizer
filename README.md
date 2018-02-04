@@ -12,7 +12,7 @@ Frontend:
     - [x] Mobile first
     - [x] Responsive design
     - [x] Collapse navbar
-    - [ ] Turn on/off sidebar
+    - [x] Turn on/off sidebar
     - [ ] Area for comments
     - [ ] Refactoring
 
