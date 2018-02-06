@@ -13,7 +13,7 @@ Frontend:
     - [x] Responsive design
     - [x] Collapse navbar
     - [x] Turn on/off sidebar
-    - [ ] Area for comments
+    - [x] Area for comments
     - [ ] Refactoring
 
 ####Useful resources:

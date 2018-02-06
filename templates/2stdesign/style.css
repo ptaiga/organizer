@@ -4,37 +4,20 @@ html, body {
 }
 
 body {
-    background: white;
     font-family: Calibri;
     font-size: 25px;
 }
 
-aside, article, header, footer, nav {
-    border-radius: 5px;
-    margin: 0;
+aside, article, nav {
+    margin-bottom: 2px;
     background: #eee;
 }
 
-header {
-    grid-area: header;
-    display: none; /*flex*/
-    align-items: center;
-    justify-content: center;
-}
-
 nav {
-    grid-area: nav;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-aside {
-    grid-area: aside;
-}
-
-article {
-    grid-area: article;
+    padding: 10px;
 }
 
 article ul, aside ul {
@@ -42,42 +25,14 @@ article ul, aside ul {
     padding: 25px;
 }
 
-#show-projects, #projects {
-    display: none;
-}
-
-nav .show-projects {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-input#show-projects[type=checkbox]:checked ~ #projects {
-    display: block;
-}
-
-/*Hide checkbox*/
-nav #show-menu {
-    display: none;
-}
-
 #menu {
     list-style-type: none;
-    display: none;
     position: absolute;
     right: 10px;
     margin: 0;
     padding: 0;
-}
-
-/*Style 'show menu' label button and hide it by default*/
-nav .show-menu {
-    margin-right: 60px;
-    cursor: pointer;
-}
-
-/*Show menu when invisible checkbox is checked*/
-input#show-menu[type=checkbox]:checked ~ #menu {
-    display: block;
+    width: 100%;
+    max-width: 400px;
 }
 
 #menu li {
@@ -86,18 +41,33 @@ input#show-menu[type=checkbox]:checked ~ #menu {
     margin-top: 1px;
 }
 
-#menu a {
+#menu a,
+.show-projects, .show-menu, .back {
     border: 1px solid white;
     text-decoration: none;
     display: inline-block;
-    width: 100%;
     background-color: darkgray;
     color: white;
     border-radius: 5px;
     text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#menu a {
+    width: 100%;
 }
 
 #menu a:hover {
     background-color: gray;
 }
 
+#show-projects, #projects,
+#show-menu, #menu {
+    display: none;
+}
+
+input#show-projects[type=checkbox]:checked ~ #projects,
+input#show-menu[type=checkbox]:checked ~ #menu {
+    display: block;
+}
