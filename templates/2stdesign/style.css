@@ -58,7 +58,10 @@ article ul, aside ul {
     width: 100%;
 }
 
-#menu a:hover {
+#menu a:hover,
+.show-projects:hover,
+.show-menu:hover,
+.back:hover {
     background-color: gray;
 }
 
