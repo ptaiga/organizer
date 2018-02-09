@@ -10,3 +10,10 @@
   - JS:
     - [ ] Choose framework
     - [ ] Drag'n'drop for task and project location
+
+#### General features
+
+ - [ ] Tabbed interface
+ - [ ] Calendars for visualization of activity by projects and tasks
+ - [ ] Check time
+ - [ ] Oppotunity for paid-features API
