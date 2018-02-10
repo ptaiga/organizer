@@ -9,8 +9,9 @@ body {
 }
 
 aside, article, nav {
-    margin-bottom: 2px;
+    /*margin-bottom: 2px;*/
     background: #eee;
+    border: 1px solid white;
 }
 
 nav {
@@ -18,6 +19,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    height: 40px;
+}
+
+.content {
+    min-height: calc(100% - 62px);
+    background: #eee;
 }
 
 article ul, aside ul {
@@ -28,7 +35,7 @@ article ul, aside ul {
 #menu {
     list-style-type: none;
     position: absolute;
-    right: 10px;
+    right: 12px;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -73,4 +80,18 @@ article ul, aside ul {
 input#show-projects[type=checkbox]:checked ~ #projects,
 input#show-menu[type=checkbox]:checked ~ #menu {
     display: block;
+}
+
+@media (min-width: 480px) {
+    .content {
+        display: flex;
+    }
+
+    aside {
+        max-width: 200px;
+    }
+
+    article {
+        flex-grow: 1;
+    }
 }

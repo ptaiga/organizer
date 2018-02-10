@@ -15,7 +15,8 @@ Frontend:
     - [x] Turn on/off sidebar
     - [x] Area for comments
     - [x] Refactoring
-    - [ ] Flexibility for aside area
+    - [x] Flexibility for aside area
+    - [ ] ...
 
 ####Useful resources:
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
