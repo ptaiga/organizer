@@ -11,6 +11,9 @@
     - [ ] Choose framework
     - [ ] Drag'n'drop for task and project location
 
+ - [ ] Different scrollbars for project and task areas
+ - [ ] Custom, accurate and minimal width scrollbar
+
 #### General features
 
  - [ ] Tabbed interface

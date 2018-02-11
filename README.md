@@ -23,6 +23,11 @@ Frontend:
  + Screencast about base of CSS Grid (from WebDesign Master) - https://www.youtube.com/watch?v=-fDqBEjfzGo
  + https://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/
 
+ Flexbox:
+ + https://tuhub.ru/posts/flexbox-complete-guide (https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+ + http://css-live.ru/articles/vizualnoe-rukovodstvo-po-svojstvam-flexbox-iz-css3.html -> http://html5.by/blog/flexbox/
+ + http://css-live.ru/articles/flex-grow-strannyj-tak-li-eto.html -> https://drafts.csswg.org/css-flexbox/#flexibility
+
 Backend (Done, v0.1.1):
   - [x] Refactoring
   - [x] User authorization
