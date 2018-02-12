@@ -9,7 +9,6 @@ body {
 }
 
 aside, article, nav {
-    /*margin-bottom: 2px;*/
     background: #eee;
     border: 1px solid white;
 }
@@ -39,7 +38,7 @@ article ul, aside ul {
     margin: 0;
     padding: 0;
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
 }
 
 #menu li {
@@ -88,10 +87,10 @@ input#show-menu[type=checkbox]:checked ~ #menu {
     }
 
     aside {
-        max-width: 200px;
+        flex: 1 250px;
     }
 
     article {
-        flex-grow: 1;
+        flex: 3 auto;
     }
 }

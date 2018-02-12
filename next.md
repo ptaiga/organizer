@@ -20,3 +20,4 @@
  - [ ] Calendars for visualization of activity by projects and tasks
  - [ ] Check time
  - [ ] Oppotunity for paid-features API
+ - [ ] Fitness tracking
