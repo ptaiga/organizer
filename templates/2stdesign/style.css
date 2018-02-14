@@ -94,3 +94,9 @@ input#show-menu[type=checkbox]:checked ~ #menu {
         flex: 3 auto;
     }
 }
+
+.welcome {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
