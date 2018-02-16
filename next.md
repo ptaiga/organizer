@@ -13,6 +13,8 @@
 
  - [ ] Different scrollbars for project and task areas
  - [ ] Custom, accurate and minimal width scrollbar
+ - [ ] Manualy change width of projects bar
+ - [ ] Remember settings (cookie or local storage)
 
 #### General features
 
@@ -23,3 +25,4 @@
  - [ ] Fitness tracking
  - [ ] Export/Import data in different format
  - [ ] Localization (choose language)
+ - [ ] Offline mode (local storage?)

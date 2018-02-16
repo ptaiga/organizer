@@ -5,11 +5,11 @@ html, body {
 
 body {
     font-family: Calibri;
-    font-size: 25px;
+    font-size: 24px;
 }
 
 aside, article, nav {
-    background: #eee;
+    background: #ddebf4;
     border: 1px solid white;
 }
 
@@ -23,7 +23,7 @@ nav {
 
 .content {
     min-height: calc(100% - 62px);
-    background: #eee;
+    background: #ddebf4;
 }
 
 article ul, aside ul {
