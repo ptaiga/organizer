@@ -1,6 +1,3 @@
-{% extends "organizer/index.html" %}
-
-{% block article %}
 
 {% if project_list %}
     <ul>
@@ -10,7 +7,7 @@
     </ul>
 {% elif not task_list %}
     <p>No deleted projects are available.</p>
-{% endif %}
+{% endif%}
 
 {% if task_list %}
     <ul>
@@ -20,6 +17,4 @@
     </ul>
 {% elif not project_list %}
     <p>No deleted tasks are available.</p>
-{% endif %}
-
-{%endblock%}
+{% endif%}

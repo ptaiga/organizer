@@ -1,38 +1,102 @@
-/* According to https://medium.com/flexbox-and-grids/css-flexbox-grid-layout-how-to-approach-css-layouts-in-2017-and-beyond-685deef03e6c */
-
 html, body {
-    height: 99%;
-}
-
-body {
-    display: grid;
-    grid-template-columns: 25% 74%;
-    grid-template-rows: 5% 90% 5%;
-    grid-column-gap: 1%;
-    margin: 3px;
-    background: white url("images/background.jpg") no-repeat;
-    background-size: cover;
-}
-
-aside, main {
-    border-radius: 5px;
-    border: 1px dotted white;
-    padding: 15px;
-}
-
-p, ul {
+    height: 100%;
     margin: 0;
 }
 
-nav ul {
+body {
+    font-family: Calibri;
+    font-size: 24px;
+}
+
+aside, article, nav {
+    background: #ddebf4;
+    border: 1px solid white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+}
+
+.content {
+    min-height: calc(100% - 62px);
+    background: #ddebf4;
+}
+
+article ul, aside ul {
+    margin: 0 25px;
+    padding: 25px;
+}
+
+#menu {
     list-style-type: none;
-    text-align: right;
+    position: absolute;
+    right: 12px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 360px;
 }
 
-a {
+#menu li {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1px;
+}
+
+#menu a,
+.show-projects, .show-menu, .back {
+    border: 1px solid white;
+    text-decoration: none;
+    display: inline-block;
+    background-color: darkgray;
     color: white;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
 }
 
-.active {
-    font-weight: bold;
+#menu a {
+    width: 100%;
+}
+
+#menu a:hover,
+.show-projects:hover,
+.show-menu:hover,
+.back:hover {
+    background-color: gray;
+}
+
+#show-projects, #projects,
+#show-menu, #menu {
+    display: none;
+}
+
+input#show-projects[type=checkbox]:checked ~ #projects,
+input#show-menu[type=checkbox]:checked ~ #menu {
+    display: block;
+}
+
+@media (min-width: 480px) {
+    .content {
+        display: flex;
+    }
+
+    aside {
+        flex: 1 250px;
+    }
+
+    article {
+        flex: 3 auto;
+    }
+}
+
+.welcome {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

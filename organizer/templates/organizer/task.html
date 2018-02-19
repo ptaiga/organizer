@@ -1,43 +1,53 @@
-<h2>{{ task }}</h2>
+{% extends "organizer/index.html" %}
 
-<ul>
-    <li>User: {{ user }}</li>
-    <li>Project: {{ task.project }}</li>
-    <li>Date published: {{ task.pub_date }}</li>
-    <li>Done flag: {{ task.done_flag }}</li>
-    <li>Deadline: {{ task.due_date }}</li>
-</ul>
+{% block nav-center %}
+<a href="{% url 'organizer:project' task.project.id|default:'0' %}" class="back">&lt;&lt;</a>
+{% endblock %}
 
-<form action="{% url 'organizer:tasks_change' task.id %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="task_name" value="{{ task.task_name }}">
-    <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
-    <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
-    <input type="submit" value="Change">
-</form>
+{% block article %}
 
-<hr>
+    <h2>{{ task }}</h2>
 
-<h3>Comments:</h3>
-
-<form action="{% url 'organizer:comments_add' task.id %}" method="post">
-    {% csrf_token %}
-    <textarea name="comment_text" rows="5" cols="50"></textarea>
-    <input type="submit" value="Add">
-</form>
-
-{% if comment_list %}
     <ul>
-    {% for comment in comment_list %}
-        <li>
-            <p><u>{{ comment.pub_date }}</u>:</p>
-            <p>{{ comment.comment_text }}</p>
-            <form action="{% url 'organizer:comments_del' task.id %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                <input type="submit" value="Delete">
-            </form>
-        </li>
-    {% endfor %}
+        <li>User: {{ user }}</li>
+        <li>Project: {{ task.project }}</li>
+        <li>Date published: {{ task.pub_date }}</li>
+        <li>Done flag: {{ task.done_flag }}</li>
+        <li>Deadline: {{ task.due_date }}</li>
     </ul>
-{% endif %}
+
+    <form action="{% url 'organizer:tasks_change' task.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="task_name" value="{{ task.task_name }}">
+        <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
+        <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
+        <input type="submit" value="Change">
+    </form>
+
+    <hr>
+
+    <h3>Comments:</h3>
+
+    <form action="{% url 'organizer:comments_add' task.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="comment_text" rows="5" cols="50"></textarea>
+        <input type="submit" value="Add">
+    </form>
+
+    {% if comment_list %}
+        <ul>
+        {% for comment in comment_list %}
+            <li>
+                <p><u>{{ comment.pub_date }}</u>:</p>
+                <p>{{ comment.comment_text }}</p>
+                <form action="{% url 'organizer:comments_del' task.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

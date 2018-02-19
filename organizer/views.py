@@ -21,7 +21,7 @@ def project(request, project_id):
     project_list = get_project_list(user, False)
     project = get_object_or_404(Project, pk=project_id, user=user)
     task_list = get_task_list(user, project, False)
-    return render(request, 'organizer/project.html', {
+    return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
         'task_list': task_list,

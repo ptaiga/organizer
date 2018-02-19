@@ -6,6 +6,7 @@
  - [ ] Subtasks
  - [ ] Ajax for base operations 
  - [ ] Common project for several users
+ - [ ] Registration page
 
   - JS:
     - [ ] Choose framework
@@ -15,6 +16,7 @@
  - [ ] Custom, accurate and minimal width scrollbar
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
+ - [ ] Empty data input verification
 
 #### General features
 
