@@ -26,11 +26,6 @@ nav {
     background: #ddebf4;
 }
 
-article ul, aside ul {
-    margin: 0 25px;
-    padding: 25px;
-}
-
 #menu {
     list-style-type: none;
     position: absolute;
@@ -99,4 +94,36 @@ input#show-menu[type=checkbox]:checked ~ #menu {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* *** */
+
+aside {
+    padding: 10px;
+}
+
+article {
+    padding: 10px;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+aside ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+aside li a, article label a {
+    text-decoration: none;
+}
+
+.view-deleted {
+    font-size: 16px;
+}
+
+aside input, article input {
+    font-size: 20px;
 }

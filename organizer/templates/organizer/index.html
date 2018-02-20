@@ -12,7 +12,7 @@
     <nav>
         <label for="show-projects" class="show-projects">Projects</label>
         {% block nav-center%}
-        <div class="welcome">Hi, {{ user }}</div>
+        <div class="welcome">Hi, {{ user }}!</div>
         {% endblock %}
         <div>
             <input type="checkbox" id="show-menu" role="button">
@@ -34,11 +34,10 @@
         <input type="checkbox" id="show-projects" role="button" checked>
 
         <aside id="projects">
-            <h2>Projects</h2>
             <ul>
                 <li><a {% if not project %}class="active"{% endif %} href="{% url 'organizer:index' %}">Inbox</a></li>
             </ul>
-            <hr>
+
             {% if project_list %}
                 <ul>
                 {% for p in project_list %}
@@ -48,30 +47,29 @@
             {% else %}
                 <p>No projects are available.</p>
             {% endif %}
-            <br>
+            <hr>
             {% if project %}
             <form action="{% url 'organizer:projects_rename' project.id %}" method="post">
                 {% csrf_token %}
-                <input type="text" name="project_name">
+                <input type="text" name="project_name" value="{{ project }}">
                 <input type="submit" value="Rename">
             </form>
             {% else %}
             <form action="{% url 'organizer:projects_add' %}" method="post">
                 {% csrf_token %}
-                <input type="text" name="project_name">
+                <input type="text" name="project_name" placeholder="New project">
                 <input type="submit" value="Add">
             </form>
             {% endif %}
 
-            <br><br>
-            <p><a href="{% url 'organizer:deleted_projects' %}">View deleted projects</a></p>
+            <p class="view-deleted"><a href="{% url 'organizer:deleted_projects' %}">View deleted projects</a></p>
 
         </aside>
 
         <article>
         {% block article %}
 
-            <h2>{{ project.project_name|default:"Inbox" }}</h2>
+            <h3>{{ project.project_name|default:"Inbox" }}:</h3>
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -92,21 +90,18 @@
             <input type="submit" value="Delete">
             </form>
 
-            <br>
             <form action="{% url 'organizer:tasks_add' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="project_id" value="{{ project.id }}">
-                <input type="text" name="task_name">
+                <input type="text" name="task_name" placeholder="New task">
                 <input type="submit" value="Add">
             </form>
-
+            <hr>
             {% if project %}
-            <br>
             <a href="{% url 'organizer:projects_del' project.id %}"><button>Delete project</button></a>
             {% endif %}
 
-            <br><br>
-            <p><a href="{% url 'organizer:deleted_tasks' project.id|default:'0' %}">View deleted tasks</a></p>
+            <p class="view-deleted"><a href="{% url 'organizer:deleted_tasks' project.id|default:'0' %}">View deleted tasks</a></p>
 
         {% endblock %}
         </article>

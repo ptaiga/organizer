@@ -9,8 +9,8 @@ from .functions import get_project_list, get_task_list
 
 def index(request):
     user = request.user if request.user.is_authenticated else None
-    project_list = get_project_list(user, False)
-    task_list = get_task_list(user, None, False)
+    project_list = get_project_list(user)
+    task_list = get_task_list(user, None)
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
@@ -18,9 +18,9 @@ def index(request):
 
 def project(request, project_id):
     user = request.user if request.user.is_authenticated else None
-    project_list = get_project_list(user, False)
     project = get_object_or_404(Project, pk=project_id, user=user)
-    task_list = get_task_list(user, project, False)
+    project_list = get_project_list(user, project.done_flag)
+    task_list = get_task_list(user, project, project.done_flag)
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
@@ -30,8 +30,11 @@ def project(request, project_id):
 def task(request, task_id):
     user = request.user if request.user.is_authenticated else None
     task = get_object_or_404(Task, pk=task_id, user=user)
+    flag = False if not task.project else task.project.done_flag
+    project_list = get_project_list(user, flag)
     comment_list = Comment.objects.filter(task=task)
     return render(request, 'organizer/task.html', {
+        'project_list': project_list,
         'task': task,
         'comment_list': comment_list,
     })
@@ -79,8 +82,8 @@ def tasks_del(request, project_id):
     try:
         selected_task = Task.objects.get(project=project, pk=request.POST['task'])
     except (KeyError, Task.DoesNotExist):
-        project_list = get_project_list(user, False)
-        task_list = get_task_list(user, project, False)
+        project_list = get_project_list(user, project.done_flag)
+        task_list = get_task_list(user, project)
         return render(request, 'organizer/project.html', {
             'project_list': project_list,
             'task_list': task_list,
@@ -129,12 +132,11 @@ def tasks_change(request, task_id):
 
 def deleted_projects(request):
     user = request.user if request.user.is_authenticated else None
-    project_list = Project.objects.filter(
-        user=user,
-        done_flag=True
-    ).order_by('-pub_date')
-    return render(request, 'organizer/deleted.html', {
+    project_list = get_project_list(user, True)
+    task_list = get_task_list(user, None, False)
+    return render(request, 'organizer/index.html', {
         'project_list': project_list,
+        'task_list': task_list
     })
 
 def deleted_tasks(request, project_id):
@@ -142,6 +144,10 @@ def deleted_tasks(request, project_id):
     project = get_object_or_404(Project, pk=project_id, user=user) \
         if project_id else None
     task_list = get_task_list(user, project, True)
-    return render(request, 'organizer/deleted.html', {
+    flag = False if not project else project.done_flag
+    project_list = get_project_list(user, flag)
+    return render(request, 'organizer/index.html', {
+        'project_list': project_list,
         'task_list': task_list,
+        'project': project
     })

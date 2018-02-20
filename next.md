@@ -7,6 +7,8 @@
  - [ ] Ajax for base operations 
  - [ ] Common project for several users
  - [ ] Registration page
+ - [ ] Today tasks
+ - [ ] Weekly tasks
 
   - JS:
     - [ ] Choose framework
