@@ -3,6 +3,29 @@
 
 ## To-do list:
 
+### Third stage ###
+**Progressive improvement** (_ver. 0.2.1 -> 0.3.0_).
+
+**Backend**:
+ - [ ] Subprojects 
+ - [ ] Subtasks
+ - [ ] Ajax for base operations 
+ - [ ] Common project for several users
+ - [ ] Registration page
+ - [ ] Today tasks
+ - [ ] Weekly tasks
+
+**Frontend**:
+ - [ ] Choose framework
+ - [ ] Drag'n'drop for task and project location
+ - [ ] Different scrollbars for project and task areas
+ - [ ] Custom, accurate and minimal width scrollbar
+ - [ ] Manualy change width of projects bar
+ - [ ] Remember settings (cookie or local storage)
+ - [ ] Empty data input verification
+
+---
+
 ### Second stage ###
 **Progressive development** (_ver. 0.1.1 -> 0.2.0_).
 
@@ -16,9 +39,10 @@ Frontend:
     - [x] Area for comments
     - [x] Refactoring
     - [x] Flexibility for aside area
-    - [ ] ...
 
-####Useful resources:
+#### Useful resources:
+
+Grid Layout:
  + https://medium.com/web-standards/responsive-grid-system-89d07e48a564
  + Screencast about base of CSS Grid (from WebDesign Master) - https://www.youtube.com/watch?v=-fDqBEjfzGo
  + https://medialoot.com/blog/how-to-create-a-responsive-navigation-menu-using-only-css/
