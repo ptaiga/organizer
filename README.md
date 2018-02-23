@@ -14,6 +14,7 @@
  - [ ] Registration page
  - [ ] Today tasks
  - [ ] Weekly tasks
+ - [ ] Send message
 
 **Frontend**:
  - [ ] Choose framework

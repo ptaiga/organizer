@@ -1,4 +1,4 @@
-### Tasks for next (> v0.2) stage of project
+### Tasks for next (> v0.3) stage of project
 
 #### General features
 
@@ -10,3 +10,4 @@
  - [ ] Export/Import data in different format
  - [ ] Localization (choose language)
  - [ ] Offline mode (local storage?)
+ - [ ] Fast notes

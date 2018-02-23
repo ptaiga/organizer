@@ -106,7 +106,7 @@ def comments_del(request, task_id):
 
 def about(request):
     user = request.user if request.user.is_authenticated else None
-    return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.1.0")
+    return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.2.0")
 
 def projects_rename(request, project_id):
     user = request.user if request.user.is_authenticated else None
