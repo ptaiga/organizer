@@ -53,6 +53,7 @@ def projects_add(request):
 def tasks_add(request):
     user = request.user if request.user.is_authenticated else None
     project_id = request.POST['project_id']
+    if not project_id: project_id = 0
     task_name = request.POST['task_name']
     project = \
         get_object_or_404(Project, pk=project_id, user=user) \
