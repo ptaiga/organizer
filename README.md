@@ -15,6 +15,7 @@
  - [ ] Today tasks
  - [ ] Weekly tasks
  - [ ] Send message
+ - [ ] Prioritization of tasks (A, B and C)
 
 **Frontend**:
  - [ ] Choose framework
@@ -24,6 +25,8 @@
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
  - [ ] Empty data input verification
+ - [ ] Checkboxes for tasks instead radiobuttons
+ - [ ] Highlighting (red color) of overdue tasks
 
 ---
 

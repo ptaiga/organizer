@@ -11,3 +11,5 @@
  - [ ] Localization (choose language)
  - [ ] Offline mode (local storage?)
  - [ ] Fast notes
+ - [ ] Diary
+ 
