@@ -79,22 +79,16 @@ def tasks_del(request, project_id):
     user = request.user if request.user.is_authenticated else None
     project = get_object_or_404(Project, pk=project_id, user=user) \
         if project_id else None
-    try:
-        selected_task = Task.objects.get(project=project, pk=request.POST['task'])
-    except (KeyError, Task.DoesNotExist):
-        project_list = get_project_list(user, project.done_flag)
-        task_list = get_task_list(user, project)
-        return render(request, 'organizer/project.html', {
-            'project_list': project_list,
-            'task_list': task_list,
-            'project': project,
-            'error_message': "You didn't select a task."
-        })
-    else:
-        selected_task.done_flag = True
-        selected_task.save()
-        return HttpResponseRedirect(reverse('organizer:project', \
-            args=(project_id,)))
+
+    for key in request.POST:
+        if key.startswith('task'):
+            task = get_object_or_404(Task, pk=request.POST[key],
+                project = project, user=user)
+            task.done_flag = True
+            task.save()
+
+    return HttpResponseRedirect(reverse('organizer:project', \
+        args=(project_id,)))
 
 def comments_del(request, task_id):
     user = request.user if request.user.is_authenticated else None

@@ -25,9 +25,9 @@
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
  - [ ] Empty data input verification
- - [ ] Checkboxes for tasks instead radiobuttons
+ - [x] Checkboxes for tasks instead radiobuttons
  - [ ] Highlighting (red color) of overdue tasks
- - [ ] Change project of task
+ - [x] Change project of task
 
 ---
 

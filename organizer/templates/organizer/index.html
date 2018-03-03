@@ -73,12 +73,12 @@
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-            <form action="{% url 'organizer:tasks_del' project.id|default:'0' %}" method="post">
+            <form action="{% url 'organizer:tasks_apply' project.id|default:'0' %}" method="post">
             {% csrf_token %}
 
             {% if task_list %}
                 {% for task in task_list %}
-                    <input type="radio" name="task" id="task{{ forloop.counter }}" value="{{ task.id }}">
+                    <input type="checkbox" name="task{{ forloop.counter }}" id="task{{ forloop.counter }}" value="{{ task.id }}">
                     <label for="task{{ forloop.counter }}"><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></label>
                     {% if task.due_date %} ({{ task.due_date }}){% endif %}<br>
                 {% endfor %}
@@ -87,7 +87,7 @@
                 <p>Select the project to see available tasks.</p>
             {% endif%}
             <br>
-            <input type="submit" value="Delete">
+            <input type="submit" value="Apply">
             </form>
 
             <form action="{% url 'organizer:tasks_add' %}" method="post">

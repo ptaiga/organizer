@@ -129,3 +129,12 @@ aside input, article input, article select {
     padding: 1px;
     margin-bottom: 2px;
 }
+
+article input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+}
+
+article input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+}
