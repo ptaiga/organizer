@@ -119,10 +119,14 @@ def projects_rename(request, project_id):
 def tasks_change(request, task_id):
     user = request.user if request.user.is_authenticated else None
     task_name = request.POST['task_name']
+    project_id = int(request.POST['project_select'])
     due_date_d = request.POST['due_date_d']
     due_date_t = request.POST['due_date_t']
     task = get_object_or_404(Task, pk=task_id, user=user)
+    project = get_object_or_404(Project, pk=project_id, user=user) \
+        if project_id else None
     project_id = task.project.id if task.project else 0
+    task.project = project
     task.task_name = task_name
     task.due_date = (due_date_d + (' '+due_date_t if due_date_t else '')) \
         if due_date_d else None

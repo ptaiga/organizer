@@ -124,6 +124,8 @@ aside li a, article label a {
     font-size: 16px;
 }
 
-aside input, article input {
+aside input, article input, article select {
     font-size: 20px;
+    padding: 1px;
+    margin-bottom: 2px;
 }

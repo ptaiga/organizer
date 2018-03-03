@@ -19,6 +19,12 @@
     <form action="{% url 'organizer:tasks_change' task.id %}" method="post">
         {% csrf_token %}
         <input type="text" name="task_name" value="{{ task.task_name }}">
+        <select name="project_select">
+            <option value="0">Inbox</option>
+            {% for project in project_list%}
+            <option value="{{ project.id }}"{% if task.project == project %} selected {% endif %}>{{ project }}</option>
+            {% endfor %}
+        </select><br>
         <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
         <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
         <input type="submit" value="Change">

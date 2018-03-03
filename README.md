@@ -27,6 +27,7 @@
  - [ ] Empty data input verification
  - [ ] Checkboxes for tasks instead radiobuttons
  - [ ] Highlighting (red color) of overdue tasks
+ - [ ] Change project of task
 
 ---
 
