@@ -7,8 +7,8 @@
 **Progressive improvement** (_ver. 0.2.1 -> 0.3.0_).
 
 **Backend**:
- - [ ] Subprojects 
- - [ ] Subtasks
+ - [ ] Subprojects (or nesting)
+ - [ ] Subtasks (or nesting)
  - [ ] Ajax for base operations 
  - [ ] Common project for several users
  - [ ] Registration page
@@ -28,6 +28,7 @@
  - [x] Checkboxes for tasks instead radiobuttons
  - [ ] Highlighting (red color) of overdue tasks
  - [x] Change project of task
+ - [ ] View number of tasks for every project in sidebar
 
 ---
 

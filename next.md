@@ -12,4 +12,9 @@
  - [ ] Offline mode (local storage?)
  - [ ] Fast notes
  - [ ] Diary
+ - [ ] Tags
+ - [ ] Manually estimating duration of tasks
+ - [ ] Estimating duration of projects
+ - [ ] Separate application for profile
+ - [ ] Pereodical tasks
  
