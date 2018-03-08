@@ -11,9 +11,11 @@ def index(request):
     user = request.user if request.user.is_authenticated else None
     project_list = get_project_list(user)
     task_list = get_task_list(user, None)
+    num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
+        'num_inbox_tasks': num_inbox_tasks,
     })
 
 def project(request, project_id):
@@ -21,10 +23,12 @@ def project(request, project_id):
     project = get_object_or_404(Project, pk=project_id, user=user)
     project_list = get_project_list(user, project.done_flag)
     task_list = get_task_list(user, project, project.done_flag)
+    num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
         'task_list': task_list,
+        'num_inbox_tasks': num_inbox_tasks,
     })
 
 def task(request, task_id):
@@ -33,10 +37,12 @@ def task(request, task_id):
     flag = False if not task.project else task.project.done_flag
     project_list = get_project_list(user, flag)
     comment_list = Comment.objects.filter(task=task)
+    num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/task.html', {
         'project_list': project_list,
         'task': task,
         'comment_list': comment_list,
+        'num_inbox_tasks': num_inbox_tasks,
     })
 
 def projects_add(request):
@@ -132,9 +138,11 @@ def deleted_projects(request):
     user = request.user if request.user.is_authenticated else None
     project_list = get_project_list(user, True)
     task_list = get_task_list(user, None, False)
+    num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
-        'task_list': task_list
+        'task_list': task_list,
+        'num_inbox_tasks': num_inbox_tasks,
     })
 
 def deleted_tasks(request, project_id):
@@ -144,8 +152,10 @@ def deleted_tasks(request, project_id):
     task_list = get_task_list(user, project, True)
     flag = False if not project else project.done_flag
     project_list = get_project_list(user, flag)
+    num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
-        'project': project
+        'project': project,
+        'num_inbox_tasks': num_inbox_tasks,
     })

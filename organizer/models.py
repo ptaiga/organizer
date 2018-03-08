@@ -10,8 +10,13 @@ class Project(models.Model):
     project_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     done_flag = models.BooleanField(default=False)
+
     def __str__(self):
         return self.project_name
+
+    def num_active_tasks(self):
+        return self.task_set.filter(done_flag=False).count()
+
 
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,

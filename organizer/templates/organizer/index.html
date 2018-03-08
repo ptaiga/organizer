@@ -35,13 +35,13 @@
 
         <aside id="projects">
             <ul>
-                <li><a {% if not project %}class="active"{% endif %} href="{% url 'organizer:index' %}">Inbox</a></li>
+                <li><a {% if not project %}class="active"{% endif %} href="{% url 'organizer:index' %}">Inbox</a> ({{ num_inbox_tasks }})</li>
             </ul>
 
             {% if project_list %}
                 <ul>
                 {% for p in project_list %}
-                    <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}">{{ p.project_name }}</a></li>
+                    <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
                 {% endfor %}
                 </ul>
             {% else %}
