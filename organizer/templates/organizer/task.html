@@ -8,37 +8,37 @@
 
     <h2>{{ task }}</h2>
 
-    <ul>
-        <li>User: {{ user }}</li>
-        <li>Project: {{ task.project }}</li>
-        <li>Date published: {{ task.pub_date }}</li>
-        <li>Done flag: {{ task.done_flag }}</li>
-        <li>Deadline: {{ task.due_date }}</li>
-    </ul>
-
     <form action="{% url 'organizer:tasks_change' task.id %}" method="post">
         {% csrf_token %}
-        <input type="text" name="task_name" value="{{ task.task_name }}">
-        <select name="project_select">
-            <option value="0">Inbox</option>
-            {% for project in project_list%}
-            <option value="{{ project.id }}"{% if task.project == project %} selected {% endif %}>{{ project }}</option>
-            {% endfor %}
-        </select><br>
-        <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
-        <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
-        <input type="submit" value="Change">
+        <ul>
+            <li>Owner: {{ user }}</li>
+            <li>Date published: {{ task.pub_date }}</li>
+            <li>Task: <input type="text" name="task_name" value="{{ task.task_name }}"></li>
+            <li>Project:
+                <select name="project_select">
+                    <option value="0">Inbox</option>
+                    {% for project in project_list%}
+                    <option value="{{ project.id }}"{% if task.project == project %} selected {% endif %}>{{ project }}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li>Status:
+                <select name="done_flag">
+                    <option value="False">Active</option>
+                    <option value="True"{% if task.done_flag %} selected {% endif %}>Closed</option>
+                </select>
+            </li>
+            <li>Deadline:
+                <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
+                <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
+            </li>
+        </ul>
+        <input type="submit" value="Save changes">
     </form>
 
     <hr>
 
     <h3>Comments:</h3>
-
-    <form action="{% url 'organizer:comments_add' task.id %}" method="post">
-        {% csrf_token %}
-        <textarea name="comment_text" rows="5" cols="50"></textarea>
-        <input type="submit" value="Add">
-    </form>
 
     {% if comment_list %}
         <ul>
@@ -55,5 +55,11 @@
         {% endfor %}
         </ul>
     {% endif %}
+
+    <form action="{% url 'organizer:comments_add' task.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="comment_text" rows="5" cols="50"></textarea>
+        <input type="submit" value="Add">
+    </form>
 
 {% endblock %}

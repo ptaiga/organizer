@@ -16,6 +16,8 @@
  - [ ] Weekly tasks
  - [ ] Send message
  - [ ] Prioritization of tasks (A, B and C)
+ - [ ] Edit comments text
+ - [ ] Last edit time for comments
 
 **Frontend**:
  - [ ] Choose framework
