@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Project, Task
+from .models import Project, Task, Comment
 
 class TaskInline(admin.TabularInline):
     model = Task
@@ -29,6 +29,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Comment)
 
 admin.AdminSite.site_header = 'Sorga administration'
 admin.AdminSite.site_title = 'Sorga site admin'

@@ -36,7 +36,7 @@ def task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=user)
     flag = False if not task.project else task.project.done_flag
     project_list = get_project_list(user, flag)
-    comment_list = Comment.objects.filter(task=task)
+    comment_list = Comment.objects.filter(task=task, status_flag=True)
     num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/task.html', {
         'project_list': project_list,
@@ -96,12 +96,13 @@ def tasks_del(request, project_id):
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(project_id,)))
 
-def comments_del(request, task_id):
+def comments_hide(request, task_id):
     user = request.user if request.user.is_authenticated else None
     get_object_or_404(Task, pk=task_id, user=user) # verify task and user
     comment_id = request.POST['comment_id']
     comment = get_object_or_404(Comment, pk=comment_id)
-    comment.delete()
+    comment.status_flag = False
+    comment.save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def about(request):

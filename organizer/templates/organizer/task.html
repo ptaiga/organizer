@@ -46,10 +46,10 @@
             <li>
                 <p><u>{{ comment.pub_date }}</u>:</p>
                 <p>{{ comment.comment_text }}</p>
-                <form action="{% url 'organizer:comments_del' task.id %}" method="post">
+                <form action="{% url 'organizer:comments_hide' task.id %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                    <input type="submit" value="Delete">
+                    <input type="submit" value="Hide">
                 </form>
             </li>
         {% endfor %}

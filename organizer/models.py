@@ -43,3 +43,4 @@ class Comment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     comment_text = models.TextField()
     pub_date = models.DateTimeField('date published', default=timezone.now)
+    status_flag = models.BooleanField(default=True) # True = active, False=hidden
