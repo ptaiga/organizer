@@ -18,6 +18,7 @@
  - [ ] Prioritization of tasks (A, B and C)
  - [ ] Edit comments text
  - [ ] Last edit time for comments
+ - [x] Hide the comments instead of deleting
 
 **Frontend**:
  - [ ] Choose framework
