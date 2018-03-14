@@ -38,11 +38,16 @@ def task(request, task_id):
     project_list = get_project_list(user, flag)
     comment_list = Comment.objects.filter(task=task, status_flag=True)
     num_inbox_tasks = get_task_list(user, None).count()
+    comment = None
+    if 'comment_edit' in request.GET:
+        comment_id = request.GET['comment_edit']
+        comment = get_object_or_404(Comment, pk=comment_id)
     return render(request, 'organizer/task.html', {
         'project_list': project_list,
         'task': task,
         'comment_list': comment_list,
         'num_inbox_tasks': num_inbox_tasks,
+        'comment': comment,
     })
 
 def projects_add(request):
@@ -67,11 +72,17 @@ def tasks_add(request):
     return HttpResponseRedirect(reverse('organizer:project',
         args=(project_id,)))
 
-def comments_add(request, task_id):
+def comments_save(request, task_id):
     user = request.user if request.user.is_authenticated else None
     comment_text = request.POST['comment_text']
     task = get_object_or_404(Task, pk=task_id, user=user)
-    Comment(task=task, comment_text=comment_text).save()
+    if 'comment_id' in request.POST:
+        comment_id = request.POST['comment_id']
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment.comment_text = comment_text
+        comment.save()
+    else:
+        Comment(task=task, comment_text=comment_text).save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def projects_del(request, project_id):

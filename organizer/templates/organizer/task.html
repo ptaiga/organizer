@@ -44,22 +44,27 @@
         <ul>
         {% for comment in comment_list %}
             <li>
-                <p><u>{{ comment.pub_date }}</u>:</p>
-                <p>{{ comment.comment_text }}</p>
                 <form action="{% url 'organizer:comments_hide' task.id %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                    <input type="submit" value="Hide">
+                    <p><u>{{ comment.pub_date }}</u>: [<a href="{% url 'organizer:task' task.id %}?comment_edit={{ comment.id }}#comment-edit">Edit</a>] <input type="submit" value="Hide"></p>
+                    <p>{{ comment.comment_text }}</p>
                 </form>
             </li>
         {% endfor %}
         </ul>
     {% endif %}
 
-    <form action="{% url 'organizer:comments_add' task.id %}" method="post">
+    <form id="comment-edit" action="{% url 'organizer:comments_save' task.id %}" method="post">
         {% csrf_token %}
-        <textarea name="comment_text" rows="5" cols="50"></textarea>
+        {% if comment %}
+        <textarea name="comment_text" rows="5" cols="50">{{ comment.comment_text }}</textarea>
+        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+        <input type="submit" value="Save">
+        {% else %}
+        <textarea name="comment_text" rows="5" cols="50" placeholder="New comment"></textarea>
         <input type="submit" value="Add">
+        {% endif %}
     </form>
 
 {% endblock %}
