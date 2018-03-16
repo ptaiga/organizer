@@ -16,8 +16,8 @@
  - [ ] Weekly tasks
  - [ ] Send message
  - [ ] Prioritization of tasks (A, B and C)
- - [ ] Edit comments text
  - [ ] Last edit time for comments
+ - [x] Edit comments text
  - [x] Hide the comments instead of deleting
 
 **Frontend**:
@@ -27,9 +27,9 @@
  - [ ] Custom, accurate and minimal width scrollbar
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
- - [ ] Empty data input verification
  - [ ] Highlighting (red color) of overdue tasks
  - [ ] Sort tasks/projects and save option in cookies
+ - [x] Empty data input verification
  - [x] Checkboxes for tasks instead radiobuttons
  - [x] Change project of task
  - [x] View number of tasks for every project in sidebar

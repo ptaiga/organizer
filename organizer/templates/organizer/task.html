@@ -13,7 +13,7 @@
         <ul>
             <li>Owner: {{ user }}</li>
             <li>Date published: {{ task.pub_date }}</li>
-            <li>Task: <input type="text" name="task_name" value="{{ task.task_name }}"></li>
+            <li>Task: <input type="text" name="task_name" value="{{ task.task_name }}" required></li>
             <li>Project:
                 <select name="project_select">
                     <option value="0">Inbox</option>
@@ -58,11 +58,11 @@
     <form id="comment-edit" action="{% url 'organizer:comments_save' task.id %}" method="post">
         {% csrf_token %}
         {% if comment %}
-        <textarea name="comment_text" rows="5" cols="50">{{ comment.comment_text }}</textarea>
+        <textarea name="comment_text" rows="5" cols="50" required>{{ comment.comment_text }}</textarea>
         <input type="hidden" name="comment_id" value="{{ comment.id }}">
         <input type="submit" value="Save">
         {% else %}
-        <textarea name="comment_text" rows="5" cols="50" placeholder="New comment"></textarea>
+        <textarea name="comment_text" rows="5" cols="50" placeholder="New comment" required></textarea>
         <input type="submit" value="Add">
         {% endif %}
     </form>
