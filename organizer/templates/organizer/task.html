@@ -48,7 +48,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
                     <p><u>{{ comment.pub_date }}</u>: [<a href="{% url 'organizer:task' task.id %}?comment_edit={{ comment.id }}#comment-edit">Edit</a>] <input type="submit" value="Hide"></p>
-                    <p>{{ comment.comment_text }}</p>
+                    {{ comment.comment_text|linebreaks }}
                 </form>
             </li>
         {% endfor %}

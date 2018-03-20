@@ -17,7 +17,7 @@
  - [ ] Send message
  - [ ] Prioritization of tasks (A, B and C)
  - [ ] Last edit time for comments
- - [ ] Line breaks in comments
+ - [x] Line breaks in comments
  - [x] Edit comments text
  - [x] Hide the comments instead of deleting
 
