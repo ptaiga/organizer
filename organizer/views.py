@@ -80,9 +80,10 @@ def comments_save(request, task_id):
         comment_id = request.POST['comment_id']
         comment = get_object_or_404(Comment, pk=comment_id)
         comment.comment_text = comment_text
+        comment.last_edit_date = timezone.now()
         comment.save()
     else:
-        Comment(task=task, comment_text=comment_text).save()
+        Comment(user=user, task=task, comment_text=comment_text).save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
 def projects_del(request, project_id):

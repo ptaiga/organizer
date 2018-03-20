@@ -16,7 +16,7 @@
  - [ ] Weekly tasks
  - [ ] Send message
  - [ ] Prioritization of tasks (A, B and C)
- - [ ] Last edit time for comments
+ - [x] Last edit time for comments
  - [x] Line breaks in comments
  - [x] Edit comments text
  - [x] Hide the comments instead of deleting

@@ -40,7 +40,10 @@ class Task(models.Model):
     was_published_recently.short_description = 'Published recently?'
 
 class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        default=None, null=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     comment_text = models.TextField()
     pub_date = models.DateTimeField('date published', default=timezone.now)
     status_flag = models.BooleanField(default=True) # True = active, False=hidden
+    last_edit_date = models.DateTimeField('last edit date', default=None, null=True)

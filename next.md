@@ -17,4 +17,5 @@
  - [ ] Estimating duration of projects
  - [ ] Separate application for profile
  - [ ] Pereodical tasks
+ - [ ] Local time for users
  
