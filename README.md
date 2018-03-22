@@ -16,6 +16,7 @@
  - [ ] Weekly tasks
  - [ ] Send message
  - [ ] Prioritization of tasks (A, B and C)
+ - [ ] After logout goto index page
  - [x] Last edit time for comments
  - [x] Line breaks in comments
  - [x] Edit comments text
@@ -30,6 +31,7 @@
  - [ ] Remember settings (cookie or local storage)
  - [ ] Highlighting (red color) of overdue tasks
  - [ ] Sort tasks/projects and save option in cookies
+ - [ ] Numbers of comments to task
  - [x] Empty data input verification
  - [x] Checkboxes for tasks instead radiobuttons
  - [x] Change project of task

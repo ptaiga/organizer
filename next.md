@@ -18,4 +18,5 @@
  - [ ] Separate application for profile
  - [ ] Pereodical tasks
  - [ ] Local time for users
+ - [ ] Active http-links in comments
  
