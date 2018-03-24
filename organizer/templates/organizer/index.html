@@ -80,7 +80,7 @@
                 {% for task in task_list %}
                     <input type="checkbox" name="task{{ forloop.counter }}" id="task{{ forloop.counter }}" value="{{ task.id }}">
                     <label for="task{{ forloop.counter }}"><a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a></label>
-                    {% if task.due_date %} ({{ task.due_date }}){% endif %}<br>
+                    {% if task.due_date %} ({{ task.due_date }}){% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}<br>
                 {% endfor %}
             {% else %}
                 <p>No tasks are available.</p>

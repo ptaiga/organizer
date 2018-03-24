@@ -28,6 +28,9 @@ class Task(models.Model):
     done_flag = models.BooleanField(default=False)
     due_date = models.DateTimeField('date completed', default=None, null=True)
 
+    def num_active_comments(self):
+        return self.comment_set.filter(status_flag=True).count()
+
     def __str__(self):
         return self.task_name
 
