@@ -31,7 +31,7 @@
  - [ ] Remember settings (cookie or local storage)
  - [ ] Highlighting (red color) of overdue tasks
  - [ ] Sort tasks/projects and save option in cookies
- - [ ] Numbers of comments to task
+ - [x] Numbers of comments to task
  - [x] Empty data input verification
  - [x] Checkboxes for tasks instead radiobuttons
  - [x] Change project of task
