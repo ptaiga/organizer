@@ -28,7 +28,7 @@
                     <option value="True"{% if task.done_flag %} selected {% endif %}>Closed</option>
                 </select>
             </li>
-            <li>Deadline:
+            <li {% if task.today_or_overdue%} class="overdue"{% endif %}>Deadline:
                 <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
                 <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
             </li>

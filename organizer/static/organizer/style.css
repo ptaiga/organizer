@@ -138,3 +138,7 @@ article input[type=checkbox] {
 article input[type=checkbox]:checked + label {
     text-decoration: line-through;
 }
+
+.overdue {
+    color: red;
+}
