@@ -29,8 +29,8 @@
  - [ ] Custom, accurate and minimal width scrollbar
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
- - [ ] Highlighting (red color) of overdue tasks
  - [ ] Sort tasks/projects and save option in cookies
+ - [x] Highlighting (red color) of overdue tasks
  - [x] Numbers of comments to task
  - [x] Empty data input verification
  - [x] Checkboxes for tasks instead radiobuttons
