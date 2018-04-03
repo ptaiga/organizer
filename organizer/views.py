@@ -10,7 +10,10 @@ from .functions import get_project_list, get_task_list
 def index(request):
     user = request.user if request.user.is_authenticated else None
     project_list = get_project_list(user)
-    task_list = get_task_list(user, None)
+    sort = '-pub_date'
+    if 'sort' in request.GET:
+       if request.GET['sort'] == 'latest': sort='pub_date'
+    task_list = get_task_list(user, None, order_by=sort)
     num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
@@ -22,7 +25,10 @@ def project(request, project_id):
     user = request.user if request.user.is_authenticated else None
     project = get_object_or_404(Project, pk=project_id, user=user)
     project_list = get_project_list(user, project.done_flag)
-    task_list = get_task_list(user, project, project.done_flag)
+    sort = '-pub_date'
+    if 'sort' in request.GET:
+       if request.GET['sort'] == 'latest': sort='pub_date'
+    task_list = get_task_list(user, project, project.done_flag, sort)
     num_inbox_tasks = get_task_list(user, None).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,

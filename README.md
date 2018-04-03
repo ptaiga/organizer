@@ -9,7 +9,6 @@
 **Backend**:
  - [ ] Subprojects (or nesting)
  - [ ] Subtasks (or nesting)
- - [ ] Ajax for base operations 
  - [ ] Common project for several users
  - [ ] Registration page
  - [ ] Today tasks
@@ -23,12 +22,6 @@
  - [x] Hide the comments instead of deleting
 
 **Frontend**:
- - [ ] Choose framework
- - [ ] Drag'n'drop for task and project location
- - [ ] Different scrollbars for project and task areas
- - [ ] Custom, accurate and minimal width scrollbar
- - [ ] Manualy change width of projects bar
- - [ ] Remember settings (cookie or local storage)
  - [ ] Sort tasks/projects and save option in cookies
  - [x] Highlighting (red color) of overdue tasks
  - [x] Numbers of comments to task

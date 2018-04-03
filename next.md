@@ -19,4 +19,11 @@
  - [ ] Pereodical tasks
  - [ ] Local time for users
  - [ ] Active http-links in comments
+ - [ ] Choose framework
+ - [ ] Ajax for base operations
+ - [ ] Drag'n'drop for task and project location
+ - [ ] Different scrollbars for project and task areas
+ - [ ] Custom, accurate and minimal width scrollbar
+ - [ ] Manualy change width of projects bar
+ - [ ] Remember settings (cookie or local storage)
  

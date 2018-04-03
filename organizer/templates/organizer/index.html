@@ -35,13 +35,13 @@
 
         <aside id="projects">
             <ul>
-                <li><a {% if not project %}class="active"{% endif %} href="{% url 'organizer:index' %}">Inbox</a> ({{ num_inbox_tasks }})</li>
+                <li><a {% if not project %}class="active"{% endif %} href="{% url 'organizer:index' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Inbox</a> ({{ num_inbox_tasks }})</li>
             </ul>
 
             {% if project_list %}
                 <ul>
                 {% for p in project_list %}
-                    <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
+                    <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -88,6 +88,12 @@
                 {% endfor %}
                 <br>
                 <input type="submit" value="Apply">
+                {% if request.GET.sort == 'latest' %}
+                    <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
+                {% else %}
+                    <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=latest">[Newest &darr;]</a>
+                {% endif %}
+
                 </form>
 
             {% else %}

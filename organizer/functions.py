@@ -10,10 +10,10 @@ def get_project_list(user, done_flag=False):
             done_flag=done_flag
         ).order_by('-pub_date')
 
-def get_task_list(user, project, done_flag=False):
+def get_task_list(user, project, done_flag=False, order_by='-pub_date'):
     return \
         Task.objects.filter(
             user=user,
             project=project,
             done_flag=done_flag
-        ).order_by('-pub_date')
+        ).order_by(order_by)
