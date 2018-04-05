@@ -22,7 +22,7 @@
  - [x] Hide the comments instead of deleting
 
 **Frontend**:
- - [ ] Sort tasks/projects and save option in cookies
+ - [x] Sort tasks by publication date (newest or latest)
  - [x] Highlighting (red color) of overdue tasks
  - [x] Numbers of comments to task
  - [x] Empty data input verification
