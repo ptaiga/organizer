@@ -26,4 +26,6 @@
  - [ ] Custom, accurate and minimal width scrollbar
  - [ ] Manualy change width of projects bar
  - [ ] Remember settings (cookie or local storage)
+ - [ ] Subprojects (or nesting)
+ - [ ] Subtasks (or nesting)
  

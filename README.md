@@ -7,8 +7,6 @@
 **Progressive improvement** (_ver. 0.2.1 -> 0.3.0_).
 
 **Backend**:
- - [ ] Subprojects (or nesting)
- - [ ] Subtasks (or nesting)
  - [ ] Common project for several users
  - [ ] Registration page
  - [ ] Today tasks
