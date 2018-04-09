@@ -17,3 +17,11 @@ def get_task_list(user, project, done_flag=False, order_by='-pub_date'):
             project=project,
             done_flag=done_flag
         ).order_by(order_by)
+
+def get_today_tasks(user, order_by='-pub_date'):
+    return \
+        Task.objects.filter(
+            user=user,
+            done_flag=False,
+            due_date__date__lte = timezone.now()
+        ).order_by(order_by)

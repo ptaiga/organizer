@@ -12,7 +12,6 @@
  - [ ] Today tasks
  - [ ] Weekly tasks
  - [ ] Send message
- - [ ] Prioritization of tasks (A, B and C)
  - [x] After logout goto index page
  - [x] Last edit time for comments
  - [x] Line breaks in comments

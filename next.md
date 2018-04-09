@@ -28,4 +28,4 @@
  - [ ] Remember settings (cookie or local storage)
  - [ ] Subprojects (or nesting)
  - [ ] Subtasks (or nesting)
- 
+ - [ ] Prioritization of tasks (A, B and C)

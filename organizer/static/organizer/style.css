@@ -142,3 +142,7 @@ article input[type=checkbox]:checked + label {
 .overdue {
     color: red;
 }
+
+.active {
+    font-weight: bold;
+}
