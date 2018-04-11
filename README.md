@@ -9,9 +9,9 @@
 **Backend**:
  - [ ] Common project for several users
  - [ ] Registration page
- - [ ] Today tasks
  - [ ] Weekly tasks
  - [ ] Send message
+ - [x] Today tasks
  - [x] After logout goto index page
  - [x] Last edit time for comments
  - [x] Line breaks in comments
