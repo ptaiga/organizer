@@ -29,8 +29,9 @@
  - [ ] Subprojects (or nesting)
  - [ ] Subtasks (or nesting)
  - [ ] Prioritization of tasks (A, B and C)
+ - [ ] Calendar: comfortable popup (or something other)
 
 #### Bugs
 
 - DateTimeField Task.due_date received a naive datetime while time zone support is active.
-- Today -> Task viewing back transition leads to project of task
+- Today, Week -> Task viewing back transition leads to project of task

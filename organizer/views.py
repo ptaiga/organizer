@@ -5,24 +5,11 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Project, Task, Comment
-from .functions import get_project_list, get_task_list, get_today_tasks
+from .functions import get_project_list, get_task_list, \
+                                get_today_tasks, get_week_tasks
 
 def index(request):
-    user = request.user if request.user.is_authenticated else None
-    project_list = get_project_list(user)
-    sort = '-pub_date'
-    if 'sort' in request.GET:
-       if request.GET['sort'] == 'latest': sort='pub_date'
-    task_list = get_task_list(user, None, order_by=sort)
-    num_inbox_tasks = get_task_list(user, None).count()
-    num_today_tasks = get_today_tasks(user).count()
-    return render(request, 'organizer/index.html', {
-        'project_list': project_list,
-        'task_list': task_list,
-        'num_inbox_tasks': num_inbox_tasks,
-        'num_today_tasks': num_today_tasks,
-        'active': 'Inbox'
-    })
+    return HttpResponseRedirect(reverse('organizer:show', args=('inbox',)))
 
 def project(request, project_id):
     user = request.user if request.user.is_authenticated else None
@@ -31,33 +18,44 @@ def project(request, project_id):
     sort = '-pub_date'
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
-    task_list = get_task_list(user, project, project.done_flag, sort)
+    task_list = get_task_list(user, project, project.done_flag).order_by(sort)
     num_inbox_tasks = get_task_list(user, None).count()
     num_today_tasks = get_today_tasks(user).count()
+    num_week_tasks = get_week_tasks(user).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
         'task_list': task_list,
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
+        'num_week_tasks': num_week_tasks,
         'active': ''
     })
 
-def today(request):
+def show(request, show_type):
     user = request.user if request.user.is_authenticated else None
     project_list = get_project_list(user)
     sort = '-pub_date'
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
-    task_list = get_today_tasks(user).order_by(sort)
+    if show_type == 'week':
+        task_list = get_week_tasks(user).order_by(sort)
+    elif show_type == 'today':
+        task_list = get_today_tasks(user).order_by(sort)
+    elif show_type == 'inbox':
+        task_list = get_task_list(user, None).order_by(sort)
+    else:
+        raise Http404("Page does not exist")
     num_inbox_tasks = get_task_list(user, None).count()
     num_today_tasks = get_today_tasks(user).count()
+    num_week_tasks = get_week_tasks(user).count()
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'task_list': task_list,
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
-        'active': 'Today'
+        'num_week_tasks': num_week_tasks,
+        'active': show_type
     })
 
 def task(request, task_id):
@@ -68,6 +66,7 @@ def task(request, task_id):
     comment_list = Comment.objects.filter(task=task, status_flag=True)
     num_inbox_tasks = get_task_list(user, None).count()
     num_today_tasks = get_today_tasks(user).count()
+    num_week_tasks = get_week_tasks(user).count()
     comment = None
     if 'comment_edit' in request.GET:
         comment_id = request.GET['comment_edit']
@@ -78,6 +77,7 @@ def task(request, task_id):
         'comment_list': comment_list,
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
+        'num_week_tasks': num_week_tasks,
         'comment': comment,
     })
 

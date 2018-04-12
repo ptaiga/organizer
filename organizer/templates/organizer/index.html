@@ -35,14 +35,15 @@
 
         <aside id="projects">
             <ul>
-                <li><a {% if active == 'Inbox' %}class="active"{% endif %} href="{% url 'organizer:index' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Inbox</a> ({{ num_inbox_tasks }})</li>
-                <li><a {% if active == 'Today' %}class="active"{% endif %} href="{% url 'organizer:today' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Today</a> ({{ num_today_tasks }})</li>
+                <li><a {% if active == 'inbox' %}class="active"{% endif %} href="{% url 'organizer:show' 'inbox' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Inbox</a> ({{ num_inbox_tasks }})</li>
+                <li><a {% if active == 'today' %}class="active"{% endif %} href="{% url 'organizer:show' 'today' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Today</a> ({{ num_today_tasks }})</li>
+                <li><a {% if active == 'week' %}class="active"{% endif %} href="{% url 'organizer:show' 'week' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Week</a> ({{ num_week_tasks }})</li>
             </ul>
             <hr>
             {% if project_list %}
                 <ul>
                 {% for p in project_list %}
-                    <li {% if p == project %}class="active"{% endif %}"><a href="{% url 'organizer:project' p.id %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
+                    <li><a{% if p == project %} class="active"{% endif %} href="{% url 'organizer:project' p.id %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -70,7 +71,7 @@
         <article>
         {% block article %}
 
-            <h3>{{ project.project_name|default:active }}:</h3>
+            <h3>{{ project.project_name|default:active|title }}:</h3>
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -90,14 +91,14 @@
                 <br>
                 <input type="submit" value="Apply">
                 {% if request.GET.sort == 'latest' %}
-                    {% if active == 'Today' %}
-                        <a href="{% url 'organizer:today' %}?sort=newest">[Newest &uarr;]</a>
+                    {% if active %}
+                        <a href="{% url 'organizer:show' active %}">[Newest &uarr;]</a>
                     {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
+                        <a href="{% url 'organizer:project' project.id|default:'0' %}">[Newest &uarr;]</a>
                     {% endif %}
                 {% else %}
-                    {% if active == 'Today' %}
-                        <a href="{% url 'organizer:today' %}?sort=latest">[Newest &uarr;]</a>
+                    {% if active %}
+                        <a href="{% url 'organizer:show' active %}?sort=latest">[Newest &darr;]</a>
                     {% else %}
                         <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=latest">[Newest &darr;]</a>
                     {% endif %}
