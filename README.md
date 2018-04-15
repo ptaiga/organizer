@@ -9,8 +9,8 @@
 **Backend**:
  - [ ] Common project for several users
  - [ ] Registration page
- - [ ] Weekly tasks
  - [ ] Send message
+ - [x] Weekly tasks
  - [x] Today tasks
  - [x] After logout goto index page
  - [x] Last edit time for comments
