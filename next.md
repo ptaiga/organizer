@@ -31,6 +31,7 @@
  - [ ] Prioritization of tasks (A, B and C)
  - [ ] Calendar: comfortable popup (or something other)
  - [ ] Cover code with test
+ - [ ] Render "About" page from README.md
 
 #### Bugs
 
@@ -38,3 +39,4 @@
 - Today, Week -> Task viewing back transition leads to project of task
 - Into deleted projects showing deleted tasks (not active tasks by default)
 - There is no options to restore deleted projects
+- Sorting return to default after something operations. Maybe to use save in user's model setting of sort and also different other.
