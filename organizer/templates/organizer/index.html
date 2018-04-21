@@ -23,8 +23,8 @@
                 <li><a href="{% url 'admin:index' %}">Profile</a></li>
                 <li><a href="{% url 'admin:logout' %}">Logout</a></li>
                 {% else %}
-                <li><a href="#">Registration</a></li>
-                <li><a href="{% url 'admin:login' %}?next=/">Login</a></li>
+                <li><a href="{% url 'intro' %}">Registration</a></li>
+                <li><a href="{% url 'admin:login' %}?next=/organizer">Login</a></li>
                 {% endif %}
             </ul>
         </div>

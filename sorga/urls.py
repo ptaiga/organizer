@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import organizer.views
 
 urlpatterns = [
-    path('', include('organizer.urls')),
+    path('', organizer.views.intro, name='intro'),
+    path('organizer/', include('organizer.urls')),
     path('admin/', admin.site.urls),
 ]

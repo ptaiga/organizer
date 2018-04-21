@@ -20,4 +20,5 @@ urlpatterns = [
     path('tasks/<int:task_id>/change/', views.tasks_change, name='tasks_change'),
     path('projects/deleted_projects/', views.deleted_projects, name='deleted_projects'),
     path('projects/<int:project_id>/deleted_tasks/', views.deleted_tasks, name='deleted_tasks'),
+    path('send/', views.send, name='send'),
 ]

@@ -205,3 +205,9 @@ def deleted_tasks(request, project_id):
         'project': project,
         'num_inbox_tasks': num_inbox_tasks,
     })
+
+def intro(request):
+    return render(request, 'organizer/intro.html')
+
+def send(request):
+    return HttpResponse("Your message doesn't send. Try again later")
