@@ -8,8 +8,8 @@
 
 **Backend**:
  - [ ] Common project for several users
- - [ ] Registration page
  - [ ] Send message
+ - [x] Registration page
  - [x] Weekly tasks
  - [x] Today tasks
  - [x] After logout goto index page

@@ -3,10 +3,14 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.core.mail import send_mail
 
 from .models import Project, Task, Comment
 from .functions import get_project_list, get_task_list, \
                                 get_today_tasks, get_week_tasks
+
+from sorga.private_settings import email_to, email_from, \
+                                    email_auth_user, email_auth_password
 
 def index(request):
     return HttpResponseRedirect(reverse('organizer:show', args=('inbox',)))
@@ -210,4 +214,17 @@ def intro(request):
     return render(request, 'organizer/intro.html')
 
 def send(request):
-    return HttpResponse("Your message doesn't send. Try again later")
+    email = request.POST['email']
+    if send_mail(
+        '[Organizer] A new user is registered',
+        email,
+        email_from,
+        [email_to],
+        fail_silently=False,
+        auth_user=email_auth_user,
+        auth_password=email_auth_password
+    ):
+        return HttpResponse("Your request has been successfully sent. \
+            Please wait for an answer.")
+    else:
+        return HttpResponse("Your request doesn't send. Try again later")
