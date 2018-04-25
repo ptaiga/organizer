@@ -8,7 +8,7 @@
 
 **Backend**:
  - [ ] Common project for several users
- - [ ] Send message
+ - [x] Send message
  - [x] Registration page
  - [x] Weekly tasks
  - [x] Today tasks
