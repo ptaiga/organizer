@@ -7,7 +7,6 @@
 **Progressive improvement** (_ver. 0.2.1 -> 0.3.0_: still without use of JS).
 
 **Backend**:
- - [ ] Common project for several users
  - [x] Send message
  - [x] Registration page
  - [x] Weekly tasks

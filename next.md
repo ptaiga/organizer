@@ -32,6 +32,7 @@
  - [ ] Calendar: comfortable popup (or something other)
  - [ ] Cover code with test
  - [ ] Render "About" page from README.md
+ - [ ] Common project for several users
 
 #### Bugs
 
