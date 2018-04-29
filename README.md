@@ -3,6 +3,29 @@
 
 ## To-do list:
 
+### 4th stage ###
+
+ - [ ] Choose framework
+
+**Features**:
+ - [ ] Render "About" page from README.md
+ - [ ] Common project for several users
+ - [ ] Remember settings (cookie or local storage or db)
+ - [ ] Active http-links in comments
+ - [ ] Export/Import data in different format
+ - [ ] Prioritization of tasks (A, B and C)
+ - [ ] Snooze tasks (ability to temporarily hide tasks)
+ - [ ] Pereodical tasks
+
+**Bugs**:
+- [ ] DateTimeField Task.due_date received a naive datetime while time zone support is active.
+- [ ] Today, Week -> Task viewing back transition leads to project of task
+- [ ] Into deleted projects showing deleted tasks (not active tasks by default)
+- [ ] There is no options to restore deleted projects
+- [ ] Sorting return to default after something operations. Maybe to use save in user's model setting of sort and also different other.
+
+---
+
 ### Third stage ###
 **Progressive improvement** (_ver. 0.2.1 -> 0.3.0_: still without use of JS).
 
