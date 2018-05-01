@@ -21,3 +21,4 @@
  - [ ] Manualy change width of projects bar
  - [ ] Subprojects (or nesting), subtasks (or nesting)
  - [ ] Cover code with test
+ - [ ] Save application state for unregistered user to local store

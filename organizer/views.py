@@ -22,7 +22,11 @@ def project(request, project_id):
     sort = '-pub_date'
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
-    task_list = get_task_list(user, project, project.done_flag).order_by(sort)
+    if 'done_tasks' in request.GET:
+        done_flag = True
+    else:
+        done_flag = False
+    task_list = get_task_list(user, project, done_flag).order_by(sort)
     num_inbox_tasks = get_task_list(user, None).count()
     num_today_tasks = get_today_tasks(user).count()
     num_week_tasks = get_week_tasks(user).count()
@@ -42,12 +46,20 @@ def show(request, show_type):
     sort = '-pub_date'
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
+    if 'done_tasks' in request.GET:
+        done_flag = True
+    else:
+        done_flag = False
     if show_type == 'week':
         task_list = get_week_tasks(user).order_by(sort)
     elif show_type == 'today':
         task_list = get_today_tasks(user).order_by(sort)
     elif show_type == 'inbox':
-        task_list = get_task_list(user, None).order_by(sort)
+        task_list = get_task_list(user, None, done_flag).order_by(sort)
+    elif show_type == 'hidden':
+        task_list = get_task_list(user, None, done_flag).order_by(sort)
+        project_list = get_project_list(user, True)
+        show_type = False
     else:
         raise Http404("Page does not exist")
     num_inbox_tasks = get_task_list(user, None).count()
@@ -152,10 +164,6 @@ def comments_hide(request, task_id):
     comment.save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
-def about(request):
-    user = request.user if request.user.is_authenticated else None
-    return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.2.0")
-
 def projects_rename(request, project_id):
     user = request.user if request.user.is_authenticated else None
     p = get_object_or_404(Project, pk=project_id, user=user)
@@ -184,31 +192,9 @@ def tasks_change(request, task_id):
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(project_id,)))
 
-def deleted_projects(request):
+def about(request):
     user = request.user if request.user.is_authenticated else None
-    project_list = get_project_list(user, True)
-    task_list = get_task_list(user, None, False)
-    num_inbox_tasks = get_task_list(user, None).count()
-    return render(request, 'organizer/index.html', {
-        'project_list': project_list,
-        'task_list': task_list,
-        'num_inbox_tasks': num_inbox_tasks,
-    })
-
-def deleted_tasks(request, project_id):
-    user = request.user if request.user.is_authenticated else None
-    project = get_object_or_404(Project, pk=project_id, user=user) \
-        if project_id else None
-    task_list = get_task_list(user, project, True)
-    flag = False if not project else project.done_flag
-    project_list = get_project_list(user, flag)
-    num_inbox_tasks = get_task_list(user, None).count()
-    return render(request, 'organizer/index.html', {
-        'project_list': project_list,
-        'task_list': task_list,
-        'project': project,
-        'num_inbox_tasks': num_inbox_tasks,
-    })
+    return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.3.0")
 
 def intro(request):
     return render(request, 'organizer/intro.html')
