@@ -133,10 +133,13 @@ def comments_save(request, task_id):
         Comment(user=user, task=task, comment_text=comment_text).save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
-def projects_del(request, project_id):
+def projects_change(request, project_id, status):
     user = request.user if request.user.is_authenticated else None
     project = get_object_or_404(Project, pk=project_id, user=user)
-    project.done_flag = True
+    if status == 'activate':
+        project.done_flag = False
+    else:
+        project.done_flag = True
     project.save()
     return HttpResponseRedirect(reverse('organizer:index'))
 

@@ -128,7 +128,11 @@
             </form>
             <hr>
             {% if project %}
-            <a href="{% url 'organizer:projects_del' project.id %}"><button>Delete project</button></a>
+                {% if project.done_flag %}
+                    <a href="{% url 'organizer:projects_change' project.id 'activate' %}"><button>Activate project</button></a>
+                {% else %}
+                    <a href="{% url 'organizer:projects_change' project.id 'hide' %}"><button>Hide project</button></a>
+                {% endif %}
             {% endif %}
 
             <p class="view-hidden">
