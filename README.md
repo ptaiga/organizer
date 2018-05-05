@@ -18,9 +18,9 @@
  - [ ] Pereodical tasks
 
 **Bugs**:
- - [ ] DateTimeField Task.due_date received a naive datetime while time zone support is active.
  - [ ] Today, Week -> Task viewing back transition leads to project of task
  - [ ] Sorting return to default after something operations. Maybe to use save in user's model setting of sort and also different other.
+ - [x] DateTimeField Task.due_date received a naive datetime while time zone support is active.
  - [x] There is no options to restore deleted projects
  - [x] Into deleted projects showing deleted tasks (not active tasks by default)
 

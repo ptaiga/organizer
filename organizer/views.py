@@ -189,8 +189,9 @@ def tasks_change(request, task_id):
     task.project = project
     task.task_name = task_name
     task.done_flag = done_flag
-    task.due_date = (due_date_d + (' '+due_date_t if due_date_t else '')) \
-        if due_date_d else None
+    task.due_date = (due_date_d + 'T' \
+                            + (due_date_t if due_date_t else '00:00') \
+                            + '+00') if due_date_d else None
     task.save()
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(project_id,)))
