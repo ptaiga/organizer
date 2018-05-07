@@ -1,7 +1,11 @@
 {% extends "organizer/index.html" %}
 
 {% block nav-center %}
-<a href="{% url 'organizer:project' task.project.id|default:'0' %}" class="back">&lt;&lt;</a>
+    {% if active %}
+        <a href="{% url 'organizer:show' active %}" class="back">&lt;&lt;</a>
+    {% else %}
+        <a href="{% url 'organizer:project' task.project.id|default:'0' %}" class="back">&lt;&lt;</a>
+    {% endif %}
 {% endblock %}
 
 {% block article %}

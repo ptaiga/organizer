@@ -92,7 +92,10 @@
                     <input type="checkbox" name="task{{ forloop.counter }}" id="task{{ forloop.counter }}" value="{{ task.id }}">
 
                     <label for="task{{ forloop.counter }}">
-                        <a href="{% url 'organizer:task' task.id %}">{{ task.task_name }}</a>
+
+                        <a href="{% url 'organizer:task' task.id %}{% if active %}?refer={{ active }}{% endif %}">
+                            {{ task.task_name }}
+                        </a>
                     </label>
 
                     {% if task.due_date %} <span {% if task.today_or_overdue%} class="overdue"{% endif %}>({{ task.due_date }})</span>{% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}<br>

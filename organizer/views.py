@@ -77,6 +77,10 @@ def show(request, show_type):
 def task(request, task_id):
     user = request.user if request.user.is_authenticated else None
     task = get_object_or_404(Task, pk=task_id, user=user)
+    if 'refer' in request.GET:
+        refer = request.GET['refer']
+    else:
+        refer = ''
     flag = False if not task.project else task.project.done_flag
     project_list = get_project_list(user, flag)
     comment_list = Comment.objects.filter(task=task, status_flag=True)
@@ -89,12 +93,14 @@ def task(request, task_id):
         comment = get_object_or_404(Comment, pk=comment_id)
     return render(request, 'organizer/task.html', {
         'project_list': project_list,
+        'project': task.project,
         'task': task,
         'comment_list': comment_list,
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
         'num_week_tasks': num_week_tasks,
         'comment': comment,
+        'active': refer,
     })
 
 def projects_add(request):
