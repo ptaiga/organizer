@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('show/<str:show_type>/', views.show, name='show'),
     path('projects/0/', views.show, {'show_type': 'inbox'}),
-    path('projects/<int:project_id>/', views.project, name='project'),
+    path('projects/<int:project_id>/', views.show, {'show_type': 'project'}, name='project'),
     path('tasks/<int:task_id>/', views.task, name='task'),
     path('projects/add/', views.projects_add, name='projects_add'),
     path('tasks/add/', views.tasks_add, name='tasks_add'),

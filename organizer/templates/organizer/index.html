@@ -65,10 +65,10 @@
             {% endif %}
 
             <p class="view-hidden">
-            {% if active %}
-                <a href="{% url 'organizer:show' 'hidden' %}">View hidden projects</a>
-            {% else %}
+            {% if active == 'hidden' %}
                 <a href="{% url 'organizer:show' 'inbox' %}">View active projects</a>
+            {% else %}
+                <a href="{% url 'organizer:show' 'hidden' %}">View hidden projects</a>
             {% endif %}
             </p>
 
@@ -78,8 +78,8 @@
         {% block article %}
 
             <h3>
-                {% if active %}{{ project.project_name|default:active|title }}:
-                {% else %}{{ project.project_name|default:'Inbox' }}:{% endif %}
+                {% if active == 'hidden' %}{{ project.project_name|default:'Inbox' }}:
+                {% else %}{{ project.project_name|default:active|title }}:{% endif %}
             </h3>
 
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

@@ -6,8 +6,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 
 from .models import Project, Task, Comment
-from .functions import get_project_list, get_task_list, \
-                                get_today_tasks, get_week_tasks
+from .functions import get_project_list, get_task_list, get_task_count
 
 from sorga.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
@@ -15,58 +14,30 @@ from sorga.private_settings import email_to, email_from, \
 def index(request):
     return HttpResponseRedirect(reverse('organizer:show', args=('inbox',)))
 
-def project(request, project_id):
+def show(request, show_type, project_id=None):
     user = request.user if request.user.is_authenticated else None
-    project = get_object_or_404(Project, pk=project_id, user=user)
-    project_list = get_project_list(user, project.done_flag)
     sort = '-pub_date'
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
-    if 'done_tasks' in request.GET:
-        done_flag = True
+    done_flag = True if 'done_tasks' in request.GET else False
+
+    project = None
+    if show_type == 'hidden':
+        project_list = get_project_list(user, True)
+    elif show_type == 'project':
+        project = get_object_or_404(Project, pk=project_id, user=user)
+        project_list = get_project_list(user, project.done_flag)
+        show_type = ''
     else:
-        done_flag = False
-    task_list = get_task_list(user, project, done_flag).order_by(sort)
-    num_inbox_tasks = get_task_list(user, None).count()
-    num_today_tasks = get_today_tasks(user).count()
-    num_week_tasks = get_week_tasks(user).count()
+        project_list = get_project_list(user)
+    task_list = get_task_list(user, project, done_flag, show_type).order_by(sort)
+
+    num_inbox_tasks, num_today_tasks, num_week_tasks = \
+        get_task_count(user)
+
     return render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
-        'task_list': task_list,
-        'num_inbox_tasks': num_inbox_tasks,
-        'num_today_tasks': num_today_tasks,
-        'num_week_tasks': num_week_tasks,
-        'active': ''
-    })
-
-def show(request, show_type):
-    user = request.user if request.user.is_authenticated else None
-    project_list = get_project_list(user)
-    sort = '-pub_date'
-    if 'sort' in request.GET:
-       if request.GET['sort'] == 'latest': sort='pub_date'
-    if 'done_tasks' in request.GET:
-        done_flag = True
-    else:
-        done_flag = False
-    if show_type == 'week':
-        task_list = get_week_tasks(user).order_by(sort)
-    elif show_type == 'today':
-        task_list = get_today_tasks(user).order_by(sort)
-    elif show_type == 'inbox':
-        task_list = get_task_list(user, None, done_flag).order_by(sort)
-    elif show_type == 'hidden':
-        task_list = get_task_list(user, None, done_flag).order_by(sort)
-        project_list = get_project_list(user, True)
-        show_type = False
-    else:
-        raise Http404("Page does not exist")
-    num_inbox_tasks = get_task_list(user, None).count()
-    num_today_tasks = get_today_tasks(user).count()
-    num_week_tasks = get_week_tasks(user).count()
-    return render(request, 'organizer/index.html', {
-        'project_list': project_list,
         'task_list': task_list,
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
@@ -81,12 +52,16 @@ def task(request, task_id):
         refer = request.GET['refer']
     else:
         refer = ''
-    flag = False if not task.project else task.project.done_flag
+    if refer == 'hidden':
+        flag = True
+    elif not task.project:
+        flag = False
+    else:
+        flag = task.project.done_flag
     project_list = get_project_list(user, flag)
     comment_list = Comment.objects.filter(task=task, status_flag=True)
-    num_inbox_tasks = get_task_list(user, None).count()
-    num_today_tasks = get_today_tasks(user).count()
-    num_week_tasks = get_week_tasks(user).count()
+    num_inbox_tasks, num_today_tasks, num_week_tasks = \
+        get_task_count(user)
     comment = None
     if 'comment_edit' in request.GET:
         comment_id = request.GET['comment_edit']
