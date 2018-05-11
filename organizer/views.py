@@ -17,9 +17,12 @@ def index(request):
 def show(request, show_type, project_id=None):
     user = request.user if request.user.is_authenticated else None
     sort = '-pub_date'
+
+    done_flag = True if 'done_tasks' in request.GET else False
     if 'sort' in request.GET:
        if request.GET['sort'] == 'latest': sort='pub_date'
-    done_flag = True if 'done_tasks' in request.GET else False
+    elif 'sort' in request.COOKIES:
+        if request.COOKIES['sort'] == 'latest': sort='pub_date'
 
     project = None
     if show_type == 'hidden':
@@ -35,7 +38,7 @@ def show(request, show_type, project_id=None):
     num_inbox_tasks, num_today_tasks, num_week_tasks = \
         get_task_count(user)
 
-    return render(request, 'organizer/index.html', {
+    response = render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
         'task_list': task_list,
@@ -44,6 +47,8 @@ def show(request, show_type, project_id=None):
         'num_week_tasks': num_week_tasks,
         'active': show_type
     })
+    if 'sort' in request.GET: response.set_cookie('sort', request.GET['sort'])
+    return response
 
 def task(request, task_id):
     user = request.user if request.user.is_authenticated else None

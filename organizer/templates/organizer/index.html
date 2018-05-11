@@ -35,15 +35,15 @@
 
         <aside id="projects">
             <ul>
-                <li><a {% if active == 'inbox' %}class="active"{% endif %} href="{% url 'organizer:show' 'inbox' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Inbox</a> ({{ num_inbox_tasks }})</li>
-                <li><a {% if active == 'today' %}class="active"{% endif %} href="{% url 'organizer:show' 'today' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Today</a> ({{ num_today_tasks }})</li>
-                <li><a {% if active == 'week' %}class="active"{% endif %} href="{% url 'organizer:show' 'week' %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">Week</a> ({{ num_week_tasks }})</li>
+                <li><a {% if active == 'inbox' %}class="active"{% endif %} href="{% url 'organizer:show' 'inbox' %}">Inbox</a> ({{ num_inbox_tasks }})</li>
+                <li><a {% if active == 'today' %}class="active"{% endif %} href="{% url 'organizer:show' 'today' %}">Today</a> ({{ num_today_tasks }})</li>
+                <li><a {% if active == 'week' %}class="active"{% endif %} href="{% url 'organizer:show' 'week' %}">Week</a> ({{ num_week_tasks }})</li>
             </ul>
             <hr>
             {% if project_list %}
                 <ul>
                 {% for p in project_list %}
-                    <li><a{% if p == project %} class="active"{% endif %} href="{% url 'organizer:project' p.id %}{% if request.GET.sort %}?sort={{ request.GET.sort }}{% endif %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
+                    <li><a{% if p == project %} class="active"{% endif %} href="{% url 'organizer:project' p.id %}">{{ p.project_name }}</a> ({{ p.num_active_tasks }})</li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -104,9 +104,21 @@
                 <input type="submit" value="Apply">
                 {% if request.GET.sort == 'latest' %}
                     {% if active %}
-                        <a href="{% url 'organizer:show' active %}">[Newest &uarr;]</a>
+                        <a href="{% url 'organizer:show' active %}?sort=newest">[Newest &uarr;]</a>
                     {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}">[Newest &uarr;]</a>
+                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
+                    {% endif %}
+                {% elif request.GET.sort == 'newest' %}
+                    {% if active %}
+                        <a href="{% url 'organizer:show' active %}?sort=latest">[Newest &darr;]</a>
+                    {% else %}
+                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=latest">[Newest &darr;]</a>
+                    {% endif %}
+                {% elif request.COOKIES.sort == 'latest' %}
+                    {% if active %}
+                        <a href="{% url 'organizer:show' active %}?sort=newest">[Newest &uarr;]</a>
+                    {% else %}
+                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
                     {% endif %}
                 {% else %}
                     {% if active %}
