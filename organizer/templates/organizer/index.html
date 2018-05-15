@@ -103,29 +103,13 @@
                 <br>
                 <input type="submit" value="Apply">
                 {% if request.GET.sort == 'latest' %}
-                    {% if active %}
-                        <a href="{% url 'organizer:show' active %}?sort=newest">[Newest &uarr;]</a>
-                    {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
-                    {% endif %}
+                    <a href="{% url 'organizer:sort' active|default:'project' project.id|default:0 %}?sort=newest">[Newest &uarr;]</a>
                 {% elif request.GET.sort == 'newest' %}
-                    {% if active %}
-                        <a href="{% url 'organizer:show' active %}?sort=latest">[Newest &darr;]</a>
-                    {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=latest">[Newest &darr;]</a>
-                    {% endif %}
+                    <a href="{% url 'organizer:sort' active|default:'project' project.id|default:0 %}?sort=latest">[Newest &darr;]</a>
                 {% elif request.COOKIES.sort == 'latest' %}
-                    {% if active %}
-                        <a href="{% url 'organizer:show' active %}?sort=newest">[Newest &uarr;]</a>
-                    {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=newest">[Newest &uarr;]</a>
-                    {% endif %}
+                    <a href="{% url 'organizer:sort' active|default:'project' project.id|default:0 %}?sort=newest">[Newest &uarr;]</a>
                 {% else %}
-                    {% if active %}
-                        <a href="{% url 'organizer:show' active %}?sort=latest">[Newest &darr;]</a>
-                    {% else %}
-                        <a href="{% url 'organizer:project' project.id|default:'0' %}?sort=latest">[Newest &darr;]</a>
-                    {% endif %}
+                    <a href="{% url 'organizer:sort' active|default:'project' project.id|default:0 %}?sort=latest">[Newest &darr;]</a>
                 {% endif %}
 
                 </form>
