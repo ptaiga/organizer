@@ -5,6 +5,8 @@ from django.views import generic
 from django.utils import timezone
 from django.core.mail import send_mail
 
+import markdown
+
 from .models import Project, Task, Comment
 from .functions import get_project_list, get_task_list, get_task_count
 
@@ -183,8 +185,12 @@ def tasks_change(request, task_id):
         args=(project_id,)))
 
 def about(request):
-    user = request.user if request.user.is_authenticated else None
-    return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.3.0")
+    # user = request.user if request.user.is_authenticated else None
+    # return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.3.0")
+    with open('README.md') as f:
+        content = f.read()
+    content = markdown.markdown(content, ['markdown.extensions.nl2br'])
+    return HttpResponse(content)
 
 def intro(request):
     return render(request, 'organizer/intro.html')
