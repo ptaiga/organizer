@@ -1,5 +1,4 @@
-# Sorga
-*Simple organizer app*
+#Simple organizer app#
 
 ## To-do list:
 
@@ -9,7 +8,6 @@
  - [ ] Choose framework
 
 **Features**:
- - [ ] Render "About" page from README.md
  - [ ] Common project for several users
  - [ ] Remember settings (cookie or local storage or db)
  - [ ] Active http-links in comments
@@ -17,6 +15,7 @@
  - [ ] Prioritization of tasks (A, B and C)
  - [ ] Snooze tasks (ability to temporarily hide tasks)
  - [ ] Pereodical tasks
+ - [x] Render "About" page from README.md (https://github.com/Python-Markdown/markdown)
 
 **Bugs**:
  - [x] Sorting return to default after something operations. Maybe to use save in user's model setting of sort and also different other.

@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 from .private_settings import email_host, email_port, \
-                                        email_timeout, email_use_ssl
+                                email_timeout, email_use_ssl, \
+                                debug_setting
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x_em*=s2c7a+rsi!nqz^91fwnr59(0+17n2tmb_p(i1d#^^#5s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = debug_setting
 
 ALLOWED_HOSTS = ['ptaiga.pythonanywhere.com', '127.0.0.1']
 
