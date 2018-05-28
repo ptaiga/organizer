@@ -52,7 +52,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
                     <p><u>{{ comment.pub_date }} by {{ comment.user }}</u>. [<a href="{% url 'organizer:task' task.id %}?comment_edit={{ comment.id }}#comment-edit">Edit</a>{% if comment.last_edit_date%}  -> Last edit: {{ comment.last_edit_date }}{% endif %}] <input type="submit" value="Hide"></p>
-                    {{ comment.comment_text|linebreaks }}
+                    {{ comment.comment_text|urlize|linebreaks }}
                 </form>
             </li>
         {% endfor %}
