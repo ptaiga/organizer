@@ -5,6 +5,8 @@ from django.views import generic
 from django.utils import timezone
 from django.core.mail import send_mail
 
+from dateutil.relativedelta import relativedelta
+
 import markdown
 
 from .models import Project, Task, Comment
@@ -140,7 +142,13 @@ def tasks_del(request, project_id):
         if key.startswith('task'):
             task = get_object_or_404(Task, pk=request.POST[key],
                 project = project, user=user)
-            task.done_flag = True
+            if task.repeat:
+                task.due_date += \
+                    relativedelta(days=1) if task.repeat == "daily" \
+                    else relativedelta(weeks=1) if task.repeat == "weekly" \
+                    else relativedelta(months=1)
+            else:
+                task.done_flag = True
             task.save()
 
     return HttpResponseRedirect(reverse('organizer:project', \
@@ -168,6 +176,8 @@ def tasks_change(request, task_id):
     task_name = request.POST['task_name']
     project_id = int(request.POST['project_select'])
     done_flag = (request.POST['done_flag'] == "True")
+    repeat = request.POST['task_repeat'] \
+        if request.POST['task_repeat'] != "none" else None
     due_date_d = request.POST['due_date_d']
     due_date_t = request.POST['due_date_t']
     task = get_object_or_404(Task, pk=task_id, user=user)
@@ -177,6 +187,7 @@ def tasks_change(request, task_id):
     task.project = project
     task.task_name = task_name
     task.done_flag = done_flag
+    task.repeat = repeat
     task.due_date = (due_date_d + 'T' \
                             + (due_date_t if due_date_t else '00:00') \
                             + '+00') if due_date_d else None

@@ -28,6 +28,7 @@ class Task(models.Model):
     pub_date = models.DateTimeField('date published', default=timezone.now)
     done_flag = models.BooleanField(default=False)
     due_date = models.DateTimeField('date completed', default=None, null=True)
+    repeat = models.CharField(max_length=200, default=None, null=True)
 
     def num_active_comments(self):
         return self.comment_set.filter(status_flag=True).count()
