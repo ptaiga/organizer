@@ -22,3 +22,4 @@
  - [ ] Subprojects (or nesting), subtasks (or nesting)
  - [ ] Cover code with test
  - [ ] Save application state for unregistered user to local store
+ - [ ] Remember settings (cookie or local storage or db)

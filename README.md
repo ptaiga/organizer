@@ -9,7 +9,6 @@
 
 **Features**:
  - [ ] Common project for several users
- - [ ] Remember settings (cookie or local storage or db)
  - [ ] Export/Import data in different format
  - [ ] Prioritization of tasks (A, B and C)
  - [ ] Snooze tasks (ability to temporarily hide tasks)
