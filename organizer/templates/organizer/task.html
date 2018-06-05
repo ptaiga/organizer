@@ -41,6 +41,15 @@
                     <option value="monthly">Monthly</option>
                 </select>
             </li>
+            <li>Snooze:
+                <select name="task_snooze">
+                    {% if task.snooze_date %}
+                        <option value="test">{{ task.snooze_date }}</option>
+                    {% endif %}
+                    <option value="none">None</option>
+                    <option value="today">Today</option>
+                </select>
+            </li>
             <li {% if task.today_or_overdue%} class="overdue"{% endif %}>Deadline:
                 <input type="date" name="due_date_d" value="{{ task.due_date.date|date:"Y-m-d" }}">
                 <input type="time" name="due_date_t" value="{{ task.due_date.time|time:"H:i" }}">
