@@ -11,7 +11,7 @@
  - [ ] Common project for several users
  - [ ] Export/Import data in different format
  - [ ] Prioritization of tasks (A, B and C)
- - [ ] Snooze tasks (ability to temporarily hide tasks)
+ - [x] Snooze tasks (ability to temporarily hide tasks)
  - [x] Pereodical tasks (https://dateutil.readthedocs.io)
  - [x] Render "About" page from README.md (https://github.com/Python-Markdown/markdown)
  - [x] Active http-links in comments (https://docs.djangoproject.com/en/dev/ref/templates/builtins/#urlize)
