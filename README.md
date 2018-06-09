@@ -9,7 +9,7 @@
 
 **Features**:
  - [ ] Common project for several users
- - [ ] Export/Import data in different format
+ - [ ] Export data in different format (pdf, html, txt)
  - [ ] Prioritization of tasks (A, B and C)
  - [x] Snooze tasks (ability to temporarily hide tasks)
  - [x] Pereodical tasks (https://dateutil.readthedocs.io)
