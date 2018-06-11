@@ -38,7 +38,8 @@ def show(request, show_type, project_id=None):
     else:
         project_list = get_project_list(user)
     task_list = get_task_list(user, project, done_flag, show_type) \
-                    .exclude(snooze_date__date=timezone.now().date()).order_by(sort)
+                    .exclude(snooze_date__date=timezone.now()
+                                .date()).order_by('priority', sort)
 
     num_inbox_tasks, num_today_tasks, num_week_tasks = \
         get_task_count(user)
@@ -181,6 +182,7 @@ def tasks_change(request, task_id):
         if request.POST['task_repeat'] != "none" else None
     snooze = request.POST['task_snooze'] \
         if request.POST['task_snooze'] != "none" else None
+    priority = request.POST['priority']
     due_date_d = request.POST['due_date_d']
     due_date_t = request.POST['due_date_t']
     task = get_object_or_404(Task, pk=task_id, user=user)
@@ -192,6 +194,7 @@ def tasks_change(request, task_id):
     task.done_flag = done_flag
     task.repeat = repeat
     task.snooze_date = timezone.now() if snooze == "today" else None
+    task.priority = priority
     task.due_date = (due_date_d + 'T' \
                             + (due_date_t if due_date_t else '00:00') \
                             + '+00') if due_date_d else None

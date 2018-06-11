@@ -32,6 +32,13 @@
                     <option value="True"{% if task.done_flag %} selected {% endif %}>Closed</option>
                 </select>
             </li>
+            <li>Priority:
+                <select name="priority">
+                    <option value="A"{% if task.priority == 'A' %} selected {% endif %}>High</option>
+                    <option value="B"{% if task.priority == 'B' %} selected {% endif %}>Normal</option>
+                    <option value="C"{% if task.priority == 'C' %} selected {% endif %}>Low</option>
+                </select>
+            </li>
             <li>Repeat:
                 <select name="task_repeat">
                     <option value="{{ task.repeat|lower }}">{{ task.repeat|capfirst }}</option>

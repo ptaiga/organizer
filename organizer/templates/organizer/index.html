@@ -89,6 +89,7 @@
                 {% csrf_token %}
 
                 {% for task in task_list %}
+                <div class="priority-level-{{ task.priority }}">
                     <input type="checkbox" name="task{{ forloop.counter }}" id="task{{ forloop.counter }}" value="{{ task.id }}">
 
                     <label for="task{{ forloop.counter }}">
@@ -98,7 +99,8 @@
                         </a>
                     </label>
 
-                    {% if task.due_date %} <span {% if task.today_or_overdue %} class="overdue"{% endif %}>({{ task.due_date }}{% if task.repeat %}, {{ task.repeat }}{% endif %})</span>{% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}<br>
+                    {% if task.due_date %} <span {% if task.today_or_overdue %} class="overdue"{% endif %}>({{ task.due_date }}{% if task.repeat %}, {{ task.repeat }}{% endif %})</span>{% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}
+                </div>
                 {% endfor %}
                 <br>
                 <input type="submit" value="Apply">

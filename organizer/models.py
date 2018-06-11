@@ -30,6 +30,12 @@ class Task(models.Model):
     due_date = models.DateTimeField('date completed', default=None, null=True)
     repeat = models.CharField(max_length=200, default=None, null=True)
     snooze_date = models.DateTimeField('date snoozed', default=None, null=True)
+    priority = models.CharField(
+        'priority',
+        max_length=1,
+        choices = (('A', 'High'), ('B', 'Normal'), ('C', 'Low')),
+        default = 'B'
+    )
 
     def num_active_comments(self):
         return self.comment_set.filter(status_flag=True).count()
