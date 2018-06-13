@@ -10,7 +10,7 @@
 **Features**:
  - [ ] Common project for several users
  - [ ] Export data in different format (pdf, html, txt)
- - [ ] Prioritization of tasks (A, B and C)
+ - [x] Priority of tasks (A, B and C)
  - [x] Snooze tasks (ability to temporarily hide tasks)
  - [x] Pereodical tasks (https://dateutil.readthedocs.io)
  - [x] Render "About" page from README.md (https://github.com/Python-Markdown/markdown)
