@@ -31,6 +31,7 @@
  - [ ] Ajax for base operations
  - [ ] Separate application for profile
  - [ ] Oppotunity for paid-features API
+ - [ ] Separate app for comments
 
 **Future**
 
