@@ -154,3 +154,29 @@ article input[type=checkbox]:checked + label {
 .priority-level-C {
     font-size: smaller;
 }
+
+/* *** */
+/* Show task properties */
+
+#show-task-properties,
+.task-properties {
+    display: none;
+}
+
+label[for="show-task-properties"] {
+    text-decoration: underline;
+    color: blue;
+    font-size: smaller;
+    cursor: pointer;
+}
+
+input#show-task-properties[type=checkbox]:checked ~ .task-properties {
+    display: block;
+}
+
+input#show-task-properties[type=checkbox]:checked ~ label[for="show-task-properties"] {
+    display: none;
+}
+
+/* Show task properties */
+/* *** */

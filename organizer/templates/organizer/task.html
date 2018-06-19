@@ -12,7 +12,9 @@
 
     <h2>{{ task }}</h2>
 
-    <form action="{% url 'organizer:tasks_change' task.id %}" method="post">
+    <input type="checkbox" id="show-task-properties" role="button">
+    <label for="show-task-properties">Show task properties &darr;</label>
+    <form action="{% url 'organizer:tasks_change' task.id %}" method="post" class="task-properties">
         {% csrf_token %}
         <ul>
             <li>Owner: {{ user }}</li>
