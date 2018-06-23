@@ -23,6 +23,7 @@
  - [ ] Subprojects (or nesting), subtasks (or nesting)
  - [ ] Remember settings (cookie or local storage or db)
  - [ ] Backup data (save and restore)
+ - [ ] Email notification about today tasks
 
 **Other**
 

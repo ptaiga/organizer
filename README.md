@@ -10,7 +10,7 @@
 **Features**:
  - [ ] Common project for several users
  - [ ] Export data in different format (pdf, html, txt)
- - [x] Show tasks properties
+ - [x] Show tasks properties (hide it by default)
  - [x] Priority of tasks (A, B and C)
  - [x] Snooze tasks (ability to temporarily hide tasks)
  - [x] Pereodical tasks (https://dateutil.readthedocs.io)
