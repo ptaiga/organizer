@@ -95,7 +95,7 @@
                     <label for="task{{ forloop.counter }}">
 
                         <a href="{% url 'organizer:task' task.id %}{% if active %}?refer={{ active }}{% endif %}">
-                            {{ task.task_name }}
+                            [{{ task.priority }}] {{ task.task_name }}
                         </a>
                     </label>
 

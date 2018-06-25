@@ -36,9 +36,9 @@
             </li>
             <li>Priority:
                 <select name="priority">
-                    <option value="A"{% if task.priority == 'A' %} selected {% endif %}>High</option>
-                    <option value="B"{% if task.priority == 'B' %} selected {% endif %}>Normal</option>
-                    <option value="C"{% if task.priority == 'C' %} selected {% endif %}>Low</option>
+                    <option value="A"{% if task.priority == 'A' %} selected {% endif %}>High [A]</option>
+                    <option value="B"{% if task.priority == 'B' %} selected {% endif %}>Normal [B]</option>
+                    <option value="C"{% if task.priority == 'C' %} selected {% endif %}>Low [C]</option>
                 </select>
             </li>
             <li>Repeat:
@@ -69,7 +69,7 @@
 
     <hr>
 
-    <h3>Comments:</h3>
+    <h3>{{ comment_list.count }} comments:</h3>
 
     {% if comment_list %}
         <ul>
