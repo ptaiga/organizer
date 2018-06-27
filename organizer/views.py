@@ -228,3 +228,15 @@ def send(request):
             Please wait for an answer.")
     else:
         return HttpResponse("Your request doesn't send. Try again later")
+
+def export(request):
+    user = request.user if request.user.is_authenticated else None
+    projects = get_project_list(user)
+    data = f"Data for {user}:\n\n"
+    for p in projects:
+        tasks = "\n".join(["\t\t" + t.task_name for t in p.task_set.all()])
+        data += "\t" + p.project_name + ":\n"
+        if tasks: data += tasks + "\n"
+        data += "\n"
+    response = "\n".join([p.project_name for p in projects])
+    return HttpResponse(data, content_type="text/plain")

@@ -20,4 +20,5 @@ urlpatterns = [
     path('tasks/<int:task_id>/change/', views.tasks_change, name='tasks_change'),
     path('about/', views.about, name='about'),
     path('send/', views.send, name='send'),
+    path('export/', views.export, name='export'),
 ]
