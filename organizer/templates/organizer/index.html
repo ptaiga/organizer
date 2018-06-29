@@ -19,6 +19,7 @@
             <label for="show-menu" class="show-menu">Menu</label>
             <ul id="menu">
                 <li><a href="{% url 'organizer:about' %}">About</a></li>
+                <li><a href="{% url 'organizer:export' %}">Export</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'admin:index' %}">Profile</a></li>
                 <li><a href="{% url 'admin:logout' %}">Logout</a></li>
