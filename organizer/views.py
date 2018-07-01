@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 
 from dateutil.relativedelta import relativedelta
 
-import markdown
+import markdown, json
 
 from .models import Project, Task, Comment
 from .functions import get_project_list, get_task_list, get_task_count
@@ -231,12 +231,41 @@ def send(request):
 
 def export(request):
     user = request.user if request.user.is_authenticated else None
-    projects = get_project_list(user)
-    data = f"Data for {user}:\n\n"
+    projects = Project.objects.filter(user=user)
+    data = {}
+    data['user'] = user
+    data['inbox'] = []
+    inbox_tasks = Task.objects.filter(user=user, project=None)
+    for t in inbox_tasks:
+        data['inbox'].append({
+            'task_name': t.task_name,
+            'pub_date': t.pub_date.isoformat() if t.pub_date else t.pub_date,
+            'done_flag': t.done_flag,
+            'due_date': t.due_date.isoformat() if t.due_date else t.due_date,
+            'repeat': t.repeat,
+            'snooze_date': t.snooze_date.isoformat() if t.snooze_date else t.snooze_date,
+            'priority': t.priority
+        })
+    data['projects'] = []
     for p in projects:
-        tasks = "\n".join(["\t\t" + t.task_name for t in p.task_set.all()])
-        data += "\t" + p.project_name + ":\n"
-        if tasks: data += tasks + "\n"
-        data += "\n"
-    response = "\n".join([p.project_name for p in projects])
-    return HttpResponse(data, content_type="text/plain")
+        tasks = []
+        for t in p.task_set.all():
+            tasks.append({
+                'task_name': t.task_name,
+                'pub_data': t.pub_date.isoformat(),
+                'done_flag': t.done_flag,
+                'due_date': t.due_date.isoformat() if t.due_date else t.due_date,
+                'repeat': t.repeat,
+                'snooze_date': t.snooze_date.isoformat() if t.snooze_date else t.snooze_date,
+                'priority': t.priority
+            })
+        data['projects'].append({
+            'project_name': p.project_name,
+            'pub_date': p.pub_date.isoformat(),
+            'done_flag': p.done_flag,
+            'tasks': tasks
+        })
+    return HttpResponse(json.dumps(data), content_type="text/plain")
+    # response = HttpResponse(json.dumps(data), content_type="application/vnd.json")
+    # response['Content-Disposition'] = 'attachment;filename="export.json"'
+    # return response
