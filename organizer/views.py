@@ -229,7 +229,7 @@ def send(request):
     else:
         return HttpResponse("Your request doesn't send. Try again later")
 
-def export(request):
+def export(request, mode):
     user = request.user if request.user.is_authenticated else None
     projects = Project.objects.filter(user=user)
     data = {}
@@ -265,7 +265,27 @@ def export(request):
             'done_flag': p.done_flag,
             'tasks': tasks
         })
+
+    if mode == 'json':
+        response = HttpResponse(json.dumps(data), content_type="application/vnd.json")
+        response['Content-Disposition'] = 'attachment;filename="export.json"'
+        return response
+
+    if mode == 'txt':
+        def parse_json_to_txt(data, count=0):
+            response = ''
+            for key in data:
+                if type(data[key]) == list:
+                    response += '\t'*count + key + ':\n'
+                    for elem in data[key]:
+                        if type(elem) == dict:
+                            response += parse_json(elem, count+1) + '\n'
+                        else:
+                            response += '\t'*count + str(elem) + '\n'
+                else:
+                    response += '\t'*count + key + ': ' + str(data[key]) + '\n'
+                # response += '\n'
+            return response
+        return HttpResponse(parse_json_to_txt(data), content_type="text/plain")
+
     return HttpResponse(json.dumps(data), content_type="text/plain")
-    # response = HttpResponse(json.dumps(data), content_type="application/vnd.json")
-    # response['Content-Disposition'] = 'attachment;filename="export.json"'
-    # return response

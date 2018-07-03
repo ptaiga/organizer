@@ -24,6 +24,12 @@
  - [x] There is no options to restore deleted projects
  - [x] Into deleted projects showing deleted tasks (not active tasks by default)
 
+**Useful links about exporting data**:
+  https://docs.djangoproject.com/en/2.0/ref/request-response/#telling-the-browser-to-treat-the-response-as-a-file-attachment
+  https://codebeautify.org/jsonviewer
+  https://docs.djangoproject.com/en/2.0/howto/outputting-pdf/
+  https://stackoverflow.com/questions/41958335/django-render-a-txt-file-with-linebreaks
+
 ---
 
 ### Third stage ###
