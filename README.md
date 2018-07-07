@@ -9,8 +9,8 @@
 
 **Features**:
  - [ ] Common project for several users
- - [ ] Export data in JSON
  - [ ] View projects and tasks data in txt
+ - [x] Export data in JSON
  - [x] Show tasks properties (hide it by default)
  - [x] Priority of tasks (A, B and C)
  - [x] Snooze tasks (ability to temporarily hide tasks)
