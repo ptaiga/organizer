@@ -9,7 +9,7 @@
 
 **Features**:
  - [ ] Common project for several users
- - [ ] View projects and tasks data in txt
+ - [x] View projects and tasks data in txt
  - [x] Export data in JSON
  - [x] Show tasks properties (hide it by default)
  - [x] Priority of tasks (A, B and C)
