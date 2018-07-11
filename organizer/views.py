@@ -279,7 +279,7 @@ def export(request, mode):
                     response += '\t'*count + key + ':\n'
                     for elem in data[key]:
                         if type(elem) == dict:
-                            response += parse_json(elem, count+1) + '\n'
+                            response += parse_json_to_txt(elem, count+1) + '\n'
                         else:
                             response += '\t'*count + str(elem) + '\n'
                 else:
@@ -287,5 +287,21 @@ def export(request, mode):
                 # response += '\n'
             return response
         return HttpResponse(parse_json_to_txt(data), content_type="text/plain")
+
+    if mode == 'html':
+        def parse_json_to_html(data, count=2):
+            response = ''
+            for key in data:
+                if type(data[key]) == list:
+                    response += f'<h{count}><u>{key}</u></h{count}>'
+                    for elem in data[key]:
+                        if type(elem) == dict:
+                            response += parse_json_to_html(elem, count+1) + '<br>'
+                        else:
+                            response += f'<h{count}>{elem}</h{count}>'
+                else:
+                    response += f'<b>{key}</b>: {data[key]}<br>'
+            return response
+        return HttpResponse(parse_json_to_html(data))
 
     return HttpResponse(json.dumps(data), content_type="text/plain")
