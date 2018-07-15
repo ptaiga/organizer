@@ -2,13 +2,14 @@
 
 ## To-do list:
 
+### 5th stage ###
+(_ver. 0.4.1 -> 0.5.0_: ...)
+
 ### 4th stage ###
 (_ver. 0.3.1 -> 0.4.0_: continue to develop)
 
- - [ ] Choose framework
-
 **Features**:
- - [ ] Common project for several users
+ - [ ] Sharing projects for other users
  - [x] View projects and tasks data in txt and html
  - [x] Export data in JSON
  - [x] Show tasks properties (hide it by default)
