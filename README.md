@@ -4,6 +4,8 @@
 
 ### 5th stage ###
 (_ver. 0.4.1 -> 0.5.0_: ...)
+ - [ ] Separate application for profile
+ - [ ] Import data from JSON
 
 ### 4th stage ###
 (_ver. 0.3.1 -> 0.4.0_: continue to develop)

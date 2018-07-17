@@ -22,7 +22,6 @@
  - [ ] Local time for users
  - [ ] Subprojects (or nesting), subtasks (or nesting)
  - [ ] Remember settings (cookie or local storage or db)
- - [ ] Backup data (save and restore)
  - [ ] Email notification about today tasks
 
 **Other**
@@ -30,7 +29,6 @@
  - [ ] Cover code with test
  - [ ] Save application state for unregistered user to local store
  - [ ] Ajax for base operations
- - [ ] Separate application for profile
  - [ ] Oppotunity for paid-features API
  - [ ] Separate app for comments
 
