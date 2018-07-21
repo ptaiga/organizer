@@ -21,4 +21,5 @@ urlpatterns = [
     path('', organizer.views.intro, name='intro'),
     path('organizer/', include('organizer.urls')),
     path('admin/', admin.site.urls),
+    path('account/', include('account.urls')),
 ]

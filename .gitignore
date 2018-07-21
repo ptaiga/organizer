@@ -1,5 +1,7 @@
 sorga/__pycache__
 organizer/__pycache__
 organizer/migrations/__pycache__
+account/__pycache__
+account/migrations/__pycache__
 db.sqlite3
 sorga/private_settings.py

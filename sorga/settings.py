@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['ptaiga.pythonanywhere.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'organizer.apps.OrganizerConfig',
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
