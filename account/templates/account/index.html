@@ -1,0 +1,7 @@
+<h3>{{ request.user }}, welcome to your profile!</h3>
+<ul><u>Export data</u>:
+<li><a href="{% url 'organizer:export' %}">{% url 'organizer:export' %}</a></li>
+<li><a href="{% url 'organizer:export' 'txt' %}">{% url 'organizer:export' 'txt' %}</a></li>
+<li><a href="{% url 'organizer:export' 'html' %}">{% url 'organizer:export' 'html' %}</a></li>
+<li><a href="{% url 'organizer:export' 'json' %}">{% url 'organizer:export' 'json' %}</a></li>
+</ul>

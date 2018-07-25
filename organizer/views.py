@@ -233,7 +233,7 @@ def export(request, mode):
     user = request.user if request.user.is_authenticated else None
     projects = Project.objects.filter(user=user)
     data = {}
-    data['user'] = user
+    data['user'] = user.username
     data['inbox'] = []
     inbox_tasks = Task.objects.filter(user=user, project=None)
     for t in inbox_tasks:
