@@ -22,7 +22,6 @@
  - [ ] Local time for users
  - [ ] Subprojects (or nesting), subtasks (or nesting)
  - [ ] Remember settings (cookie or local storage or db)
- - [ ] Email notification about today tasks
 
 **Other**
 
