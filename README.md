@@ -6,8 +6,10 @@
 (_ver. 0.4.1 -> 0.5.0_: progressive features)
  - [ ] Import data from JSON
  - [ ] Email notification about today tasks
- - [ ] Sharing projects for other users
+ - [ ] Sharing projects with other users
  - [x] Separate application for user profile
+
+---
 
 ### 4th stage ###
 (_ver. 0.3.1 -> 0.4.0_: continue to develop)
