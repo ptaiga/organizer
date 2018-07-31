@@ -9,6 +9,10 @@
  - [ ] Sharing projects with other users
  - [x] Separate application for user profile
 
+**Useful links**:
+  https://ru.stackoverflow.com/questions/17991/django-%D0%B8-cron
+  https://help.pythonanywhere.com/pages/ScheduledTasks/
+
 ---
 
 ### 4th stage ###
