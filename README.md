@@ -4,10 +4,22 @@
 
 ### 5th stage ###
 (_ver. 0.4.1 -> 0.5.0_: progressive features)
+
  - [ ] Import data from JSON
- - [ ] Email notification about today tasks
  - [ ] Sharing projects with other users
+ - [ ] Ability to change email
+ - [ ] Link to confirm email
+ - [ ] Profile page with all user's data
+ - [ ] Visitor's statistics
+ - [ ] Automatic register new users and send them email
+ - [ ] Extend time of snoozing tasks
+ - [x] Email notification about today tasks
  - [x] Separate application for user profile
+
+**Bugs**:
+ - [ ] Repeat tasks 500 Server Error without due_date
+ - [ ] Close a task in Today folder go to project folder of the task
+ - [ ] Task snooze but continue to count near the project
 
 **Useful links**:
   https://ru.stackoverflow.com/questions/17991/django-%D0%B8-cron
