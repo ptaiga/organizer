@@ -142,8 +142,7 @@ def tasks_del(request, project_id):
 
     for key in request.POST:
         if key.startswith('task'):
-            task = get_object_or_404(Task, pk=request.POST[key],
-                project = project, user=user)
+            task = get_object_or_404(Task, pk=request.POST[key], user=user)
             if task.repeat:
                 task.due_date += \
                     relativedelta(days=1) if task.repeat == "daily" \
