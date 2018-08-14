@@ -34,3 +34,5 @@
 **Future**
 
  - [ ] Fitness tracking
+ - [ ] Points for achieving the result
+ - [ ] Think about gamification of work with the organizer
