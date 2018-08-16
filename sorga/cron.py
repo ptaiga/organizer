@@ -11,6 +11,7 @@ application = get_wsgi_application()
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.utils import timezone
+from django.urls import reverse
 
 from sorga.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
@@ -41,7 +42,7 @@ def task():
         content = f"{user} ({user.email}), your tasks for today:\n"
         for task in tasks:
             content += f" - {task.task_name} ({task.due_date.date()})\n"
-
+        content += f"\nLink to organizer: https://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
         send(user.email, subject, content)
         print(content)
 
