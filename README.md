@@ -12,11 +12,11 @@
  - [ ] Automatic register new users and send them email
  - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Auto snooze periodical tasks after close
- - [ ] Link to organizer in email massage about today tasks
  - [ ] Subject in message begin with capitalize letter
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] Add repeating every two days
  - [ ] In adding date without time install time to 21:00
+ - [x] Link to organizer in email massage about today tasks
  - [x] Email notification about today tasks
  - [x] Separate application for user profile
 
