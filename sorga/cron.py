@@ -38,11 +38,11 @@ def task():
                                     done_flag=False,
                                     due_date__date__lte=timezone.now())
         if not tasks: continue
-        subject = f"[Organizer] {user}, your today's tasks"
-        content = f"{user} ({user.email}), your tasks for today:\n"
+        subject = f"{user.username.capitalize()}, tasks for {timezone.now().date()}"
+        content = subject + ":\n\n"
         for task in tasks:
             content += f" - {task.task_name} ({task.due_date.date()})\n"
-        content += f"\nLink to organizer: https://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
+        content += f"\nLink to organizer: https://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('inbox',))}"
         send(user.email, subject, content)
         print(content)
 
