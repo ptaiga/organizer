@@ -146,6 +146,7 @@ def tasks_del(request, project_id):
             if task.repeat:
                 task.due_date = (task.due_date or timezone.now()) + \
                     relativedelta(days=1) if task.repeat == "daily" \
+                    else relativedelta(days=2) if task.repeat == "2days" \
                     else relativedelta(weeks=1) if task.repeat == "weekly" \
                     else relativedelta(months=1)
             else:

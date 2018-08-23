@@ -42,7 +42,7 @@ def task():
         content = subject + ":\n\n"
         for task in tasks:
             content += f" - {task.task_name} ({task.due_date.date()})\n"
-        content += f"\nLink to organizer: https://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('inbox',))}"
+        content += f"\nLink to organizer: https://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
         send(user.email, subject, content)
         print(content)
 
