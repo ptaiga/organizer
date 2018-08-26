@@ -13,8 +13,8 @@
  - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
- - [ ] Add repeating every two days
  - [ ] In adding date without time install time to 20:59
+ - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
  - [x] Link to organizer in email massage about today tasks
  - [x] Email notification about today tasks

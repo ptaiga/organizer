@@ -144,11 +144,11 @@ def tasks_del(request, project_id):
         if key.startswith('task'):
             task = get_object_or_404(Task, pk=request.POST[key], user=user)
             if task.repeat:
-                task.due_date = (task.due_date or timezone.now()) + \
+                task.due_date = (task.due_date or timezone.now()) + (\
                     relativedelta(days=1) if task.repeat == "daily" \
                     else relativedelta(days=2) if task.repeat == "2days" \
                     else relativedelta(weeks=1) if task.repeat == "weekly" \
-                    else relativedelta(months=1)
+                    else relativedelta(months=1))
             else:
                 task.done_flag = True
             task.save()
