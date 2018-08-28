@@ -14,6 +14,7 @@
  - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In adding date without time install time to 20:59
+ - [ ] Add random task in today email
  - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
  - [x] Link to organizer in email massage about today tasks

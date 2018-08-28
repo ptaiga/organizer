@@ -135,7 +135,7 @@ def projects_change(request, project_id, status):
     project.save()
     return HttpResponseRedirect(reverse('organizer:index'))
 
-def tasks_del(request, project_id):
+def tasks_apply(request, project_id):
     user = request.user if request.user.is_authenticated else None
     project = get_object_or_404(Project, pk=project_id, user=user) \
         if project_id else None
