@@ -38,8 +38,7 @@ def show(request, show_type, project_id=None):
     else:
         project_list = get_project_list(user)
     task_list = get_task_list(user, project, done_flag, show_type) \
-                    .exclude(snooze_date__date=timezone.now()
-                                .date()).order_by('priority', sort)
+                    .order_by('priority', sort)
 
     num_inbox_tasks, num_today_tasks, num_week_tasks = \
         get_task_count(user)

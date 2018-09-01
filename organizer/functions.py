@@ -18,7 +18,7 @@ def get_task_list(user, project, done_flag=False, status=None):
                 user=user,
                 done_flag=False,
                 due_date__date__lte = timezone.now()
-            )
+            ).exclude(snooze_date__date=timezone.now().date())
     elif status == 'week':
         now = timezone.now()
         days_to_sunday = 6 - now.weekday()
@@ -28,26 +28,26 @@ def get_task_list(user, project, done_flag=False, status=None):
                 user=user,
                 done_flag=False,
                 due_date__date__lte = sunday
-            )
+            ).exclude(snooze_date__date=timezone.now().date())
 
     return \
         Task.objects.filter(
             user=user,
             project=project,
             done_flag=done_flag
-        )
+        ).exclude(snooze_date__date=timezone.now().date())
 
 def get_task_count(user):
     num_inbox_tasks = Task.objects.filter(
             user=user,
             project=None,
             done_flag=False
-        ).count()
+        ).exclude(snooze_date__date=timezone.now().date()).count()
     num_today_tasks = Task.objects.filter(
             user=user,
             done_flag=False,
             due_date__date__lte = timezone.now()
-        ).count()
+        ).exclude(snooze_date__date=timezone.now().date()).count()
 
     now = timezone.now()
     days_to_sunday = 6 - now.weekday()
@@ -56,6 +56,6 @@ def get_task_count(user):
             user=user,
             done_flag=False,
             due_date__date__lte = sunday
-        ).count()
+        ).exclude(snooze_date__date=timezone.now().date()).count()
 
     return num_inbox_tasks, num_today_tasks, num_week_tasks

@@ -16,7 +16,9 @@ class Project(models.Model):
         return self.project_name
 
     def num_active_tasks(self):
-        return self.task_set.filter(done_flag=False).count()
+        return self.task_set.filter(done_flag=False) \
+                            .exclude(snooze_date__date=timezone.now().date()) \
+                            .count()
 
 
 class Task(models.Model):
