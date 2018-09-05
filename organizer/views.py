@@ -16,7 +16,7 @@ from sorga.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
 
 def index(request):
-    return HttpResponseRedirect(reverse('organizer:show', args=('inbox',)))
+    return HttpResponseRedirect(reverse('organizer:show', args=('today',)))
 
 def show(request, show_type, project_id=None):
     user = request.user if request.user.is_authenticated else None
@@ -136,8 +136,8 @@ def projects_change(request, project_id, status):
 
 def tasks_apply(request, project_id):
     user = request.user if request.user.is_authenticated else None
-    project = get_object_or_404(Project, pk=project_id, user=user) \
-        if project_id else None
+    # project = get_object_or_404(Project, pk=project_id, user=user) \
+    #     if project_id else None
 
     for key in request.POST:
         if key.startswith('task'):
@@ -152,8 +152,13 @@ def tasks_apply(request, project_id):
                 task.done_flag = True
             task.save()
 
-    return HttpResponseRedirect(reverse('organizer:project', \
-        args=(project_id,)))
+    if project_id.isdigit():
+        return HttpResponseRedirect(reverse('organizer:project', \
+            args=(project_id,)))
+
+    else:
+        return HttpResponseRedirect(reverse('organizer:show', \
+            args=(project_id,)))
 
 def comments_hide(request, task_id):
     user = request.user if request.user.is_authenticated else None

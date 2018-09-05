@@ -85,7 +85,7 @@
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
             {% if task_list %}
-                <form action="{% url 'organizer:tasks_apply' project.id|default:'0' %}" method="post">
+                <form action="{% url 'organizer:tasks_apply' project.id|default:active %}" method="post">
                 {% csrf_token %}
 
                 {% for task in task_list %}
