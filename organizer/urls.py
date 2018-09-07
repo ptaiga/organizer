@@ -4,10 +4,9 @@ from . import views
 
 app_name = 'organizer'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('show/<str:show_type>/', views.show, name='show'),
-    path('projects/0/', views.show, {'show_type': 'inbox'}),
-    path('projects/<int:project_id>/', views.show, {'show_type': 'project'}, name='project'),
+    path('', views.show, {'show_type': 'today'}, name='index'),
+    path('<slug:show_type>/', views.show, name='show'),
+    path('project/<int:project_id>/', views.show, name='project'),
     path('sort/<str:show_type>/<int:project_id>/', views.show, name='sort'),
     path('tasks/<int:task_id>/', views.task, name='task'),
     path('projects/add/', views.projects_add, name='projects_add'),

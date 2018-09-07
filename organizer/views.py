@@ -15,12 +15,11 @@ from .functions import get_project_list, get_task_list, get_task_count
 from sorga.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
 
-def index(request):
-    return HttpResponseRedirect(reverse('organizer:show', args=('today',)))
-
-def show(request, show_type, project_id=None):
+def show(request, show_type='project', project_id=None):
     user = request.user if request.user.is_authenticated else None
     sort = '-pub_date'
+
+    if show_type == 'project' and not project_id: show_type = 'inbox'
 
     done_flag = True if 'done_tasks' in request.GET else False
     if 'sort' in request.GET:

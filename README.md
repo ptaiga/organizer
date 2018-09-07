@@ -28,7 +28,8 @@
  - [ ] Link to confirm email
 
 **Bugs**:
- - [ ] Close a task in Today folder go to project folder of the task or Inbox
+ - [ ] Url 'organizer/asdf' go to Inbox with "Asdf" header
+ - [x] Close a task in Today folder go to project folder of the task or Inbox
  - [x] Task snooze but continue to count near the folder
  - [x] Repeat tasks 500 Server Error without due_date
  - [x] Error with closing project's task in today or week folder ('url projects/0/task_apply not found')
