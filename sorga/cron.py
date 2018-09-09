@@ -42,9 +42,17 @@ def task():
         content = f"{timezone.now().date()}:\n\n"
         for task in tasks:
             content += f" - {task.task_name}\n"
+
+        random_tasks = Task.objects.filter(user=user,
+                                           done_flag=False,
+                                           due_date=None).order_by('?')[:1]
+        if random_tasks:
+            content += f"\nRandom:\n"
+            for task in random_tasks:
+                content += f" - {task.task_name}\n"
+
         content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
-        send(user.email, subject, content)
-        print(content)
+        send(user.email, subject, content) # print(content)
 
 
 if __name__ == "__main__":
