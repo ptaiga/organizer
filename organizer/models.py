@@ -49,12 +49,8 @@ class Task(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
-    def today_or_overdue(self):
-        if self.due_date:
-            now = timezone.now()
-            return self.due_date.date() <= now.date()
-        else:
-            return False
+    def overdue(self):
+        return self.due_date < timezone.now() if self.due_date else False
 
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
