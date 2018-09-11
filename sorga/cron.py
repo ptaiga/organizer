@@ -36,6 +36,7 @@ def task():
         if not user.email: continue
         tasks = Task.objects.filter(user=user,
                                     done_flag=False,
+                                    project__done_flag=False,
                                     due_date__date__lte=timezone.now())
         if not tasks: continue
         subject = f"{user.username.capitalize()}, tasks for {timezone.now().date()}"
@@ -45,6 +46,7 @@ def task():
 
         random_tasks = Task.objects.filter(user=user,
                                            done_flag=False,
+                                           project__done_flag=False,
                                            due_date=None).order_by('?')[:1]
         if random_tasks:
             content += f"\nRandom:\n"

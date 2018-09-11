@@ -14,7 +14,7 @@
  - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In adding date without time install time to 20:59
- - [ ] Add random task in today email
+ - [x] Add random task in today email
  - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
  - [x] Link to organizer in email massage about today tasks
@@ -26,6 +26,11 @@
  - [ ] Profile page with all user's data
  - [ ] Ability to change email
  - [ ] Link to confirm email
+ - [ ] Checkbox for random tasks in daily email and choose number of tasks
+
+**UX/UI**:
+ - [ ] Turn on/off sidebar save to cookies
+ - [ ] Wrap/unwrap block with active projects in sidebar
 
 **Bugs**:
  - [ ] Url 'organizer/asdf' go to Inbox with "Asdf" header
