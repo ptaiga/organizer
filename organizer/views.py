@@ -12,7 +12,7 @@ import markdown, json
 from .models import Project, Task, Comment
 from .functions import get_project_list, get_task_list, get_task_count
 
-from sorga.private_settings import email_to, email_from, \
+from main.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
 
 def show(request, show_type='project', project_id=None):

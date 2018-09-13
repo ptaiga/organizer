@@ -14,6 +14,7 @@
  - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In adding date without time install time to 20:59
+ - [ ] In Week folder sort tasks by due_date
  - [x] Add random task in today email
  - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
@@ -33,6 +34,8 @@
  - [ ] Wrap/unwrap block with active projects in sidebar
 
 **Bugs**:
+ - [ ] Instead of renaming the project is hidden
+ - [ ] When go into hidden project look at "View hidden projects" link
  - [ ] Url 'organizer/asdf' go to Inbox with "Asdf" header
  - [x] Close a task in Today folder go to project folder of the task or Inbox
  - [x] Task snooze but continue to count near the folder

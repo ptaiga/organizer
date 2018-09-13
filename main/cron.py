@@ -2,8 +2,8 @@
 
 import sys, os
 
-sys.path.append('/home/ptaiga/sorga/')
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sorga.settings")
+sys.path.append('/home/ptaiga/main/')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
@@ -13,7 +13,7 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from django.urls import reverse
 
-from sorga.private_settings import email_to, email_from, \
+from main.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password
 
 from organizer.models import Task
