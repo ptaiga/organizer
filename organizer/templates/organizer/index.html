@@ -65,7 +65,7 @@
             {% endif %}
 
             <p class="view-hidden">
-            {% if active == 'hidden' %}
+            {% if active == 'hidden' or project.done_flag %}
                 <a href="{% url 'organizer:show' 'inbox' %}">View active projects</a>
             {% else %}
                 <a href="{% url 'organizer:show' 'hidden' %}">View hidden projects</a>
