@@ -51,7 +51,7 @@
             {% endif %}
             <hr>
             {% if project %}
-            <form action="{% url 'organizer:projects_rename' project.id %}" method="post">
+            <form action="{% url 'organizer:projects_change' project.id 'rename' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="project_name" value="{{ project }}" required>
                 <input type="submit" value="Rename">

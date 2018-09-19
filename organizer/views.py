@@ -123,15 +123,6 @@ def comments_save(request, task_id):
         Comment(user=user, task=task, comment_text=comment_text).save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
-def projects_change(request, project_id, status):
-    user = request.user if request.user.is_authenticated else None
-    project = get_object_or_404(Project, pk=project_id, user=user)
-    if status == 'activate':
-        project.done_flag = False
-    else:
-        project.done_flag = True
-    project.save()
-    return HttpResponseRedirect(reverse('organizer:index'))
 
 def tasks_apply(request, project_id):
     user = request.user if request.user.is_authenticated else None
@@ -155,9 +146,23 @@ def tasks_apply(request, project_id):
         return HttpResponseRedirect(reverse('organizer:project', \
             args=(project_id,)))
 
-    else:
-        return HttpResponseRedirect(reverse('organizer:show', \
-            args=(project_id,)))
+    return HttpResponseRedirect(reverse('organizer:show', \
+        args=(project_id,)))
+
+
+def projects_change(request, project_id, status):
+    user = request.user if request.user.is_authenticated else None
+    project = get_object_or_404(Project, pk=project_id, user=user)
+    if status == 'rename':
+        project_name = request.POST['project_name']
+        project.project_name = project_name
+    if status == 'activate':
+        project.done_flag = False
+    if status == 'hide':
+        project.done_flag = True
+    project.save()
+    return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
+
 
 def comments_hide(request, task_id):
     user = request.user if request.user.is_authenticated else None
@@ -168,13 +173,6 @@ def comments_hide(request, task_id):
     comment.save()
     return HttpResponseRedirect(reverse('organizer:task', args=(task_id,)))
 
-def projects_rename(request, project_id):
-    user = request.user if request.user.is_authenticated else None
-    p = get_object_or_404(Project, pk=project_id, user=user)
-    project_name = request.POST['project_name']
-    p.project_name = project_name
-    p.save()
-    return HttpResponseRedirect(reverse('organizer:project', args=(project_id,)))
 
 def tasks_change(request, task_id):
     user = request.user if request.user.is_authenticated else None
