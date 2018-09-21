@@ -19,6 +19,9 @@ def show(request, show_type='project', project_id=None):
     user = request.user if request.user.is_authenticated else None
     sort = '-pub_date'
 
+    if show_type not in ['project', 'hidden', 'inbox', 'today', 'week']:
+        raise Http404("Page not found")
+
     if show_type == 'project' and not project_id: show_type = 'inbox'
 
     done_flag = True if 'done_tasks' in request.GET else False
