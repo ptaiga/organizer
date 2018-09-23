@@ -7,6 +7,7 @@
  - [ ] Scrollbar: different for project and task areas, accurate and minimal width
  - [ ] Manualy change width of projects bar
  - [ ] Calendar: comfortable popup (or something other)
+ - [ ] Sorting for comments (newest or latest)
 
 **Features**
 

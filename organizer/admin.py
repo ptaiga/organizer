@@ -31,5 +31,5 @@ admin.site.register(Project, ProjectAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Comment)
 
-admin.AdminSite.site_header = 'Sorga administration'
-admin.AdminSite.site_title = 'Sorga site admin'
+admin.AdminSite.site_header = 'Organizer administration'
+admin.AdminSite.site_title = 'Organizer app admin'

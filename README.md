@@ -15,6 +15,7 @@
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In adding date without time install time to 20:59
  - [ ] In Week folder sort tasks by due_date
+ - [ ] In Week folder separate tasks for tomorrow
  - [x] Add random task in today email
  - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
@@ -33,10 +34,14 @@
  - [ ] Turn on/off sidebar save to cookies
  - [ ] Wrap/unwrap block with active projects in sidebar
 
+**Refactoring**:
+ - [x] Review projects_change and projects_rename view
+
 **Bugs**:
- - [ ] Instead of renaming the project is hidden
- - [ ] When go into hidden project look at "View hidden projects" link
- - [ ] Url 'organizer/asdf' go to Inbox with "Asdf" header
+ - [ ] Crash introduction page style when use https
+ - [x] Url 'organizer/asdf' go to Inbox with "Asdf" header
+ - [x] When go into hidden project look at "View hidden projects" link
+ - [x] Instead of renaming the project is hidden
  - [x] Close a task in Today folder go to project folder of the task or Inbox
  - [x] Task snooze but continue to count near the folder
  - [x] Repeat tasks 500 Server Error without due_date
