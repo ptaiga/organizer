@@ -14,8 +14,8 @@
  - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In adding date without time install time to 20:59
- - [ ] In Week folder sort tasks by due_date
  - [ ] In Week folder separate tasks for tomorrow
+ - [x] In Week folder sort tasks by due_date
  - [x] Add random task in today email
  - [x] Add repeating every two days
  - [x] Subject in message begin with capitalize letter
@@ -39,6 +39,7 @@
 
 **Bugs**:
  - [ ] Crash introduction page style when use https
+ - [ ] Changing task from Today folder redirect to task's project
  - [x] Url 'organizer/asdf' go to Inbox with "Asdf" header
  - [x] When go into hidden project look at "View hidden projects" link
  - [x] Instead of renaming the project is hidden
