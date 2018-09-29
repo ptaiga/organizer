@@ -203,7 +203,7 @@ def tasks_change(request, task_id):
     task.snooze_date = timezone.now() if snooze == "today" else None
     task.priority = priority
     task.due_date = (due_date_d + 'T' \
-                            + (due_date_t if due_date_t else '00:00') \
+                            + (due_date_t if due_date_t else '20:59') \
                             + '+00') if due_date_d else None
     task.save()
     return HttpResponseRedirect(reverse('organizer:project', \
