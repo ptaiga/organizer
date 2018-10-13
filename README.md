@@ -11,10 +11,9 @@
  - [ ] Visitor's statistics
  - [ ] Automatic register new users and send them email
  - [ ] Extend time for snooze tasks (to week, to deadline)
- - [ ] Auto snooze periodical tasks after close
  - [ ] Variable for auto-naming of repeated tasks
- - [ ] In adding date without time install time to 20:59
  - [ ] In Week folder separate tasks for tomorrow
+ - [x] Set time to 20:59 if add date without time
  - [x] In Week folder sort tasks by due_date
  - [x] Add random task in today email
  - [x] Add repeating every two days
