@@ -13,6 +13,7 @@
  - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In Week folder separate tasks for tomorrow
+ - [ ] Task assigment date in addition to the deadline
  - [x] Set time to 20:59 if add date without time
  - [x] In Week folder sort tasks by due_date
  - [x] Add random task in today email

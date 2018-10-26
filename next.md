@@ -21,7 +21,8 @@
  - [ ] Manually estimating duration of tasks
  - [ ] Estimating duration of projects
  - [ ] Local time for users
- - [ ] Subprojects (or nesting), subtasks (or nesting)
+ - [ ] Subprojects
+ - [ ] Subtasks
  - [ ] Remember settings (cookie or local storage or db)
 
 **Other**
