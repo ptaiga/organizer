@@ -14,6 +14,7 @@
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In Week folder separate tasks for tomorrow
  - [ ] Task assigment date in addition to the deadline
+ - [ ] Optimize date visualization (weekday for tasks in current week, hide year for current year tasks, by default 20:59 -> 20:00 (for reduce text))
  - [x] Set time to 20:59 if add date without time
  - [x] In Week folder sort tasks by due_date
  - [x] Add random task in today email
@@ -28,7 +29,8 @@
  - [ ] Profile page with all user's data
  - [ ] Ability to change email
  - [ ] Link to confirm email
- - [ ] Checkbox for random tasks in daily email and choose number of tasks
+ - [ ] Checkbox for random tasks in daily email
+ - [ ] Choose number of random tasks in daily email
 
 **UX/UI**:
  - [ ] Turn on/off sidebar save to cookies
@@ -38,8 +40,8 @@
  - [x] Review projects_change and projects_rename view
 
 **Bugs**:
- - [ ] Crash introduction page style when use https
  - [ ] Changing task from Today folder redirect to task's project
+ - [x] Crash introduction page style when use https
  - [x] Week counts next Sunday tasks
  - [x] Url 'organizer/asdf' go to Inbox with "Asdf" header
  - [x] When go into hidden project look at "View hidden projects" link
