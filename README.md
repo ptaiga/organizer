@@ -40,6 +40,7 @@
 **Bugs**:
  - [ ] Crash introduction page style when use https
  - [ ] Changing task from Today folder redirect to task's project
+ - [x] Week counts next Sunday tasks
  - [x] Url 'organizer/asdf' go to Inbox with "Asdf" header
  - [x] When go into hidden project look at "View hidden projects" link
  - [x] Instead of renaming the project is hidden

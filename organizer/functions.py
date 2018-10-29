@@ -27,7 +27,7 @@ def get_task_list(user, project, done_flag=False, status=None):
             Task.objects.filter(
                 user=user,
                 done_flag=False,
-                due_date__date__lte = sunday
+                due_date__date__lt = sunday
             ).exclude(snooze_date__date=timezone.now().date())
 
     return \
@@ -55,7 +55,7 @@ def get_task_count(user):
     num_week_tasks = Task.objects.filter(
             user=user,
             done_flag=False,
-            due_date__date__lte = sunday
+            due_date__date__lt = sunday
         ).exclude(snooze_date__date=timezone.now().date()).count()
 
     return num_inbox_tasks, num_today_tasks, num_week_tasks
