@@ -2,8 +2,8 @@
 
 ## To-do list:
 
-### 5th stage ###
-(_ver. 0.4.1 -> 0.5.0_: progressive features)
+### 5th stage. Part 2 ###
+(_ver. 0.4.9 -> 0.5.0_: progressive features)
 
 **Features**:
  - [ ] Import data from JSON
@@ -15,6 +15,28 @@
  - [ ] In Week folder separate tasks for tomorrow
  - [ ] Task assigment date in addition to the deadline
  - [ ] Optimize date visualization (weekday for tasks in current week, hide year for current year tasks, by default 20:59 -> 20:00 (for reduce text))
+
+**Profile**:
+ - [ ] Checkbox in profile to subscribe/unsubscribe today notification
+ - [ ] Profile page with all user's data
+ - [ ] Ability to change email
+ - [ ] Link to confirm email
+ - [ ] Checkbox for random tasks in daily email
+ - [ ] Choose number of random tasks in daily email
+ 
+ **UX/UI**:
+ - [ ] Turn on/off sidebar save to cookies
+ - [ ] Wrap/unwrap block with active projects in sidebar
+ 
+ **Bugs**:
+ - [ ] Changing task from Today folder redirect to task's project
+
+---
+
+### 5th stage. Part 1 ###
+(_ver. 0.4.1 -> 0.4.8_: release progressive features from __Jul 21, 2018__ to __Oct 29, 2018__)
+
+**Features**:
  - [x] Set time to 20:59 if add date without time
  - [x] In Week folder sort tasks by due_date
  - [x] Add random task in today email
@@ -24,23 +46,10 @@
  - [x] Email notification about today tasks
  - [x] Separate application for user profile
 
-**Profile**:
- - [ ] Checkbox in profile to subscribe/unsubscribe today notification
- - [ ] Profile page with all user's data
- - [ ] Ability to change email
- - [ ] Link to confirm email
- - [ ] Checkbox for random tasks in daily email
- - [ ] Choose number of random tasks in daily email
-
-**UX/UI**:
- - [ ] Turn on/off sidebar save to cookies
- - [ ] Wrap/unwrap block with active projects in sidebar
-
 **Refactoring**:
  - [x] Review projects_change and projects_rename view
 
 **Bugs**:
- - [ ] Changing task from Today folder redirect to task's project
  - [x] Crash introduction page style when use https
  - [x] Week counts next Sunday tasks
  - [x] Url 'organizer/asdf' go to Inbox with "Asdf" header
