@@ -12,7 +12,7 @@
 **Features**
 
  - [ ] Calendars for visualization of activity by projects and tasks (timeline)
- - [ ] Check time
+ - [ ] Check time (?)
  - [ ] Localization (choose language: en, ru)
  - [ ] Offline mode (local storage?)
  - [ ] Fast notes
@@ -23,7 +23,8 @@
  - [ ] Local time for users
  - [ ] Subprojects
  - [ ] Subtasks
- - [ ] Remember settings (cookie or local storage or db)
+ - [ ] Remember settings (cookie or local storage or db): opened/closed for project bar, opened/closed for task properties
+ - [ ] Simple logging of user actions
 
 **Other**
 
