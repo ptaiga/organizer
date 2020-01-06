@@ -31,6 +31,7 @@
  **Bugs**:
  - [ ] Changing task from Today folder redirect to task's project
  - [ ] Link "organizer/export/" don't work properly
+ - [ ] Incorrect work of week-folder for weekend
 
 ---
 
