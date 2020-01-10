@@ -14,7 +14,12 @@
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In Week folder separate tasks for tomorrow
  - [ ] Task assigment date in addition to the deadline
- - [ ] Optimize date visualization (weekday for tasks in current week, hide year for current year tasks, by default 20:59 -> 20:00 (for reduce text))
+ - [ ] Optimize date visualization: 
+   - [ ] weekday for tasks in current week 
+   - [ ] hide year for current year tasks
+   - [ ] by default 20:59 -> 20:00 (for reduce text)
+ - [ ] Tomorrow tasks in Today with hide/show button
+ - [ ] Categorize task in Week by day of week (consider repeating tasks)
 
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
@@ -31,7 +36,7 @@
  **Bugs**:
  - [ ] Changing task from Today folder redirect to task's project
  - [ ] Link "organizer/export/" don't work properly
- - [ ] Incorrect work of week-folder for weekend
+ - [x] Incorrect work of week-folder for weekend
 
 ---
 
