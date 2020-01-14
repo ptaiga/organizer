@@ -20,6 +20,7 @@
    - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
+ - [ ] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick
 
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
