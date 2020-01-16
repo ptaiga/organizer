@@ -21,6 +21,8 @@
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
  - [ ] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick
+ - [ ] Remove "View done tasks" from Today and Week folder
+ - [ ] Stsrt to use constants 
 
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
