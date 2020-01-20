@@ -11,7 +11,7 @@ import markdown, json
 
 from .models import Project, Task, Comment
 from .functions import get_project_list, get_task_list, get_task_count
-from .functions import task_due_time_default
+from .settings import task_due_time_default
 
 from main.private_settings import email_to, email_from, \
                                     email_auth_user, email_auth_password

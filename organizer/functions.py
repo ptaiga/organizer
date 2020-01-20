@@ -3,8 +3,6 @@ from datetime import timedelta
 
 from .models import Project, Task
 
-task_due_time_default = '20:00'
-
 def get_project_list(user, done_flag=False):
     return \
         Project.objects.filter(
