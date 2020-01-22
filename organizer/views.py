@@ -42,7 +42,7 @@ def show(request, show_type='project', project_id=None):
         project_list = get_project_list(user)
     task_list = get_task_list(user, project, done_flag, show_type)
     if show_type == 'week':
-        task_list = task_list.order_by('due_date')
+        task_list = task_list.order_by('due_date', 'priority', sort)
     else:
         task_list = task_list.order_by('priority', sort)
 
