@@ -12,7 +12,7 @@
  - [ ] Automatic register new users and send them email
  - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Variable for auto-naming of repeated tasks
- - [ ] In Week folder separate tasks for tomorrow
+ - [ ] In Week folder split tasks by day of the week (taking into account reccuiring tasks)
  - [ ] Task assigment date in addition to the deadline
  - [ ] Optimize date visualization: 
    - [ ] weekday for tasks in current week 
@@ -38,7 +38,7 @@
  
  **Bugs**:
  - [ ] Changing task from Today folder redirect to task's project
- - [ ] Link "organizer/export/" don't work properly
+ - [x] Link "organizer/export/" don't work properly
  - [x] Sort doesn't work in Week
  - [x] Incorrect work of week-folder for weekend
 

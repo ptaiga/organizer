@@ -215,7 +215,7 @@ def about(request):
     # return HttpResponse(f"Hi, {user}! Sorga - simple organizer app. Version 0.3.0")
     with open('README.md') as f:
         content = f.read()
-    content = markdown.markdown(content, ['markdown.extensions.nl2br'])
+    content = markdown.markdown(content, extensions = ['markdown.extensions.nl2br'])
     return HttpResponse(content)
 
 def intro(request):

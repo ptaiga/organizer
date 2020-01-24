@@ -5,7 +5,6 @@ from . import views
 app_name = 'organizer'
 urlpatterns = [
     path('', views.show, {'show_type': 'today'}, name='index'),
-    path('<slug:show_type>/', views.show, name='show'),
     path('project/<int:project_id>/', views.show, name='project'),
     path('sort/<str:show_type>/<int:project_id>/', views.show, name='sort'),
     path('tasks/<int:task_id>/', views.task, name='task'),
@@ -20,4 +19,5 @@ urlpatterns = [
     path('send/', views.send, name='send'),
     path('export/', views.export, {'mode': 'other'}, name='export'),
     path('export/<str:mode>/', views.export, name='export'),
+    path('<slug:show_type>/', views.show, name='show'),
 ]
