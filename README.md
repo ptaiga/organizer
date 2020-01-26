@@ -12,7 +12,7 @@
  - [ ] Automatic register new users and send them email
  - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Variable for auto-naming of repeated tasks
- - [ ] In Week folder split tasks by day of the week (taking into account reccuiring tasks)
+ - [ ] In Week folder split tasks by day of the week (taking into account recurring tasks)
  - [ ] Task assigment date in addition to the deadline
  - [ ] Optimize date visualization: 
    - [ ] weekday for tasks in current week 
@@ -22,7 +22,6 @@
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
  - [ ] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick
  - [ ] Remove "View done tasks" link and "Add task" button from Today and Week folder _(??? performing this task is appropriate when simplifying the code, otherwise it is better to leave it as it is )_
- - [x] Start to use constants
 
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
@@ -32,11 +31,15 @@
  - [ ] Checkbox for random tasks in daily email
  - [ ] Choose number of random tasks in daily email
  
- **UX/UI**:
+**UX/UI**:
  - [ ] Turn on/off sidebar save to cookies
  - [ ] Wrap/unwrap block with active projects in sidebar
- 
- **Bugs**:
+
+**Code**:
+ - [ ] Auto change current year in the end of intro template
+ - [x] Start to use constants
+
+**Bugs**:
  - [ ] Changing task from Today folder redirect to task's project
  - [x] Link "organizer/export/" don't work properly
  - [x] Sort doesn't work in Week
