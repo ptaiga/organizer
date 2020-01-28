@@ -219,7 +219,9 @@ def about(request):
     return HttpResponse(content)
 
 def intro(request):
-    return render(request, 'organizer/intro.html')
+    return render(request, 'organizer/intro.html', {
+        'current_year': timezone.now().year,
+        })
 
 def send(request):
     email = request.POST['email']

@@ -36,7 +36,7 @@
  - [ ] Wrap/unwrap block with active projects in sidebar
 
 **Code**:
- - [ ] Auto change current year in the end of intro template
+ - [x] Auto change current year in the end of intro template
  - [x] Start to use constants
 
 **Bugs**:
