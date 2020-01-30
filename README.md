@@ -41,6 +41,7 @@
 
 **Bugs**:
  - [ ] Changing task from Today folder redirect to task's project
+ - [ ] Daily email don't use tasks from Inbox
  - [x] Link "organizer/export/" don't work properly
  - [x] Sort doesn't work in Week
  - [x] Incorrect work of week-folder for weekend

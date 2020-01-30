@@ -25,6 +25,7 @@
  - [ ] Subtasks
  - [ ] Remember settings (cookie or local storage or db): opened/closed for project bar, opened/closed for task properties
  - [ ] Simple logging of user actions
+ - [ ] Notifications (birthdays, events, meetings, etc.)
 
 **Other**
 
