@@ -44,6 +44,15 @@ def task():
         for task in tasks:
             content += f" - {task.task_name}\n"
 
+        inbox_tasks = Task.objects.filter(user=user,
+                                          done_flag=False,
+                                          project=None)
+        if inbox_tasks:
+            content += "\nInbox:\n"
+            for task in inbox_tasks:
+                content += f" - {task.task_name}"
+                content += f" ({task.due_date.date()})\n" if task.due_date else "\n"
+
         random_tasks = Task.objects.filter(user=user,
                                            done_flag=False,
                                            project__done_flag=False,
