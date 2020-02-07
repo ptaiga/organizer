@@ -117,8 +117,9 @@
                 </form>
 
             {% else %}
-                <p>No tasks are available.</p>
-                <p>Select the project to see available tasks.</p>
+                <p><span style="font-size: 72px;">&#9989;</span><b>Great!</b> You have completed all the tasks.</p>
+                <p>Select a project to see more... or create a new task.</p>
+
             {% endif%}
 
             <form action="{% url 'organizer:tasks_add' %}" method="post">

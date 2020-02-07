@@ -20,7 +20,7 @@
    - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
- - [ ] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick
+ - [ ] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick (https://www.htmlsymbols.xyz/unicode/U+2705)
  - [ ] Remove "View done tasks" link and "Add task" button from Today and Week folder _(??? performing this task is appropriate when simplifying the code, otherwise it is better to leave it as it is )_
 
 **Profile**:
