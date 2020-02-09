@@ -8,6 +8,8 @@
  - [ ] Manualy change width of projects bar
  - [ ] Calendar: comfortable popup (or something other)
  - [ ] Sorting for comments (newest or latest)
+ - [ ] Context menu
+ - [ ] Change name of task/project directly by clicking on
 
 **Features**
 
