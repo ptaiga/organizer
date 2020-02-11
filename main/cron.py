@@ -44,6 +44,10 @@ def task():
         for task in tasks:
             content += f" - {task.task_name}\n"
 
+        content += "\nKeep making your dream come true step by step:"
+        content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:index')}\n"
+        # content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
+
         inbox_tasks = Task.objects.filter(user=user,
                                           done_flag=False,
                                           project=None)
@@ -60,13 +64,8 @@ def task():
         if random_tasks:
             content += f"\nRandom:\n"
             for task in random_tasks:
-                content += f" - {task.task_name}\n"
-            content += "(assign for today: "
-            content += f"https://ptaiga.pythonanywhere.com{reverse('organizer:task', args=(task.id,))})\n"
-
-        content += "\nKeep making your dream come true step by step:"
-        content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:index')}"
-        # content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
+                content += f" - {task.task_name}"
+                content += f" (https://ptaiga.pythonanywhere.com{reverse('organizer:task', args=(task.id,))})\n"
 
         content += "\n\n--\nHave a productive day!\nYour Organizer\n"
         send(user.email, subject, content) # print(content)
