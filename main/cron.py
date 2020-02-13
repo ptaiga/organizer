@@ -67,7 +67,7 @@ def task():
                 content += f" - {task.task_name}"
                 content += f" (https://ptaiga.pythonanywhere.com{reverse('organizer:task', args=(task.id,))})\n"
 
-        content += "\n\n--\nHave a productive day!\nYour Organizer\n"
+        content += "\n--\nHave a productive day!\nYour Organizer\n"
         send(user.email, subject, content) # print(content)
 
 
