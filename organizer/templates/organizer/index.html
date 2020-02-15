@@ -99,7 +99,7 @@
                         </a>
                     </label>
 
-                    {% if task.due_date %} <span {% if task.overdue %} class="overdue"{% endif %}>({{ task.due_date }}{% if task.repeat %}, {{ task.repeat }}{% endif %})</span>{% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}
+                    {% if task.due_date %} <span {% if task.overdue %} class="overdue"{% endif %}>({% if active == 'today' %}{{ task.due_date.time }}{% else %}{{ task.due_date }}{% endif %}{% if task.repeat %}, {{ task.repeat }}{% endif %})</span>{% endif %}{% if task.num_active_comments %} [{{ task.num_active_comments }}]{% endif %}
                 </div>
                 {% endfor %}
                 <br>
