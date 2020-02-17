@@ -17,7 +17,7 @@
  - [ ] Optimize date visualization: 
    - [ ] weekday for tasks in current week 
    - [ ] hide year for current year tasks
-   - [ ] hide date in Today
+   - [x] hide date in Today
    - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)

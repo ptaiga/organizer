@@ -122,28 +122,32 @@
 
             {% endif%}
 
-            <form action="{% url 'organizer:tasks_add' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="project_id" value="{{ project.id }}">
-                <input type="text" name="task_name" placeholder="New task" required>
-                <input type="submit" value="Add">
-            </form>
-            <hr>
-            {% if project %}
-                {% if project.done_flag %}
-                    <a href="{% url 'organizer:projects_change' project.id 'activate' %}"><button>Activate project</button></a>
-                {% else %}
-                    <a href="{% url 'organizer:projects_change' project.id 'hide' %}"><button>Hide project</button></a>
+            {% if active != 'today' and active != 'week' %}
+                <form action="{% url 'organizer:tasks_add' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="project_id" value="{{ project.id }}">
+                    <input type="text" name="task_name" placeholder="New task" required>
+                    <input type="submit" value="Add">
+                </form>
+                <hr>
+                {% if project %}
+                    {% if project.done_flag %}
+                        <a href="{% url 'organizer:projects_change' project.id 'activate' %}"><button>Activate project</button></a>
+                    {% else %}
+                        <a href="{% url 'organizer:projects_change' project.id 'hide' %}"><button>Hide project</button></a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
 
-            <p class="view-hidden">
-            {% if 'done_tasks' in request.GET %}
-                <a href="{% url 'organizer:project' project.id|default:'0' %}">View active tasks</a>
+                <p class="view-hidden">
+                {% if 'done_tasks' in request.GET %}
+                    <a href="{% url 'organizer:project' project.id|default:'0' %}">View active tasks</a>
+                {% else %}
+                    <a href="{% url 'organizer:project' project.id|default:'0' %}?done_tasks">View done tasks</a>
+                {% endif %}
+                </p>
             {% else %}
-                <a href="{% url 'organizer:project' project.id|default:'0' %}?done_tasks">View done tasks</a>
+                <hr>
             {% endif %}
-            </p>
 
         {% endblock %}
         </article>
