@@ -14,15 +14,15 @@
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] In Week folder split tasks by day of the week (taking into account recurring tasks)
  - [ ] Task assigment date in addition to the deadline
- - [ ] Optimize date visualization: 
-   - [ ] weekday for tasks in current week 
+ - [ ] Optimize date visualization:
+   - [ ] weekday for tasks in current week
    - [ ] hide year for current year tasks
-   - [x] hide date in Today
+   - [x] hide date in Today's tasks except for overdue ones
    - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
  - [x] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick (https://www.htmlsymbols.xyz/unicode/U+2705)
- - [ ] Remove "View done tasks" link and "Add task" button from Today and Week folder _(??? performing this task is appropriate when simplifying the code, otherwise it is better to leave it as it is )_
+ - [x] Remove "View done tasks" link and "Add task" button from Today and Week folder
 
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
