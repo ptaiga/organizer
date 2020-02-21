@@ -14,7 +14,7 @@
 
     <input type="checkbox" id="show-task-properties" role="button">
     <label for="show-task-properties">Show task properties &darr;</label>
-    <form action="{% url 'organizer:tasks_change' task.id %}" method="post" class="task-properties">
+    <form action="{% url 'organizer:tasks_change' task.id %}{% if active %}?refer={{ active }}{% endif %}" method="post" class="task-properties">
         {% csrf_token %}
         <ul>
             <li>Owner: {{ user }}</li>

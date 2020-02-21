@@ -207,6 +207,12 @@ def tasks_change(request, task_id):
                             + (due_date_t if due_date_t else task_due_time_default) \
                             + '+00') if due_date_d else None
     task.save()
+
+    if 'refer' in request.GET:
+        refer = request.GET['refer']
+        return HttpResponseRedirect(reverse('organizer:show', \
+            args=(refer,)))
+
     return HttpResponseRedirect(reverse('organizer:project', \
         args=(project_id,)))
 
