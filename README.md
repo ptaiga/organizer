@@ -41,7 +41,7 @@
  - [x] Start to use constants
 
 **Bugs**:
- - [ ] Changing task from Today folder redirect to task's project
+ - [x] Changing task from Today folder redirect to task's project
  - [x] Daily email don't use tasks from Inbox
  - [x] Link "organizer/export/" don't work properly
  - [x] Sort doesn't work in Week
