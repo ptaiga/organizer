@@ -10,7 +10,7 @@
 <body>
 
     <nav>
-        <label for="show-projects" class="show-projects">Projects</label>
+        <label for="show-projects" class="show-projects" onclick="document.cookie = (window['show-projects'].checked ? 'show-projects=off' : 'show-projects=on') + '; path=/;';">Projects</label>
         {% block nav-center%}
         <div class="welcome">Hi, <a href="{% url 'account:index' %}">{{ user }}</a>!</div>
         {% endblock %}
@@ -31,7 +31,7 @@
     </nav>
 
     <div class="content">
-        <input type="checkbox" id="show-projects" role="button" checked>
+        <input type="checkbox" id="show-projects" role="button" {% if show_projects %}checked{% endif %}>
 
         <aside id="projects">
             <ul>

@@ -49,6 +49,11 @@ def show(request, show_type='project', project_id=None):
     num_inbox_tasks, num_today_tasks, num_week_tasks = \
         get_task_count(user)
 
+    show_projects=True
+    if 'show-projects' in request.COOKIES:
+        if request.COOKIES['show-projects'] == 'off':
+            show_projects = False
+
     response = render(request, 'organizer/index.html', {
         'project_list': project_list,
         'project': project,
@@ -56,8 +61,10 @@ def show(request, show_type='project', project_id=None):
         'num_inbox_tasks': num_inbox_tasks,
         'num_today_tasks': num_today_tasks,
         'num_week_tasks': num_week_tasks,
-        'active': show_type
+        'active': show_type,
+        'show_projects': show_projects,
     })
+
     if 'sort' in request.GET: response.set_cookie('sort', request.GET['sort'])
     return response
 
