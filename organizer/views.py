@@ -65,7 +65,9 @@ def show(request, show_type='project', project_id=None):
         'show_projects': show_projects,
     })
 
-    if 'sort' in request.GET: response.set_cookie('sort', request.GET['sort'])
+    if 'sort' in request.GET:
+        response.set_cookie('sort', request.GET['sort'])
+
     return response
 
 def task(request, task_id):
