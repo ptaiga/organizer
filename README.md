@@ -33,7 +33,6 @@
  - [ ] Choose number of random tasks in daily email
  
 **UX/UI**:
- - [ ] Wrap/unwrap block with active projects in sidebar (???)
  - [x] Turn on/off sidebar save to cookies (https://stackoverflow.com/questions/21350897/html-link-on-input-button/21350915, https://learn.javascript.ru/cookie)
 
 **Code**:

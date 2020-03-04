@@ -10,6 +10,7 @@
  - [ ] Sorting for comments (newest or latest)
  - [ ] Context menu
  - [ ] Change name of task/project directly by clicking on
+ - [ ] Wrap/unwrap block with active projects in sidebar (???)
 
 **Features**
 
