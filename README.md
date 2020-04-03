@@ -33,6 +33,7 @@
  - [ ] Choose number of random tasks in daily email
  
 **UX/UI**:
+ - [ ] Different button colors for on/off sidebar status
  - [x] Turn on/off sidebar save to cookies (https://stackoverflow.com/questions/21350897/html-link-on-input-button/21350915, https://learn.javascript.ru/cookie)
 
 **Code**:
