@@ -91,6 +91,12 @@ def task(request, task_id):
     if 'comment_edit' in request.GET:
         comment_id = request.GET['comment_edit']
         comment = get_object_or_404(Comment, pk=comment_id)
+
+    show_projects=True
+    if 'show-projects' in request.COOKIES:
+        if request.COOKIES['show-projects'] == 'off':
+            show_projects = False
+
     return render(request, 'organizer/task.html', {
         'project_list': project_list,
         'project': task.project,
@@ -101,6 +107,7 @@ def task(request, task_id):
         'num_week_tasks': num_week_tasks,
         'comment': comment,
         'active': refer,
+        'show_projects': show_projects,
     })
 
 def projects_add(request):
