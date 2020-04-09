@@ -41,7 +41,7 @@
  - [x] Start to use constants
 
 **Bugs**:
- - [ ] Saving status of side-bar to cookie doesn't work for task's template
+ - [x] Saving status of side-bar to cookie doesn't work for task's template
  - [x] Changing task from Today folder redirect to task's project
  - [x] Daily email don't use tasks from Inbox
  - [x] Link "organizer/export/" don't work properly
