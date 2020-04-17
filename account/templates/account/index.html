@@ -6,4 +6,14 @@
 <li><a href="{% url 'organizer:export' 'json' %}">{% url 'organizer:export' 'json' %}</a></li>
 </ul>
 
-<p><u>Number of random tasks in daily mail</u>: {{ num_rand_tasks }}.</p>
+<hr>
+
+<form action="{% url 'account:save_changes' %}" method="post">
+    {% csrf_token %}
+    <ul>
+        <li>Username: <input type="text" name="user_name" value="{{ user }}"></li>
+        <li>Number random tasks in daily mail: <input type="number" name="num_rand_tasks" value="{{ num_rand_tasks }}" required></li>
+
+    </ul>
+    <input type="submit" value="Save changes">
+</form>
