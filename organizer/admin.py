@@ -8,7 +8,7 @@ class TaskInline(admin.TabularInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['project_name']}),
+        (None, {'fields': ['project_name', 'user']}),
         ('Date information', {'fields': ['pub_date'],
                                     'classes': ['collapse']}),
     ]
