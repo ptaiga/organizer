@@ -37,6 +37,7 @@
  - [ ] Ajax for base operations
  - [ ] Oppotunity for paid-features API
  - [ ] Separate app for comments
+ - [ ] Terms of service/use
 
 **Future**
 
