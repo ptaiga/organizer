@@ -28,8 +28,7 @@
  - [ ] Profile page with all user's data
  - [ ] Ability to change email
  - [ ] Link to confirm email
- - [ ] Checkbox for random tasks in daily email
- - [ ] Choose number of random tasks in daily email
+ - [x] Choose number of random tasks in daily email
  
 **UX/UI**:
  - [ ] Different button colors for on/off sidebar status
