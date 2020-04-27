@@ -11,7 +11,8 @@
 <form action="{% url 'account:save_changes' %}" method="post">
     {% csrf_token %}
     <ul>
-        <li>Username: <input type="text" name="user_name" value="{{ user }}"></li>
+        <li>Username: <input type="text" name="user_name" value="{{ user }}" required></li>
+        <li>Email: <input type="email" name="user_email" value="{{ user.email }}" required></li>
         <li>Number random tasks in daily mail: <input type="number" name="num_rand_tasks" value="{{ num_rand_tasks }}" required></li>
 
     </ul>
