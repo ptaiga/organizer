@@ -15,9 +15,14 @@ def index(request):
 def save_changes(request):
     user = request.user if request.user.is_authenticated else None
     user_name = request.POST['user_name']
+    user_email = request.POST['user_email']
+    user.username = user_name
+    user.email = user_email
+    user.save()
+
     num_rand_tasks = request.POST['num_rand_tasks']
     account = get_object_or_404(Account, user=user)
-    account.user.username = user_name
     account.num_rand_tasks = int(num_rand_tasks) if int(num_rand_tasks) >= 0 else 0
     account.save()
+
     return HttpResponseRedirect(reverse('account:index'))
