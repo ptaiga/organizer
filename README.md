@@ -26,8 +26,8 @@
 **Profile**:
  - [ ] Checkbox in profile to subscribe/unsubscribe today notification
  - [ ] Profile page with all user's data
- - [ ] Ability to change email
  - [ ] Link to confirm email
+ - [x] Ability to change email
  - [x] Choose number of random tasks in daily email
  
 **UX/UI**:
