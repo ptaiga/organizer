@@ -5,3 +5,4 @@ from django.conf import settings
 class Account(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     num_rand_tasks = models.IntegerField(default=1)
+    daily_email = models.BooleanField(default=False)
