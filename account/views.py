@@ -7,9 +7,9 @@ from .models import Account
 
 def index(request):
     user = request.user if request.user.is_authenticated else None
-    num_rand_tasks = user.account.num_rand_tasks
     return render(request, 'account/index.html', {
-        'num_rand_tasks': num_rand_tasks
+        'num_rand_tasks': user.account.num_rand_tasks,
+        'daily_email': user.account.daily_email,
         })
 
 def save_changes(request):
@@ -20,8 +20,10 @@ def save_changes(request):
     user.email = user_email
     user.save()
 
+    daily_email = True if 'daily_email' in request.POST else False
     num_rand_tasks = request.POST['num_rand_tasks']
     account = get_object_or_404(Account, user=user)
+    account.daily_email = daily_email
     account.num_rand_tasks = int(num_rand_tasks) if int(num_rand_tasks) >= 0 else 0
     account.save()
 
