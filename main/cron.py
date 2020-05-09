@@ -34,7 +34,8 @@ def send(email_to, subject, content):
 
 def task():
     for user in User.objects.all():
-        if not user.email: continue
+        account = Account.objects.get(user=user)
+        if not user.email or not account.daily_email: continue
         tasks = Task.objects.filter(user=user,
                                     done_flag=False,
                                     project__done_flag=False,
@@ -63,7 +64,7 @@ def task():
             done_flag=False,
             project__done_flag=False,
             due_date=None
-        ).order_by('?')[:Account.objects.get(user=user).num_rand_tasks]
+        ).order_by('?')[:account.num_rand_tasks]
         if random_tasks:
             content += f"\nRandom:\n"
             for task in random_tasks:
