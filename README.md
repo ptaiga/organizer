@@ -24,8 +24,8 @@
  - [x] Remove "View done tasks" link and "Add task" button from Today and Week folder
 
 **Profile**:
- - [ ] Checkbox in profile to subscribe/unsubscribe today notification
  - [ ] Link to confirm email
+ - [x] Checkbox in profile to subscribe/unsubscribe today notification
  - [x] Profile page with user's data
  - [x] Ability to change email
  - [x] Choose number of random tasks in daily email
