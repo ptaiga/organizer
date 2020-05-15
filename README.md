@@ -10,7 +10,6 @@
  - [ ] Sharing projects with other users
  - [ ] Visitor's statistics
  - [ ] Automatic register new users and send them email
- - [ ] Extend time for snooze tasks (to week, to deadline)
  - [ ] Variable for auto-naming of repeated tasks
  - [ ] Task assigment date in addition to the deadline
  - [ ] Optimize date visualization:
