@@ -10,7 +10,7 @@
  - [ ] Sorting for comments (newest or latest)
  - [ ] Context menu
  - [ ] Change name of task/project directly by clicking on
- - [ ] Wrap/unwrap block with active projects in sidebar (???)
+ - [ ] *(???)* Wrap/unwrap block with active projects in sidebar
 
 **Features**
 
@@ -29,6 +29,7 @@
  - [ ] Remember settings (cookie or local storage or db): opened/closed for project bar, opened/closed for task properties
  - [ ] Simple logging of user actions
  - [ ] Notifications (birthdays, events, meetings, etc.)
+ - [ ] *(???)* Extend time for snooze tasks (to week, to deadline)
 
 **Other**
 
