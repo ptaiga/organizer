@@ -14,7 +14,7 @@ import os
 
 from .private_settings import email_host, email_port, \
                                 email_timeout, email_use_ssl, \
-                                debug_setting
+                                debug_setting, secret_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x_em*=s2c7a+rsi!nqz^91fwnr59(0+17n2tmb_p(i1d#^^#5s'
+SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = debug_setting
