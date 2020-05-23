@@ -2,7 +2,8 @@
 
 import sys, os
 
-sys.path.append('/home/ptaiga/main/')
+# sys.path.append('/home/ptaiga/main/')
+sys.path.append('/work/organizer/')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 from django.core.wsgi import get_wsgi_application
@@ -31,49 +32,54 @@ def send(email_to, subject, content):
         print("Email to '{email_to}' doesn't send. Try again later")
         return False
 
+def create_message(user, check_account):
+    account = Account.objects.get(user=user)
+    if not user.email: return 
+    if check_account and not account.daily_email: return
+    tasks = Task.objects.filter(user=user,
+                                done_flag=False,
+                                project__done_flag=False,
+                                due_date__date__lte=timezone.now())
+    if not tasks: return
+    content = f"{timezone.now().date()}:\n\n"
+    for task in tasks:
+        content += f" - {task.task_name}\n"
 
-def task():
-    for user in User.objects.all():
-        account = Account.objects.get(user=user)
-        if not user.email or not account.daily_email: continue
-        tasks = Task.objects.filter(user=user,
-                                    done_flag=False,
-                                    project__done_flag=False,
-                                    due_date__date__lte=timezone.now())
-        if not tasks: continue
-        subject = f"{user.username.capitalize()}, tasks for {timezone.now().date()}"
-        content = f"{timezone.now().date()}:\n\n"
-        for task in tasks:
-            content += f" - {task.task_name}\n"
+    content += "\nKeep making your dream come true step by step:"
+    content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:index')}\n"
+    # content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
 
-        content += "\nKeep making your dream come true step by step:"
-        content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:index')}\n"
-        # content += f"\nhttps://ptaiga.pythonanywhere.com{reverse('organizer:show', args=('today',))}"
+    inbox_tasks = Task.objects.filter(user=user,
+                                      done_flag=False,
+                                      project=None)
+    if inbox_tasks:
+        content += "\nInbox:\n"
+        for task in inbox_tasks:
+            content += f" - {task.task_name}"
+            content += f" ({task.due_date.date()})\n" if task.due_date else "\n"
 
-        inbox_tasks = Task.objects.filter(user=user,
-                                          done_flag=False,
-                                          project=None)
-        if inbox_tasks:
-            content += "\nInbox:\n"
-            for task in inbox_tasks:
-                content += f" - {task.task_name}"
-                content += f" ({task.due_date.date()})\n" if task.due_date else "\n"
+    random_tasks = Task.objects.filter(
+        user=user,
+        done_flag=False,
+        project__done_flag=False,
+        due_date=None
+    ).order_by('?')[:account.num_rand_tasks]
+    if random_tasks:
+        content += f"\nRandom:\n"
+        for task in random_tasks:
+            content += f" - {task.task_name}"
+            content += f" (https://ptaiga.pythonanywhere.com{reverse('organizer:task', args=(task.id,))})\n"
 
-        random_tasks = Task.objects.filter(
-            user=user,
-            done_flag=False,
-            project__done_flag=False,
-            due_date=None
-        ).order_by('?')[:account.num_rand_tasks]
-        if random_tasks:
-            content += f"\nRandom:\n"
-            for task in random_tasks:
-                content += f" - {task.task_name}"
-                content += f" (https://ptaiga.pythonanywhere.com{reverse('organizer:task', args=(task.id,))})\n"
+    content += "\n--\nHave a productive day!\nYour Organizer\n"
+    return content
 
-        content += "\n--\nHave a productive day!\nYour Organizer\n"
-        send(user.email, subject, content) # print(content)
+def send_message(user, check_account):
+    content = create_message(user, check_account)
+    if not content: return
+    subject = f"{user.username.capitalize()}, tasks for {timezone.now().date()}"
+    send(user.email, subject, content) # print(user.email, subject, content)
 
 
 if __name__ == "__main__":
-    task()
+    for user in User.objects.all():
+        send_message(user, check_account=True)
