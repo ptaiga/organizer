@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Account
+from main.cron import send_message
 
 
 def index(request):
@@ -28,3 +29,8 @@ def save_changes(request):
     account.save()
 
     return HttpResponseRedirect(reverse('account:index'))
+
+def send_daily_mail(request):
+    user = request.user if request.user.is_authenticated else None
+    send_message(user, check_account=False)
+    return HttpResponse("Daily message has been sent!")

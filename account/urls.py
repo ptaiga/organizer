@@ -6,4 +6,5 @@ app_name='account'
 urlpatterns = [
     path('', views.index, name='index'),
     path('save_changes', views.save_changes, name='save_changes'),
+    path('send_daily_mail', views.send_daily_mail, name='send_daily_mail'),
 ]

@@ -19,3 +19,10 @@
     </ul>
     <input type="submit" value="Save changes">
 </form>
+
+<hr>
+
+<form action="{% url 'account:send_daily_mail' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Send daily mail">
+</form>
