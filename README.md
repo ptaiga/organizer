@@ -24,7 +24,7 @@
 
 **Profile**:
  - [ ] Link to confirm email
- - [ ] Send daily message from profile
+ - [x] Send daily message from user profile
  - [x] Checkbox in profile to subscribe/unsubscribe today notification
  - [x] Profile page with user's data
  - [x] Ability to change email
