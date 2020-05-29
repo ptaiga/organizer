@@ -2,8 +2,7 @@
 
 import sys, os
 
-# sys.path.append('/home/ptaiga/main/')
-sys.path.append('/work/organizer/')
+sys.path.append('/home/ptaiga/main/')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 from django.core.wsgi import get_wsgi_application
