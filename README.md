@@ -19,13 +19,12 @@
    - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
- - [ ] Set seed(today) for random tasks
  - [x] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick (https://www.htmlsymbols.xyz/unicode/U+2705)
  - [x] Remove "View done tasks" link and "Add task" button from Today and Week folder
 
 **Profile**:
  - [ ] Link to confirm email
- - [ ] Button for show today random task(-s)
+ - [ ] Button for go to random task
  - [x] Send daily message from user profile
  - [x] Checkbox in profile to subscribe/unsubscribe today notification
  - [x] Profile page with user's data

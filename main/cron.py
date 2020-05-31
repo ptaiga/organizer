@@ -31,6 +31,14 @@ def send(email_to, subject, content):
         print("Email to '{email_to}' doesn't send. Try again later")
         return False
 
+def generate_random_tasks(user, num_rand_tasks=1):
+    return Task.objects.filter(
+            user=user,
+            done_flag=False,
+            project__done_flag=False,
+            due_date=None
+        ).order_by('?')[:num_rand_tasks]
+
 def create_message(user, check_account):
     account = Account.objects.get(user=user)
     if not user.email: return 
@@ -57,12 +65,7 @@ def create_message(user, check_account):
             content += f" - {task.task_name}"
             content += f" ({task.due_date.date()})\n" if task.due_date else "\n"
 
-    random_tasks = Task.objects.filter(
-        user=user,
-        done_flag=False,
-        project__done_flag=False,
-        due_date=None
-    ).order_by('?')[:account.num_rand_tasks]
+    random_tasks = generate_random_tasks(user, account.num_rand_tasks)
     if random_tasks:
         content += f"\nRandom:\n"
         for task in random_tasks:
