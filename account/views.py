@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Account
-from main.cron import send_message
+from main.cron import send_message, generate_random_tasks
 
 
 def index(request):
@@ -34,3 +34,8 @@ def send_daily_mail(request):
     user = request.user if request.user.is_authenticated else None
     send_message(user, check_account=False)
     return HttpResponse("Daily message has been sent!")
+
+def random_task(request):
+    user = request.user if request.user.is_authenticated else None
+    task = generate_random_tasks(user)[0]
+    return HttpResponseRedirect(reverse('organizer:task', args=(task.id,)))

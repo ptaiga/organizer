@@ -26,3 +26,8 @@
     {% csrf_token %}
     <input type="submit" value="Send daily mail">
 </form>
+
+<form action="{% url 'account:random_task' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Random task">
+</form>
