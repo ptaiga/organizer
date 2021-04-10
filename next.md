@@ -30,6 +30,9 @@
  - [ ] Simple logging of user actions
  - [ ] Notifications (birthdays, events, meetings, etc.)
  - [ ] *(???)* Extend time for snooze tasks (to week, to deadline)
+ - [ ] Weather forecast in daily mail
+ - [ ] Currency exchange rate in daily mail
+ - [ ] Telegram Bot
 
 **Other**
 

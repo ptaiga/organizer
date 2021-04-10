@@ -2,8 +2,8 @@
 
 ## To-do list:
 
-### 5th stage. Part 2 ###
-(_ver. 0.4.9 -> 0.5.0_: progressive features)
+### 5th stage. Part 3 ###
+(_ver. 0.4.10 -> 0.5.0_: progressive features)
 
 **Features**:
  - [ ] Import data from JSON
@@ -15,24 +15,35 @@
  - [ ] Optimize date visualization:
    - [ ] weekday for tasks in current week
    - [ ] hide year for current year tasks
-   - [x] hide date in Today's tasks except for overdue ones
-   - [x] by default 20:59 -> 20:00 (for reduce text)
  - [ ] Tomorrow tasks in Today with hide/show button
  - [ ] Categorize task in Week by day of week (consider repeating tasks)
- - [x] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick (https://www.htmlsymbols.xyz/unicode/U+2705)
- - [x] Remove "View done tasks" link and "Add task" button from Today and Week folder
 
 **Profile**:
  - [ ] Link to confirm email
  - [ ] Button for go to random task
+
+**UX/UI**:
+ - [ ] Different button colors for on/off sidebar status
+
+---
+
+### 5th stage. Part 2 ###
+(_ver. 0.4.9_: refactoring from __Jan 02, 2020__ to __Jun 06, 2020__)
+
+**Features**:
+ - [x] hide date in Today's tasks except for overdue ones
+ - [x] by default 20:59 -> 20:00 (for reduce text)
+ - [x] Beauty placeholder in empty Today-folder: for example, "You're great!" or big green tick (https://www.htmlsymbols.xyz/unicode/U+2705)
+ - [x] Remove "View done tasks" link and "Add task" button from Today and Week folder
+
+**Profile**:
  - [x] Send daily message from user profile
  - [x] Checkbox in profile to subscribe/unsubscribe today notification
  - [x] Profile page with user's data
  - [x] Ability to change email
  - [x] Choose number of random tasks in daily email
- 
+
 **UX/UI**:
- - [ ] Different button colors for on/off sidebar status
  - [x] Turn on/off sidebar save to cookies (https://stackoverflow.com/questions/21350897/html-link-on-input-button/21350915, https://learn.javascript.ru/cookie)
 
 **Code**:
