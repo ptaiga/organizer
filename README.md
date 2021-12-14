@@ -11,7 +11,7 @@
  - [ ] Visitor's statistics
  - [ ] Automatic register new users and send them email
  - [ ] Variable for auto-naming of repeated tasks
- - [ ] Task assigment date in addition to the deadline
+ - [ ] Task assigment date(s) in addition to the deadline (or repeat feat.)
  - [ ] Optimize date visualization:
    - [ ] weekday for tasks in current week
    - [ ] hide year for current year tasks
@@ -20,12 +20,17 @@
 
 **Profile**:
  - [ ] Link to confirm email
- - [ ] Button for go to random task
 
 **UX/UI**:
  - [ ] Different button colors for on/off sidebar status
 
+**Refactoring**:
+ - [ ] Remove current code of sort feature
+ - [ ] Refactor functions 'organizer/views.py'
+
 ---
+
+## Releases
 
 ### 5th stage. Part 2 ###
 (_ver. 0.4.9_: refactoring from __Jan 02, 2020__ to __Jun 06, 2020__)
@@ -42,6 +47,7 @@
  - [x] Profile page with user's data
  - [x] Ability to change email
  - [x] Choose number of random tasks in daily email
+ - [x] Button for go to random task
 
 **UX/UI**:
  - [x] Turn on/off sidebar save to cookies (https://stackoverflow.com/questions/21350897/html-link-on-input-button/21350915, https://learn.javascript.ru/cookie)

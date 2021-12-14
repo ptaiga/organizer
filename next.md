@@ -33,6 +33,8 @@
  - [ ] Weather forecast in daily mail
  - [ ] Currency exchange rate in daily mail
  - [ ] Telegram Bot
+ - [ ] Progress bar for today's tasks, tasks in projects
+ - [ ] Analyzing activities with files and folders and check time
 
 **Other**
 

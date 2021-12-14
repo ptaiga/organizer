@@ -1,7 +1,5 @@
-main/__pycache__
-organizer/__pycache__
-organizer/migrations/__pycache__
-account/__pycache__
-account/migrations/__pycache__
+__pycache__
 db.sqlite3
 main/private_settings.py
+.*
+!.gitignore
